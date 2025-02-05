@@ -1,0 +1,6 @@
+@RoofStockBackend_HostAddress = http://localhost:5033
+
+GET {{RoofStockBackend_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
