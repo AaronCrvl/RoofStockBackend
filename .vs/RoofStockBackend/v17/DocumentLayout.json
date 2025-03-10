@@ -3,12 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|c:\\users\\aaron\\source\\repos\\roofstockbackend\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|solutionrelative:controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|c:\\users\\aaron\\source\\repos\\roofstockbackend\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|solutionrelative:controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|c:\\users\\aaron\\source\\repos\\roofstockbackend\\controladores\\crtlestoque.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|solutionrelative:controladores\\crtlestoque.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,32 +14,19 @@
       "DocumentGroups": [
         {
           "DockedWidth": 2362,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "WeatherForecastController.cs",
-              "DocumentMoniker": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Controllers\\WeatherForecastController.cs",
-              "RelativeDocumentMoniker": "Controllers\\WeatherForecastController.cs",
-              "ToolTip": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Controllers\\WeatherForecastController.cs",
-              "RelativeToolTip": "Controllers\\WeatherForecastController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-05T02:22:53.333Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "UserController.cs",
-              "DocumentMoniker": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Controllers\\UserController.cs",
-              "RelativeDocumentMoniker": "Controllers\\UserController.cs",
-              "ToolTip": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Controllers\\UserController.cs",
-              "RelativeToolTip": "Controllers\\UserController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAATAAAA",
+              "Title": "crtlEstoque.cs",
+              "DocumentMoniker": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Controladores\\crtlEstoque.cs",
+              "RelativeDocumentMoniker": "Controladores\\crtlEstoque.cs",
+              "ToolTip": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Controladores\\crtlEstoque.cs",
+              "RelativeToolTip": "Controladores\\crtlEstoque.cs",
+              "ViewState": "AQIAACYAAAAAAAAAAAAAABQAAAA6AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-05T02:21:22.884Z",
+              "WhenOpened": "2025-03-10T18:06:05.199Z",
               "EditorCaption": ""
             }
           ]

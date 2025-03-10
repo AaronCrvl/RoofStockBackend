@@ -1,0 +1,39 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36" version="26.1.0">
+  <diagram name="Página-1" id="o1Dca9VQbSDAYF1QV1LM">
+    <mxGraphModel dx="1623" dy="937" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="4DIvcKWusaenCQwuLqcY-1" value="Azure Database" style="verticalLabelPosition=bottom;sketch=0;aspect=fixed;html=1;verticalAlign=top;strokeColor=none;align=center;outlineConnect=0;shape=mxgraph.citrix.database;" vertex="1" parent="1">
+          <mxGeometry x="525.98" y="880" width="59.5" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="4DIvcKWusaenCQwuLqcY-13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="4DIvcKWusaenCQwuLqcY-7" target="4DIvcKWusaenCQwuLqcY-11">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="223.55999999999995" y="585" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4DIvcKWusaenCQwuLqcY-7" value="Desktop Access" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.clouddesktop;" vertex="1" parent="1">
+          <mxGeometry x="64.22" y="545" width="79.56" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="4DIvcKWusaenCQwuLqcY-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="4DIvcKWusaenCQwuLqcY-9" target="4DIvcKWusaenCQwuLqcY-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4DIvcKWusaenCQwuLqcY-9" value="Mobile Access" style="html=1;verticalLabelPosition=bottom;align=center;labelBackgroundColor=#ffffff;verticalAlign=top;strokeWidth=2;strokeColor=#0080F0;shadow=0;dashed=0;shape=mxgraph.ios7.icons.smartphone;" vertex="1" parent="1">
+          <mxGeometry x="80" y="710" width="48" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="4DIvcKWusaenCQwuLqcY-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="4DIvcKWusaenCQwuLqcY-10" target="4DIvcKWusaenCQwuLqcY-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4DIvcKWusaenCQwuLqcY-10" value="Web API As&lt;span style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); background-color: transparent;&quot;&gt;p Net Core&lt;/span&gt;" style="aspect=fixed;sketch=0;html=1;dashed=0;whitespace=wrap;verticalLabelPosition=bottom;verticalAlign=top;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];shape=mxgraph.kubernetes.icon2;kubernetesLabel=1;prIcon=api" vertex="1" parent="1">
+          <mxGeometry x="511.46" y="625" width="88.54" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="4DIvcKWusaenCQwuLqcY-11" value="Web Application" style="image;html=1;image=img/lib/clip_art/computers/Virtual_Application_128x128.png" vertex="1" parent="1">
+          <mxGeometry x="250" y="630" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="4DIvcKWusaenCQwuLqcY-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=-0.031;entryY=0.53;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="4DIvcKWusaenCQwuLqcY-11" target="4DIvcKWusaenCQwuLqcY-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
