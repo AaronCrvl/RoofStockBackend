@@ -1,15 +1,12 @@
 ﻿using Microsoft.AspNetCore.Http.HttpResults;
 using RoofStockBackend.Contextos;
 using RoofStockBackend.Contexts;
-using RoofStockBackend.Database.Data.Objects;
 using RoofStockBackend.Models;
 
 namespace RoofStockBackend.Repositorio
 {
     public class RepoUsuario
-    {
-        
-
+    {        
         #region Construtor                
         #endregion        
 
@@ -137,3 +134,4 @@ namespace RoofStockBackend.Repositorio
         #endregion
     }
 }
+// !_!

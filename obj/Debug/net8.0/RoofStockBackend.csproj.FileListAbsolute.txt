@@ -1,0 +1,8 @@
+C:\Users\aaron\source\repos\RoofStockBackend\obj\Debug\net8.0\RoofStockBackend.csproj.AssemblyReference.cache
+C:\Users\aaron\source\repos\RoofStockBackend\obj\Debug\net8.0\RoofStockBackend.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\aaron\source\repos\RoofStockBackend\obj\Debug\net8.0\RoofStockBackend.AssemblyInfoInputs.cache
+C:\Users\aaron\source\repos\RoofStockBackend\obj\Debug\net8.0\RoofStockBackend.AssemblyInfo.cs
+C:\Users\aaron\source\repos\RoofStockBackend\obj\Debug\net8.0\RoofStockBackend.csproj.CoreCompileInputs.cache
+C:\Users\aaron\source\repos\RoofStockBackend\obj\Debug\net8.0\RoofStockBackend.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\aaron\source\repos\RoofStockBackend\obj\Debug\net8.0\RoofStockBackend.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\aaron\source\repos\RoofStockBackend\obj\Debug\net8.0\RoofStockBackend.sourcelink.json

@@ -4,11 +4,11 @@ using System.Net.Mime;
 
 namespace RoofStockBackend.Controllers
 {
-    public class CrtlEstoque : Controller
+    public class cntllEstoque : Controller
     {
         Repositorio.RepoUsuario repo;
 
-        public CrtlEstoque()
+        public cntllEstoque()
         {
             this.repo = new Repositorio.RepoUsuario();
         }
@@ -77,3 +77,4 @@ namespace RoofStockBackend.Controllers
         }
     }
 }
+// !_!

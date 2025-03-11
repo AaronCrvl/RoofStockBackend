@@ -7,10 +7,10 @@ namespace RoofStockBackend.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class CrtlUsuario : Controller
+    public class cntllUsuario : Controller
     {
         Repositorio.RepoUsuario repo;
-        public CrtlUsuario()
+        public cntllUsuario()
         {
             this.repo = new Repositorio.RepoUsuario();
         }
@@ -114,3 +114,4 @@ namespace RoofStockBackend.Controllers
         #endregion      
     }
 }
+// !_!
