@@ -9,10 +9,10 @@ namespace RoofStockBackend.Controllers
     [Route("[controller]")]
     public class cntllUsuario : Controller
     {
-        Repositorio.RepoUsuario repo;
+        Repositorio.repoUsuario repo;
         public cntllUsuario()
         {
-            this.repo = new Repositorio.RepoUsuario();
+            this.repo = new Repositorio.repoUsuario();
         }
 
         #region HTTP Methods
@@ -65,18 +65,18 @@ namespace RoofStockBackend.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> Create([FromBody] User newUser)
+        public async Task<IActionResult> Create([FromBody] Usuario newUser)
         {
             try
             {
                 var newId = Utils.DBUtils.GenerateNewUserId();
                 var user = this.repo.CriarUsuario(
-                    new User
+                    new Usuario
                     {
                         Id = newId,
-                        Username = newUser.Username,
+                        Login = newUser.Login,
                         Password = newUser.Password,
-                        CreationDate = DateTime.Now
+                        DataCriacao = DateTime.Now
                     });
 
                 if (this.repo.CarregarUsuario(newId).Id > 0)

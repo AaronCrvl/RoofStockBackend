@@ -6,11 +6,11 @@ namespace RoofStockBackend.Controllers
 {
     public class cntllEstoque : Controller
     {
-        Repositorio.RepoUsuario repo;
+        Repositorio.repoUsuario repo;
 
         public cntllEstoque()
         {
-            this.repo = new Repositorio.RepoUsuario();
+            this.repo = new Repositorio.repoUsuario();
         }
 
         [HttpGet("GetStock/{id}")]
@@ -60,7 +60,7 @@ namespace RoofStockBackend.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> AlterUser([FromBody] User user)
+        public async Task<IActionResult> AlterUser([FromBody] Usuario user)
         {
             try
             {

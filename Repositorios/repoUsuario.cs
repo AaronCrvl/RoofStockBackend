@@ -1,137 +1,153 @@
-﻿using Microsoft.AspNetCore.Http.HttpResults;
-using RoofStockBackend.Contextos;
-using RoofStockBackend.Contexts;
+﻿using RoofStockBackend.Contextos;
+using RoofStockBackend.Database.Dados.Objetos;
 using RoofStockBackend.Models;
+using System;
+using System.Threading.Tasks;
 
 namespace RoofStockBackend.Repositorio
 {
     public class RepoUsuario
-    {        
-        #region Construtor                
-        #endregion        
+    {
+        #region Construtor
+        // Inicialização, se necessária, pode ser adicionada aqui
+        #endregion
 
         #region Métodos Públicos
-        public async Task<Models.User> CarregarUsuario(long id)
-        {
-            try
-            {
-                var selectedUser = ctxUsuario.GetUser(id).Result;
-                if (selectedUser.Id > 0)
-                    return new Models.User
-                    {
-                        Id = selectedUser.Id,
-                        UserEmail = selectedUser.Username,
-                        Username = selectedUser.Email,
-                        Password = selectedUser.Senha,
-                        CreationDate = selectedUser.DataCriacao
-                    };
-                else
-                    return new Models.User
-                    {
-                        Id = -1,
-                        UserEmail = string.Empty,
-                        Username = string.Empty,
-                        Password = string.Empty,
-                        CreationDate = new DateTime()
-                    };
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-        public async Task<Models.User> CarregarUsuario(string username)
-        {
-            try
-            {
-                var selectedUser = ctxUsuario.GetUser(username).Result;
-                if (selectedUser.Id > 0)
-                    return new Models.User
-                    {
-                        Id = selectedUser.Id,
-                        UserEmail = selectedUser.Username,
-                        Username = selectedUser.Email,
-                        Password = selectedUser.Senha,
-                        CreationDate = selectedUser.DataCriacao
-                    };
-                else
-                    return new Models.User
-                    {
-                        Id = -1,
-                        UserEmail = string.Empty,
-                        Username = string.Empty,
-                        Password = string.Empty,
-                        CreationDate = new DateTime()
-                    };
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-        public async Task<Models.User> CriarUsuario(Models.User userModel)
-        {
-            try
-            {
-                var ok = ctxUsuario.CreateUser(new Database.Dados.Objetos.Usuario { Id = userModel.Id, Username = userModel.Username, Senha = userModel.Password, DataCriacao = userModel.CreationDate }).Result;
-                var selectedUser = ctxUsuario.GetUser(userModel.Username).Result;
 
-                if (ok)
-                    return new Models.User
-                    {
-                        Id = selectedUser.Id,
-                        UserEmail = selectedUser.Username,
-                        Username = selectedUser.Email,
-                        Password = selectedUser.Senha,
-                        CreationDate = selectedUser.DataCriacao
-                    };
-                else
-                    return new Models.User
-                    {
-                        Id = -1,
-                        UserEmail = string.Empty,
-                        Username = string.Empty,
-                        Password = string.Empty,
-                        CreationDate = new DateTime()
-                    };
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-        public async Task<Models.User> AlterarUsuario(Models.User userModel)
+        // Carregar usuário por ID
+        public async Task<Models.Usuario> CarregarUsuario(long id)
         {
             try
             {
-                var ok = ctxUsuario.AlterUser(new Database.Dados.Objetos.Usuario { Id = userModel.Id, Username = userModel.Username, Senha = userModel.Password, DataCriacao = userModel.CreationDate }).Result;
-                var selectedUser = ctxUsuario.GetUser(userModel.Username).Result;
+                var selectedUser = await ctxUsuario.GetUser(id);
+                if (selectedUser != null && selectedUser.ID_USUARIO > 0)
+                {
+                    return MapToModel(selectedUser);
+                }
 
-                if (ok)
-                    return new Models.User
-                    {
-                        Id = selectedUser.Id,
-                        UserEmail = selectedUser.Username,
-                        Username = selectedUser.Email,
-                        Password = selectedUser.Senha,
-                        CreationDate = selectedUser.DataCriacao
-                    };
-                else
-                    return new Models.User
-                    {
-                        Id = -1,
-                        UserEmail = string.Empty,
-                        Username = string.Empty,
-                        Password = string.Empty,
-                        CreationDate = new DateTime()
-                    };
+                return GetDefaultUser();
             }
             catch (Exception e)
             {
-                throw e;
+                throw new Exception("Erro ao carregar usuário", e);
             }
         }
+
+        // Carregar usuário por nome de login (TX_LOGIN)
+        public async Task<Models.Usuario> CarregarUsuario(string login)
+        {
+            try
+            {
+                var selectedUser = await ctxUsuario.GetUser(login);
+                if (selectedUser != null && selectedUser.ID_USUARIO > 0)
+                {
+                    return MapToModel(selectedUser);
+                }
+
+                return GetDefaultUser();
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Erro ao carregar usuário", e);
+            }
+        }
+
+        // Criar novo usuário
+        public async Task<Models.Usuario> CriarUsuario(Models.Usuario userModel)
+        {
+            try
+            {
+                var newUser = new Database.Dados.Objetos.Usuario
+                {
+                    ID_USUARIO = userModel.Id,
+                    ID_FUNCIONARIO = userModel.IdFuncionario,  // Assuming IdFuncionario is mapped to ID_FUNCIONARIO
+                    TX_LOGIN = userModel.Login,
+                    TX_SENHA = userModel.Password,
+                    TX_EMAIL = userModel.Email,
+                    IN_ATIVO = userModel.Ativo,
+                    DT_CRIACAO = userModel.DataCriacao
+                };
+
+                var ok = await ctxUsuario.CreateUser(newUser);
+                if (ok)
+                {
+                    var selectedUser = await ctxUsuario.GetUser(userModel.Login);
+                    return MapToModel(selectedUser);
+                }
+
+                return GetDefaultUser();
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Erro ao criar usuário", e);
+            }
+        }
+
+        // Alterar dados do usuário
+        public async Task<Models.Usuario> AlterarUsuario(Models.Usuario userModel)
+        {
+            try
+            {
+                var updatedUser = new Database.Dados.Objetos.Usuario
+                {
+                    ID_USUARIO = userModel.Id,
+                    ID_FUNCIONARIO = userModel.IdFuncionario,  // Assuming IdFuncionario is mapped to ID_FUNCIONARIO
+                    TX_LOGIN = userModel.Login,
+                    TX_SENHA = userModel.Password,
+                    TX_EMAIL = userModel.Email,
+                    IN_ATIVO = userModel.Ativo,
+                    DT_CRIACAO = userModel.DataCriacao
+                };
+
+                var ok = await ctxUsuario.AlterUser(updatedUser);
+                if (ok)
+                {
+                    var selectedUser = await ctxUsuario.GetUser(userModel.Login);
+                    return MapToModel(selectedUser);
+                }
+
+                return GetDefaultUser();
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Erro ao alterar usuário", e);
+            }
+        }
+
+        #endregion
+
+        #region Métodos Auxiliares
+
+        // Mapeamento do objeto Database.Dados.Objetos.Usuario para Models.User
+        private Models.Usuario MapToModel(Database.Dados.Objetos.Usuario user)
+        {
+            return new Models.Usuario
+            {
+                Id = user.ID_USUARIO,
+                IdFuncionario = user.ID_FUNCIONARIO,  // Assuming IdFuncionario maps to ID_FUNCIONARIO
+                Login = user.TX_LOGIN,
+                Password = user.TX_SENHA,
+                Email = user.TX_EMAIL,
+                Ativo = user.IN_ATIVO,
+                DataCriacao = user.DT_CRIACAO
+            };
+        }
+
+        // Retorna um usuário padrão em caso de erro ou não encontrado
+        private Models.Usuario GetDefaultUser()
+        {
+            return new Models.Usuario
+            {
+                Id = -1,
+                IdFuncionario = -1,
+                Login = string.Empty,
+                Password = string.Empty,
+                Email = string.Empty,
+                Ativo = false,
+                DataCriacao = DateTime.MinValue
+            };
+        }
+
         #endregion
     }
 }
-// !_!
