@@ -60,63 +60,6 @@ namespace RoofStockBackend.Database.Dados.Objetos
             this.QN_ESTOQUE = 0;
         }
 
-        public EstoqueProduto(long idEstoque, long idProduto)
-        {
-            this.CarregarEstoqueProduto(idEstoque, idProduto);
-        }
-        #endregion
-
-        #region Métodos Públicos
-        public void CriarEstoqueProduto()
-        {
-            try
-            {
-                _ = ctxEstoqueProduto.CreateEstoqueProduto(this).Result;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
-        public void CarregarEstoqueProduto(long idEstoque, long idProduto)
-        {
-            try
-            {
-                var estoqueProduto = ctxEstoqueProduto.GetEstoqueProduto(idEstoque, idProduto).Result;
-                this.ID_ESTOQUE = estoqueProduto.ID_ESTOQUE;
-                this.ID_PRODUTO = estoqueProduto.ID_PRODUTO;
-                this.QN_ESTOQUE = estoqueProduto.QN_ESTOQUE;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
-        public void AlterarEstoqueProduto()
-        {
-            try
-            {
-                _ = ctxEstoqueProduto.UpdateEstoqueProduto(this).Result;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
-        public void DesativarEstoqueProduto()
-        {
-            try
-            {
-                _ = ctxEstoqueProduto.DeleteEstoqueProduto(this.ID_ESTOQUE, this.ID_PRODUTO).Result;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
         #endregion
     }
 }

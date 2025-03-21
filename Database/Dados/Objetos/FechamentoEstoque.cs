@@ -72,65 +72,7 @@ namespace RoofStockBackend.Database.Dados.Objetos
             this.DT_FECHAMENTO = DateTime.MinValue;
             this.IN_ERRO = false;
         }
-
-        public FechamentoEstoque(long idFechamento)
-        {
-            this.CarregarFechamentoEstoque(idFechamento);
-        }
-        #endregion
-
-        #region Métodos Públicos
-        public void CriarFechamentoEstoque()
-        {
-            try
-            {
-                _ = ctxFechamentoEstoque.CreateFechamentoEstoque(this).Result;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
-        public void CarregarFechamentoEstoque(long idFechamento)
-        {
-            try
-            {
-                var fechamentoEstoque = ctxFechamentoEstoque.GetFechamentoEstoque(idFechamento).Result;
-                this.ID_FECHAMENTO = fechamentoEstoque.ID_FECHAMENTO;
-                this.ID_ESTOQUE = fechamentoEstoque.ID_ESTOQUE;
-                this.DT_FECHAMENTO = fechamentoEstoque.DT_FECHAMENTO;
-                this.IN_ERRO = fechamentoEstoque.IN_ERRO;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
-        public void AlterarFechamentoEstoque()
-        {
-            try
-            {
-                _ = ctxFechamentoEstoque.UpdateFechamentoEstoque(this).Result;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
-        public void DesativarFechamentoEstoque()
-        {
-            try
-            {
-                _ = ctxFechamentoEstoque.DeleteFechamentoEstoque(this.ID_FECHAMENTO).Result;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
+        
         #endregion
     }
 }

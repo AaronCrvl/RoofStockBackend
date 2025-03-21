@@ -43,64 +43,7 @@ namespace RoofStockBackend.Database.Dados.Objetos
         {
             this.ID_MARCA = -1;
             this.TX_NOME = string.Empty;
-        }
-
-        public Marca(long idMarca)
-        {
-            this.CarregarMarca(idMarca);
-        }
-        #endregion
-
-        #region Métodos Públicos
-        public void CriarMarca()
-        {
-            try
-            {
-                _ = ctxMarca.CreateMarca(this).Result;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
-        public void CarregarMarca(long idMarca)
-        {
-            try
-            {
-                var marca = ctxMarca.GetMarca(idMarca).Result;
-                this.ID_MARCA = marca.ID_MARCA;
-                this.TX_NOME = marca.TX_NOME;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
-        public void AlterarMarca()
-        {
-            try
-            {
-                _ = ctxMarca.UpdateMarca(this).Result;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
-        public void DesativarMarca()
-        {
-            try
-            {
-                _ = ctxMarca.DeleteMarca(this.ID_MARCA).Result;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
+        }      
         #endregion
     }
 }

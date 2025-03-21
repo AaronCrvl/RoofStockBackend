@@ -116,69 +116,7 @@ namespace RoofStockBackend.Database.Dados.Objetos
             this.IN_ATIVO = true;
             this.TX_EMAIL = string.Empty;
             this.DT_CRIACAO = DateTime.Now;
-        }
-
-        public Empresa(long Id)
-        {
-            this.CarregarEmpresa(Id);
-        }
-        #endregion
-
-        #region Métodos Públicos
-        public void CriarEmpresa()
-        {
-            try
-            {
-                _ = ctxEmpresa.CreateEmpresa(this).Result;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
-        public void CarregarEmpresa(long Id)
-        {
-            try
-            {
-                var empresa = ctxEmpresa.GetEmpresa(Id).Result;
-                this.ID_EMPRESA = empresa.ID_EMPRESA;
-                this.TX_RAZAO_SOCIAL = empresa.TX_RAZAO_SOCIAL;
-                this.TX_TOKEN = empresa.TX_TOKEN;
-                this.TX_CNPJ = empresa.TX_CNPJ;
-                this.IN_ATIVO = empresa.IN_ATIVO;
-                this.TX_EMAIL = empresa.TX_EMAIL;
-                this.DT_CRIACAO = empresa.DT_CRIACAO;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
-        public void AlterarEmpresa()
-        {
-            try
-            {
-                _ = ctxEmpresa.UpdateEmpresa(this).Result;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
-        public void DesativarEmpresa()
-        {
-            try
-            {
-                _ = ctxEmpresa.DeleteEmpresa(this.ID_EMPRESA).Result;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
+        }      
         #endregion
     }
 }

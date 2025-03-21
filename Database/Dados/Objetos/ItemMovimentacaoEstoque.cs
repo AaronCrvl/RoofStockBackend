@@ -87,67 +87,7 @@ namespace RoofStockBackend.Database.Dados.Objetos
             this.ID_PRODUTO = -1;
             this.QN_MOVIMENTACAO = 0;
             this.IN_PROCESSADO = false;
-        }
-
-        public ItemMovimentacaoEstoque(long idItemMovimentacao)
-        {
-            this.CarregarItemMovimentacaoEstoque(idItemMovimentacao);
-        }
-        #endregion
-
-        #region Métodos Públicos
-        public void CriarItemMovimentacaoEstoque()
-        {
-            try
-            {
-                _ = ctxItemMovimentacaoEstoque.CreateItemMovimentacaoEstoque(this).Result;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
-        public void CarregarItemMovimentacaoEstoque(long idItemMovimentacao)
-        {
-            try
-            {
-                var itemMovimentacao = ctxItemMovimentacaoEstoque.GetItemMovimentacaoEstoque(idItemMovimentacao).Result;
-                this.ID_ITEM_MOVIMENTACAO = itemMovimentacao.ID_ITEM_MOVIMENTACAO;
-                this.ID_MOVIMENTACAO = itemMovimentacao.ID_MOVIMENTACAO;
-                this.ID_PRODUTO = itemMovimentacao.ID_PRODUTO;
-                this.QN_MOVIMENTACAO = itemMovimentacao.QN_MOVIMENTACAO;
-                this.IN_PROCESSADO = itemMovimentacao.IN_PROCESSADO;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
-        public void AlterarItemMovimentacaoEstoque()
-        {
-            try
-            {
-                _ = ctxItemMovimentacaoEstoque.UpdateItemMovimentacaoEstoque(this).Result;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
-        public void DesativarItemMovimentacaoEstoque()
-        {
-            try
-            {
-                _ = ctxItemMovimentacaoEstoque.DeleteItemMovimentacaoEstoque(this.ID_ITEM_MOVIMENTACAO).Result;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
+        }       
         #endregion
     }
 }

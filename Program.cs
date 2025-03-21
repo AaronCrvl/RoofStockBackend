@@ -1,3 +1,5 @@
+using RoofStockBackend.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,6 +9,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+builder.Services.AddScoped<SrvcUsuario>();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

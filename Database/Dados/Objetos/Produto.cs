@@ -87,67 +87,7 @@ namespace RoofStockBackend.Database.Dados.Objetos
             this.TX_NOME = string.Empty;
             this.TX_DESCRICAO = string.Empty;
             this.VALOR = 0.0f;
-        }
-
-        public Produto(long Id)
-        {
-            this.CarregarProduto(Id);
-        }
-        #endregion
-
-        #region Métodos Públicos
-        public void CriarProduto()
-        {
-            try
-            {
-                _ = ctxProduto.CreateProduto(this).Result;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
-        public void CarregarProduto(long Id)
-        {
-            try
-            {
-                var produto = ctxProduto.GetProduto(Id).Result;
-                this.ID_PRODUTO = produto.ID_PRODUTO;
-                this.ID_MARCA = produto.ID_MARCA;
-                this.TX_NOME = produto.TX_NOME;
-                this.TX_DESCRICAO = produto.TX_DESCRICAO;
-                this.VALOR = produto.VALOR;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
-        public void AlterarProduto()
-        {
-            try
-            {
-                _ = ctxProduto.UpdateProduto(this).Result;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
-        public void DesativarProduto()
-        {
-            try
-            {
-                _ = ctxProduto.DeleteProduto(this.ID_PRODUTO).Result;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
+        }      
         #endregion
     }
 }

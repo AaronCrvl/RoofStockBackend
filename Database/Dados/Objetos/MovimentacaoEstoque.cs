@@ -102,68 +102,7 @@ namespace RoofStockBackend.Database.Dados.Objetos
             this.DT_MOVIMENTACAO = DateTime.Now;
             this.IN_ENTRADA = false;
             this.IN_PROCESSADO = false;
-        }
-
-        public MovimentacaoEstoque(long idMovimentacao)
-        {
-            this.CarregarMovimentacaoEstoque(idMovimentacao);
-        }
-        #endregion
-
-        #region Métodos Públicos
-        public void CriarMovimentacaoEstoque()
-        {
-            try
-            {
-                _ = ctxMovimentacaoEstoque.CreateMovimentacaoEstoque(this).Result;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
-        public void CarregarMovimentacaoEstoque(long idMovimentacao)
-        {
-            try
-            {
-                var movimentacao = ctxMovimentacaoEstoque.GetMovimentacaoEstoque(idMovimentacao).Result;
-                this.ID_MOVIMENTACAO = movimentacao.ID_MOVIMENTACAO;
-                this.ID_ESTOQUE = movimentacao.ID_ESTOQUE;
-                this.ID_USUARIO = movimentacao.ID_USUARIO;
-                this.DT_MOVIMENTACAO = movimentacao.DT_MOVIMENTACAO;
-                this.IN_ENTRADA = movimentacao.IN_ENTRADA;
-                this.IN_PROCESSADO = movimentacao.IN_PROCESSADO;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
-        public void AlterarMovimentacaoEstoque()
-        {
-            try
-            {
-                _ = ctxMovimentacaoEstoque.UpdateMovimentacaoEstoque(this).Result;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
-        public void DesativarMovimentacaoEstoque()
-        {
-            try
-            {
-                _ = ctxMovimentacaoEstoque.DeleteMovimentacaoEstoque(this.ID_MOVIMENTACAO).Result;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
+        }      
         #endregion
     }
 }

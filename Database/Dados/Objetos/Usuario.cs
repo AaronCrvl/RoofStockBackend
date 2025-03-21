@@ -109,83 +109,11 @@ namespace RoofStockBackend.Database.Dados.Objetos
             this.TX_EMAIL = string.Empty;
             this.IN_ATIVO = false;
             this.DT_CRIACAO = new DateTime();
-        }
-        public Usuario(int Id)
-        {
-            this.CarregarUsuario(Id);            
-        }
+        }        
         #endregion
 
         #region Métodos Públicos
-        public void CriarUsuario()
-        {
-            try
-            {
-                _ = ctxUsuario.CreateUser(this).Result;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-        public void CarregarUsuario(long Id)
-        {
-            try
-            {
-                var user = ctxUsuario.GetUser(Id).Result;
-                this.ID_USUARIO = user.ID_USUARIO;
-                this.ID_FUNCIONARIO = user.ID_FUNCIONARIO;
-                this.TX_LOGIN = user.TX_LOGIN;
-                this.pTX_SENHA = user.TX_SENHA;
-                this.pTX_EMAIL = user.TX_EMAIL;
-                this.IN_ATIVO = user.IN_ATIVO;
-                this.DT_CRIACAO = user.DT_CRIACAO;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-        public void CarregarUsuario(string Username)
-        {
-            try
-            {
-                var user = ctxUsuario.GetUser(Username).Result;
-                this.ID_USUARIO = user.ID_USUARIO;
-                this.ID_FUNCIONARIO = user.ID_FUNCIONARIO;
-                this.TX_LOGIN = user.TX_LOGIN;
-                this.pTX_SENHA = user.TX_SENHA;
-                this.pTX_EMAIL = user.TX_EMAIL;
-                this.IN_ATIVO = user.IN_ATIVO;
-                this.DT_CRIACAO = user.DT_CRIACAO;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-        public void AlterarUsuario()
-        {
-            try
-            {
-                _ = ctxUsuario.AlterUser(this).Result;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-        public void DesativarUsuario()
-        {
-            try
-            {
-                _ = ctxUsuario.DeleteUser(this.ID_USUARIO).Result;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
+       
         #endregion      
     }
 }
