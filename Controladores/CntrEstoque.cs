@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace RoofStockBackend.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("Estoque")]
     public class EstoqueController : ControllerBase
     {
         private readonly SrvcEstoque _estoqueService;

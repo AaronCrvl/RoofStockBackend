@@ -39,7 +39,8 @@ namespace RoofStockBackend.Services
                 if (estoqueId <= 0 || produtoId <= 0)
                     throw new ArgumentException("IDs inválidos.");
 
-                return await _estoqueProdutoRepository.GetByIdAsync(estoqueId, produtoId);
+                //return await _estoqueProdutoRepository.GetByIdAsync(estoqueId, produtoId);
+                return await _estoqueProdutoRepository.GetByIdAsync(estoqueId); // TODOOOOOOOOOOOOO
             }
             catch (Exception ex)
             {
@@ -99,7 +100,8 @@ namespace RoofStockBackend.Services
             try
             {
                 if (estoqueId <= 0 || produtoId <= 0) throw new ArgumentException("IDs inválidos.");
-                var estoqueProduto = await _estoqueProdutoRepository.GetByIdAsync(estoqueId, produtoId);
+                //var estoqueProduto = await _estoqueProdutoRepository.GetByIdAsync(estoqueId, produtoId);
+                var estoqueProduto = await _estoqueProdutoRepository.GetByIdAsync(estoqueId);
                 if (estoqueProduto == null) return false;
 
                 estoqueProduto.QN_ESTOQUE = 0; // Definindo estoque para zero, por exemplo, como desativado

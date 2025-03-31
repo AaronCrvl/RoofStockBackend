@@ -1,4 +1,5 @@
-﻿using RoofStockBackend.Contextos;
+﻿using Microsoft.EntityFrameworkCore;
+using RoofStockBackend.Contextos;
 using RoofStockBackend.Database.Dados.Objetos;
 using System;
 using System.Linq;

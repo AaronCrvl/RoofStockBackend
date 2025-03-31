@@ -1,5 +1,6 @@
 ﻿using RoofStockBackend.Contextos;
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
 namespace RoofStockBackend.Database.Dados.Objetos
@@ -15,6 +16,7 @@ namespace RoofStockBackend.Database.Dados.Objetos
         #endregion
 
         #region Propriedades
+        [Key]
         public long ID_PRODUTO
         {
             get
@@ -28,6 +30,7 @@ namespace RoofStockBackend.Database.Dados.Objetos
         }
 
         [Required]
+        [ForeignKey("Marca")]
         public long ID_MARCA
         {
             get

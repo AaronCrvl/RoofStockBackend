@@ -20,8 +20,15 @@ namespace RoofStockBackend.Repositorios
         // Criação
         public async Task AddAsync(T entity)
         {
-            await _dbSet.AddAsync(entity);
-            await _context.SaveChangesAsync();
+            try
+            {
+                await _dbSet.AddAsync(entity);
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         // Leitura

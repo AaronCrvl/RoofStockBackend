@@ -8,7 +8,7 @@ namespace RoofStockBackend.Services
 {
     public class SrvcUsuario
     {
-        private readonly Repository<Usuario> _usuarioRepository;
+        private Repository<Usuario> _usuarioRepository;
 
         public SrvcUsuario(AppDbContext context)
         {
@@ -25,7 +25,7 @@ namespace RoofStockBackend.Services
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Erro ao criar usuário: {ex.Message}");
+                Console.WriteLine($"Erro ao criar usuário: {ex.Message} InnerException: {ex.InnerException}");
                 return false;
             }
         }

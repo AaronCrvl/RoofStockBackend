@@ -1,9 +1,11 @@
-﻿using RoofStockBackend.Contextos;
+﻿using Microsoft.EntityFrameworkCore;
+using RoofStockBackend.Contextos;
 using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace RoofStockBackend.Database.Dados.Objetos
 {
+    [Keyless]
     public class EstoqueProduto
     {        
         #region Propriedades Privadas

@@ -1,5 +1,6 @@
 ﻿using RoofStockBackend.Contextos;
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
 namespace RoofStockBackend.Database.Dados.Objetos
@@ -15,6 +16,7 @@ namespace RoofStockBackend.Database.Dados.Objetos
         #endregion
 
         #region Propriedades
+        [Key]
         public long ID_ITEM_MOVIMENTACAO
         {
             get
@@ -41,6 +43,7 @@ namespace RoofStockBackend.Database.Dados.Objetos
         }
 
         [Required]
+        [ForeignKey("Produto")]
         public long ID_PRODUTO
         {
             get

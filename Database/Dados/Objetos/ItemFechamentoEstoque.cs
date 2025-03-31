@@ -14,6 +14,7 @@ namespace RoofStockBackend.Database.Dados.Objetos
         #endregion
 
         #region Propriedades
+        [Key]
         public long ID_FECHAMENTO
         {
             get
@@ -71,66 +72,7 @@ namespace RoofStockBackend.Database.Dados.Objetos
             this.ID_ESTOQUE = -1;
             this.DT_FECHAMENTO = DateTime.MinValue;
             this.IN_ERRO = false;
-        }
-
-        public ItemFechamentoEstoque(long idFechamento)
-        {
-            this.CarregarItemFechamentoEstoque(idFechamento);
-        }
-        #endregion
-
-        #region Métodos Públicos
-        public void CriarItemFechamentoEstoque()
-        {
-            try
-            {
-                _ = ctxItemFechamentoEstoque.CreateItemFechamentoEstoque(this).Result;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
-        public void CarregarItemFechamentoEstoque(long idFechamento)
-        {
-            try
-            {
-                var itemFechamentoEstoque = ctxItemFechamentoEstoque.GetItemFechamentoEstoque(idFechamento).Result;
-                this.ID_FECHAMENTO = itemFechamentoEstoque.ID_FECHAMENTO;
-                this.ID_ESTOQUE = itemFechamentoEstoque.ID_ESTOQUE;
-                this.DT_FECHAMENTO = itemFechamentoEstoque.DT_FECHAMENTO;
-                this.IN_ERRO = itemFechamentoEstoque.IN_ERRO;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
-        public void AlterarItemFechamentoEstoque()
-        {
-            try
-            {
-                _ = ctxItemFechamentoEstoque.UpdateItemFechamentoEstoque(this).Result;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
-        public void DesativarItemFechamentoEstoque()
-        {
-            try
-            {
-                _ = ctxItemFechamentoEstoque.DeleteItemFechamentoEstoque(this.ID_FECHAMENTO).Result;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
+        }      
         #endregion
     }
 }

@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 namespace RoofStockBackend.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Tags("Estoque Produto")]
+    [Route("EstoqueProduto")]
     public class CntrlEstoqueProduto : ControllerBase
     {
         private readonly SrvcEstoqueProduto _estoqueProdutoService;

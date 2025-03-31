@@ -4,9 +4,10 @@ using RoofStockBackend.Services;
 using System.Threading.Tasks;
 
 namespace RoofStockBackend.Controllers
-{
+{    
     [ApiController]
-    [Route("[controller]")]
+    [Tags("Fechamento Estoque")]
+    [Route("FechamentoEstoque")]
     public class CntrlFechamentoEstoque : ControllerBase
     {
         private readonly SrvcFechamentoEstoque _fechamentoEstoqueService;

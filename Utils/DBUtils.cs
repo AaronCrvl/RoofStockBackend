@@ -13,5 +13,10 @@
 				throw e;
 			}
         }
+
+        internal static long GerarNovoIdUsuario()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

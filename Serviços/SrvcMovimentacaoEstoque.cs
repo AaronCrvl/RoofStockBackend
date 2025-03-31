@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace RoofStockBackend.Services
 {
-    public class MovimentacaoEstoqueService
+    public class SrvcMovimentacaoEstoque
     {
         private readonly AppDbContext _context;
 
-        public MovimentacaoEstoqueService(AppDbContext context)
+        public SrvcMovimentacaoEstoque(AppDbContext context)
         {
             _context = context;
         }

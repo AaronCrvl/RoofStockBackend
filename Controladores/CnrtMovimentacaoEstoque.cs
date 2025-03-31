@@ -7,12 +7,13 @@ using System.Threading.Tasks;
 namespace RoofStockBackend.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Tags("Movimentação Estoque")]
+    [Route("MovimentacaoEstoque")]
     public class MovimentacaoEstoqueController : ControllerBase
     {
-        private readonly MovimentacaoEstoqueService _movimentacaoService;
+        private readonly SrvcMovimentacaoEstoque _movimentacaoService;
 
-        public MovimentacaoEstoqueController(MovimentacaoEstoqueService movimentacaoService)
+        public MovimentacaoEstoqueController(SrvcMovimentacaoEstoque movimentacaoService)
         {
             _movimentacaoService = movimentacaoService;
         }

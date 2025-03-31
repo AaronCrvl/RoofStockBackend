@@ -44,64 +44,8 @@ namespace RoofStockBackend.Database.Dados.Objetos
             this.ID_CARGO = -1;
             this.TX_NOME = string.Empty;
         }
-
-        public Cargo(long idCargo)
-        {
-            this.CarregarCargo(idCargo);
-        }
-        #endregion
-
-        #region Métodos Públicos
-        public void CriarCargo()
-        {
-            try
-            {
-                _ = ctxCargo.CreateCargo(this).Result;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
-        public void CarregarCargo(long idCargo)
-        {
-            try
-            {
-                var cargo = ctxCargo.GetCargo(idCargo).Result;
-                this.ID_CARGO = cargo.ID_CARGO;
-                this.TX_NOME = cargo.TX_NOME;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
-        public void AlterarCargo()
-        {
-            try
-            {
-                _ = ctxCargo.UpdateCargo(this).Result;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
-        public void DesativarCargo()
-        {
-            try
-            {
-                _ = ctxCargo.DeleteCargo(this.ID_CARGO).Result;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-        #endregion
+        
+        #endregion      
     }
 }
 // !_!

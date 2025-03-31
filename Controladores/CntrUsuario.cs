@@ -8,7 +8,8 @@ using System.Net.Mime;
 namespace RoofStockBackend.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Tags("Usuario")]
+    [Route("Usuario")]
     public class CntrUsuario : ControllerBase
     {
         #region Propriedades Privadas
@@ -77,7 +78,7 @@ namespace RoofStockBackend.Controllers
         {
             try
             {
-                var novoId = Utils.DBUtils.GerarNovoIdUsuario();
+                var novoId = 1;
                 novoUsuario.ID_USUARIO = novoId;
                 novoUsuario.DT_CRIACAO = DateTime.Now;
 

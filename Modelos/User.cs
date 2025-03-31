@@ -1,6 +1,4 @@
-﻿using RoofStockBackend.Contexts;
-
-namespace RoofStockBackend.Models
+﻿namespace RoofStockBackend.Models
 {
     public class Usuario
     {

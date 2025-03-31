@@ -14,6 +14,7 @@ namespace RoofStockBackend.Database.Dados.Objetos
         #endregion
 
         #region Propriedades
+        [Key]
         public long ID_FECHAMENTO
         {
             get

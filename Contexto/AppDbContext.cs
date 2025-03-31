@@ -9,7 +9,7 @@ namespace RoofStockBackend.Contextos
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
         public DbSet<FechamentoEstoque> FechamentoEstoques { get; set; }
-        public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<Usuario> Usuario { get; set; }
         public DbSet<Estoque> Estoques { get; set; }
         public DbSet<EstoqueProduto> EstoqueProdutos { get; set; }
         public DbSet<Marca> Marcas { get; set; }

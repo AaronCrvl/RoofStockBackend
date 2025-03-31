@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 namespace RoofStockBackend.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Tags("Marca")]
+    [Route("Marca")]
     public class CntrlMarca : ControllerBase
     {
         private readonly SrvcMarca _marcaService;

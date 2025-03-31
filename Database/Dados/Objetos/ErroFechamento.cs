@@ -13,6 +13,7 @@ namespace RoofStockBackend.Database.Dados.Objetos
         #endregion
 
         #region Propriedades
+        [Key]
         public long ID_ERRO
         {
             get
@@ -57,64 +58,6 @@ namespace RoofStockBackend.Database.Dados.Objetos
             this.ID_ERRO = -1;
             this.TX_ERRO = string.Empty;
             this.TX_DESCRICAO = string.Empty;
-        }
-
-        public ErroFechamento(long idErro)
-        {
-            this.CarregarErroFechamento(idErro);
-        }
-        #endregion
-
-        #region Métodos Públicos
-        public void CriarErroFechamento()
-        {
-            try
-            {
-                _ = ctxErroFechamento.CreateErroFechamento(this).Result;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
-        public void CarregarErroFechamento(long idErro)
-        {
-            try
-            {
-                var erroFechamento = ctxErroFechamento.GetErroFechamento(idErro).Result;
-                this.ID_ERRO = erroFechamento.ID_ERRO;
-                this.TX_ERRO = erroFechamento.TX_ERRO;
-                this.TX_DESCRICAO = erroFechamento.TX_DESCRICAO;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
-        public void AlterarErroFechamento()
-        {
-            try
-            {
-                _ = ctxErroFechamento.UpdateErroFechamento(this).Result;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
-        public void DesativarErroFechamento()
-        {
-            try
-            {
-                _ = ctxErroFechamento.DeleteErroFechamento(this.ID_ERRO).Result;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
         }
         #endregion
     }

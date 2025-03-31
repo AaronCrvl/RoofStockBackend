@@ -1,5 +1,6 @@
 ﻿using RoofStockBackend.Contextos;
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
 namespace RoofStockBackend.Database.Dados.Objetos
@@ -15,6 +16,7 @@ namespace RoofStockBackend.Database.Dados.Objetos
         #endregion
 
         #region Propriedades
+        [Key]
         public long ID_ESTOQUE
         {
             get
@@ -28,6 +30,7 @@ namespace RoofStockBackend.Database.Dados.Objetos
         }
 
         [Required]
+        [ForeignKey("Empresa")]
         public long ID_EMPRESA
         {
             get
@@ -41,6 +44,7 @@ namespace RoofStockBackend.Database.Dados.Objetos
         }
 
         [Required]
+        [ForeignKey("Usuario")]
         public long ID_RESPONSAVEL
         {
             get

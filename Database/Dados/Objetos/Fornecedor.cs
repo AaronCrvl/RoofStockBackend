@@ -13,6 +13,7 @@ namespace RoofStockBackend.Database.Dados.Objetos
         #endregion
 
         #region Propriedades
+        [Key]
         public long ID_FORNECEDOR
         {
             get
@@ -44,65 +45,8 @@ namespace RoofStockBackend.Database.Dados.Objetos
         {
             this.ID_FORNECEDOR = -1;
             this.TX_NOME = string.Empty;
-        }
-
-        public Fornecedor(long Id)
-        {
-            this.CarregarFornecedor(Id);
-        }
-        #endregion
-
-        #region Métodos Públicos
-        public void CriarFornecedor()
-        {
-            try
-            {
-                _ = ctxFornecedor.CreateFornecedor(this).Result;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
-        public void CarregarFornecedor(long Id)
-        {
-            try
-            {
-                var fornecedor = ctxFornecedor.GetFornecedor(Id).Result;
-                this.ID_FORNECEDOR = fornecedor.ID_FORNECEDOR;
-                this.TX_NOME = fornecedor.TX_NOME;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
-        public void AlterarFornecedor()
-        {
-            try
-            {
-                _ = ctxFornecedor.UpdateFornecedor(this).Result;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
-        public void DesativarFornecedor()
-        {
-            try
-            {
-                _ = ctxFornecedor.DeleteFornecedor(this.ID_FORNECEDOR).Result;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-        #endregion
+        }      
+        #endregion      
     }
 }
 // !_!
