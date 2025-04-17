@@ -1,6 +1,6 @@
 ﻿namespace RoofStockBackend.Models
 {
-    public class Usuario
+    public class UsuarioDto
     {
         public long Id { get; set; }
         public long IdFuncionario { get; set; }

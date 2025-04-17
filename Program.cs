@@ -1,6 +1,10 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using RoofStockBackend.Contextos;
 using RoofStockBackend.Services;
+using RoofStockBackend.Serviços;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +18,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddScoped<SrvcAutenticacao>();
 builder.Services.AddScoped<SrvcUsuario>();
 builder.Services.AddScoped<SrvcEstoque>();
 builder.Services.AddScoped<SrvcEstoqueProduto>();
@@ -21,6 +26,20 @@ builder.Services.AddScoped<SrvcMarca>();
 builder.Services.AddScoped<SrvcEmpresa>();
 builder.Services.AddScoped<SrvcFechamentoEstoque>();
 builder.Services.AddScoped<SrvcMovimentacaoEstoque>();
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
+{
+    opt.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        //ValidateIssuerSigningKey = true,
+        //ValidIssuer = "yourdomain.com",
+        //ValidAudience = "yourdomain.com",
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("your_super_secret_keyyour_super_secret_keyyour_super_secret_key"))
+    };
+});
 
 var app = builder.Build();
 

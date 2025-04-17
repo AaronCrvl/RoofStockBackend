@@ -91,3 +91,4 @@ C:\Users\aaron\source\repos\RoofStockBackend\obj\Debug\net8.0\refint\RoofStockBa
 C:\Users\aaron\source\repos\RoofStockBackend\obj\Debug\net8.0\RoofStockBackend.pdb
 C:\Users\aaron\source\repos\RoofStockBackend\obj\Debug\net8.0\RoofStockBackend.genruntimeconfig.cache
 C:\Users\aaron\source\repos\RoofStockBackend\obj\Debug\net8.0\ref\RoofStockBackend.dll
+C:\Users\aaron\source\repos\RoofStockBackend\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
