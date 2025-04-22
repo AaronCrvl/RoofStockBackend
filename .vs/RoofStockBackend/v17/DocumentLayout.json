@@ -3,100 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|c:\\users\\aaron\\source\\repos\\roofstockbackend\\roofstockbackend.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
-      "RelativeMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|solutionrelative:roofstockbackend.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|c:\\users\\aaron\\source\\repos\\roofstockbackend\\servi\u00E7os\\srvcusuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|solutionrelative:servi\u00E7os\\srvcusuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|c:\\users\\aaron\\source\\repos\\roofstockbackend\\contexto\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|solutionrelative:contexto\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|c:\\users\\aaron\\source\\repos\\roofstockbackend\\repositorios\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|solutionrelative:repositorios\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|c:\\users\\aaron\\source\\repos\\roofstockbackend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|c:\\users\\aaron\\source\\repos\\roofstockbackend\\database\\dados\\objetos\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|solutionrelative:database\\dados\\objetos\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|c:\\users\\aaron\\source\\repos\\roofstockbackend\\database\\dados\\objetos\\produto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|solutionrelative:database\\dados\\objetos\\produto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|c:\\users\\aaron\\source\\repos\\roofstockbackend\\database\\dados\\objetos\\movimentacaoestoque.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|solutionrelative:database\\dados\\objetos\\movimentacaoestoque.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|c:\\users\\aaron\\source\\repos\\roofstockbackend\\database\\dados\\objetos\\marca.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|solutionrelative:database\\dados\\objetos\\marca.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|c:\\users\\aaron\\source\\repos\\roofstockbackend\\database\\dados\\objetos\\itemmovimentacaoestoque.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|solutionrelative:database\\dados\\objetos\\itemmovimentacaoestoque.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|c:\\users\\aaron\\source\\repos\\roofstockbackend\\database\\dados\\objetos\\itemfechamentoestoque.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|solutionrelative:database\\dados\\objetos\\itemfechamentoestoque.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|c:\\users\\aaron\\source\\repos\\roofstockbackend\\database\\dados\\objetos\\funcionario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|solutionrelative:database\\dados\\objetos\\funcionario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|c:\\users\\aaron\\source\\repos\\roofstockbackend\\database\\dados\\objetos\\fornecedor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|solutionrelative:database\\dados\\objetos\\fornecedor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|c:\\users\\aaron\\source\\repos\\roofstockbackend\\database\\dados\\objetos\\fechamentoestoque.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|solutionrelative:database\\dados\\objetos\\fechamentoestoque.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|c:\\users\\aaron\\source\\repos\\roofstockbackend\\database\\dados\\objetos\\estoqueproduto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|solutionrelative:database\\dados\\objetos\\estoqueproduto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|c:\\users\\aaron\\source\\repos\\roofstockbackend\\database\\dados\\objetos\\estoque.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|solutionrelative:database\\dados\\objetos\\estoque.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|c:\\users\\aaron\\source\\repos\\roofstockbackend\\database\\dados\\objetos\\empresa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|solutionrelative:database\\dados\\objetos\\empresa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|c:\\users\\aaron\\source\\repos\\roofstockbackend\\controladores\\cntrestoque.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|solutionrelative:controladores\\cntrestoque.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|c:\\users\\aaron\\source\\repos\\roofstockbackend\\servi\u00E7os\\srvcestoque.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|solutionrelative:servi\u00E7os\\srvcestoque.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|c:\\users\\aaron\\source\\repos\\roofstockbackend\\controladores\\cnrtfechamentoestoque.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|solutionrelative:controladores\\cnrtfechamentoestoque.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|c:\\users\\aaron\\source\\repos\\roofstockbackend\\database\\dados\\objetos\\estoque.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|solutionrelative:database\\dados\\objetos\\estoque.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|c:\\users\\aaron\\source\\repos\\roofstockbackend\\controladores\\cnrtmovimentacaoestoque.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|solutionrelative:controladores\\cnrtmovimentacaoestoque.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|c:\\users\\aaron\\source\\repos\\roofstockbackend\\servi\u00E7os\\srvcusuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|solutionrelative:servi\u00E7os\\srvcusuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|c:\\users\\aaron\\source\\repos\\roofstockbackend\\controladores\\cntrestoqueproduto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|solutionrelative:controladores\\cntrestoqueproduto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|c:\\users\\aaron\\source\\repos\\roofstockbackend\\controladores\\cntrmarca.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|solutionrelative:controladores\\cntrmarca.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|c:\\users\\aaron\\source\\repos\\roofstockbackend\\controladores\\cntrempresa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|solutionrelative:controladores\\cntrempresa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|c:\\users\\aaron\\source\\repos\\roofstockbackend\\controladores\\cntrestoque.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|solutionrelative:controladores\\cntrestoque.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|c:\\users\\aaron\\source\\repos\\roofstockbackend\\repositorios\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|solutionrelative:repositorios\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -105,298 +29,77 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 1586,
-          "SelectedChildIndex": 0,
+          "DockedWidth": 1629,
+          "SelectedChildIndex": 2,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "RoofStockBackend",
-              "DocumentMoniker": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\RoofStockBackend.csproj",
-              "RelativeDocumentMoniker": "RoofStockBackend.csproj",
-              "ToolTip": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\RoofStockBackend.csproj",
-              "RelativeToolTip": "RoofStockBackend.csproj",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-03-31T18:32:16.23Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "AppDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Contexto\\AppDbContext.cs",
-              "RelativeDocumentMoniker": "Contexto\\AppDbContext.cs",
-              "ToolTip": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Contexto\\AppDbContext.cs",
-              "RelativeToolTip": "Contexto\\AppDbContext.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAlAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-31T18:16:44.612Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "SrvcUsuario.cs",
-              "DocumentMoniker": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Servi\u00E7os\\SrvcUsuario.cs",
-              "RelativeDocumentMoniker": "Servi\u00E7os\\SrvcUsuario.cs",
-              "ToolTip": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Servi\u00E7os\\SrvcUsuario.cs",
-              "RelativeToolTip": "Servi\u00E7os\\SrvcUsuario.cs",
-              "ViewState": "AQIAADIAAAAAAAAAAAAIwDoAAAANAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-31T18:06:06.656Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Repository.cs",
-              "DocumentMoniker": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Repositorios\\Repository.cs",
-              "RelativeDocumentMoniker": "Repositorios\\Repository.cs",
-              "ToolTip": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Repositorios\\Repository.cs",
-              "RelativeToolTip": "Repositorios\\Repository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB4AAAANAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-31T18:04:56.554Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-31T17:59:43.416Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Marca.cs",
-              "DocumentMoniker": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Database\\Dados\\Objetos\\Marca.cs",
-              "RelativeDocumentMoniker": "Database\\Dados\\Objetos\\Marca.cs",
-              "ToolTip": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Database\\Dados\\Objetos\\Marca.cs",
-              "RelativeToolTip": "Database\\Dados\\Objetos\\Marca.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAANAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-31T17:55:47.292Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "ItemMovimentacaoEstoque.cs",
-              "DocumentMoniker": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Database\\Dados\\Objetos\\ItemMovimentacaoEstoque.cs",
-              "RelativeDocumentMoniker": "Database\\Dados\\Objetos\\ItemMovimentacaoEstoque.cs",
-              "ToolTip": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Database\\Dados\\Objetos\\ItemMovimentacaoEstoque.cs",
-              "RelativeToolTip": "Database\\Dados\\Objetos\\ItemMovimentacaoEstoque.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAsAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-31T17:55:22.86Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "ItemFechamentoEstoque.cs",
-              "DocumentMoniker": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Database\\Dados\\Objetos\\ItemFechamentoEstoque.cs",
-              "RelativeDocumentMoniker": "Database\\Dados\\Objetos\\ItemFechamentoEstoque.cs",
-              "ToolTip": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Database\\Dados\\Objetos\\ItemFechamentoEstoque.cs",
-              "RelativeToolTip": "Database\\Dados\\Objetos\\ItemFechamentoEstoque.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAANAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-31T17:55:16.124Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Funcionario.cs",
-              "DocumentMoniker": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Database\\Dados\\Objetos\\Funcionario.cs",
-              "RelativeDocumentMoniker": "Database\\Dados\\Objetos\\Funcionario.cs",
-              "ToolTip": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Database\\Dados\\Objetos\\Funcionario.cs",
-              "RelativeToolTip": "Database\\Dados\\Objetos\\Funcionario.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB8AAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-31T17:55:04.364Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Fornecedor.cs",
-              "DocumentMoniker": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Database\\Dados\\Objetos\\Fornecedor.cs",
-              "RelativeDocumentMoniker": "Database\\Dados\\Objetos\\Fornecedor.cs",
-              "ToolTip": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Database\\Dados\\Objetos\\Fornecedor.cs",
-              "RelativeToolTip": "Database\\Dados\\Objetos\\Fornecedor.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAMAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-31T17:53:41.841Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "FechamentoEstoque.cs",
-              "DocumentMoniker": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Database\\Dados\\Objetos\\FechamentoEstoque.cs",
-              "RelativeDocumentMoniker": "Database\\Dados\\Objetos\\FechamentoEstoque.cs",
-              "ToolTip": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Database\\Dados\\Objetos\\FechamentoEstoque.cs",
-              "RelativeToolTip": "Database\\Dados\\Objetos\\FechamentoEstoque.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAANAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-31T17:53:34.273Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "MovimentacaoEstoque.cs",
-              "DocumentMoniker": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Database\\Dados\\Objetos\\MovimentacaoEstoque.cs",
-              "RelativeDocumentMoniker": "Database\\Dados\\Objetos\\MovimentacaoEstoque.cs",
-              "ToolTip": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Database\\Dados\\Objetos\\MovimentacaoEstoque.cs",
-              "RelativeToolTip": "Database\\Dados\\Objetos\\MovimentacaoEstoque.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAsAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-31T17:55:53.796Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Produto.cs",
-              "DocumentMoniker": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Database\\Dados\\Objetos\\Produto.cs",
-              "RelativeDocumentMoniker": "Database\\Dados\\Objetos\\Produto.cs",
-              "ToolTip": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Database\\Dados\\Objetos\\Produto.cs",
-              "RelativeToolTip": "Database\\Dados\\Objetos\\Produto.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAsAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-31T17:56:21.142Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Usuario.cs",
-              "DocumentMoniker": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Database\\Dados\\Objetos\\Usuario.cs",
-              "RelativeDocumentMoniker": "Database\\Dados\\Objetos\\Usuario.cs",
-              "ToolTip": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Database\\Dados\\Objetos\\Usuario.cs",
-              "RelativeToolTip": "Database\\Dados\\Objetos\\Usuario.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAANAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-31T17:56:47.902Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "Empresa.cs",
-              "DocumentMoniker": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Database\\Dados\\Objetos\\Empresa.cs",
-              "RelativeDocumentMoniker": "Database\\Dados\\Objetos\\Empresa.cs",
-              "ToolTip": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Database\\Dados\\Objetos\\Empresa.cs",
-              "RelativeToolTip": "Database\\Dados\\Objetos\\Empresa.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAABQAAAAMAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-31T17:53:11.52Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "EstoqueProduto.cs",
-              "DocumentMoniker": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Database\\Dados\\Objetos\\EstoqueProduto.cs",
-              "RelativeDocumentMoniker": "Database\\Dados\\Objetos\\EstoqueProduto.cs",
-              "ToolTip": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Database\\Dados\\Objetos\\EstoqueProduto.cs",
-              "RelativeToolTip": "Database\\Dados\\Objetos\\EstoqueProduto.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAfAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-31T17:53:00.024Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
               "Title": "Estoque.cs",
               "DocumentMoniker": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Database\\Dados\\Objetos\\Estoque.cs",
               "RelativeDocumentMoniker": "Database\\Dados\\Objetos\\Estoque.cs",
               "ToolTip": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Database\\Dados\\Objetos\\Estoque.cs",
               "RelativeToolTip": "Database\\Dados\\Objetos\\Estoque.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAcAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAADwAAAAYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-31T17:52:31.64Z"
+              "WhenOpened": "2025-04-22T18:51:59.634Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "SrvcEstoque.cs",
-              "DocumentMoniker": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Servi\u00E7os\\SrvcEstoque.cs",
-              "RelativeDocumentMoniker": "Servi\u00E7os\\SrvcEstoque.cs",
-              "ToolTip": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Servi\u00E7os\\SrvcEstoque.cs",
-              "RelativeToolTip": "Servi\u00E7os\\SrvcEstoque.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-31T17:51:52.136Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "CnrtFechamentoEstoque.cs",
-              "DocumentMoniker": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Controladores\\CnrtFechamentoEstoque.cs",
-              "RelativeDocumentMoniker": "Controladores\\CnrtFechamentoEstoque.cs",
-              "ToolTip": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Controladores\\CnrtFechamentoEstoque.cs",
-              "RelativeToolTip": "Controladores\\CnrtFechamentoEstoque.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAdAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-31T17:39:16.66Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "CnrtMovimentacaoEstoque.cs",
-              "DocumentMoniker": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Controladores\\CnrtMovimentacaoEstoque.cs",
-              "RelativeDocumentMoniker": "Controladores\\CnrtMovimentacaoEstoque.cs",
-              "ToolTip": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Controladores\\CnrtMovimentacaoEstoque.cs",
-              "RelativeToolTip": "Controladores\\CnrtMovimentacaoEstoque.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAfAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-31T17:39:04.244Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "CntrEmpresa.cs",
-              "DocumentMoniker": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Controladores\\CntrEmpresa.cs",
-              "RelativeDocumentMoniker": "Controladores\\CntrEmpresa.cs",
-              "ToolTip": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Controladores\\CntrEmpresa.cs",
-              "RelativeToolTip": "Controladores\\CntrEmpresa.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAASAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-31T17:38:58.931Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 0,
               "Title": "CntrEstoque.cs",
               "DocumentMoniker": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Controladores\\CntrEstoque.cs",
               "RelativeDocumentMoniker": "Controladores\\CntrEstoque.cs",
               "ToolTip": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Controladores\\CntrEstoque.cs",
               "RelativeToolTip": "Controladores\\CntrEstoque.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAATAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAADAAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-31T17:38:52.796Z"
+              "WhenOpened": "2025-04-22T18:47:21.864Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "CntrEstoqueProduto.cs",
-              "DocumentMoniker": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Controladores\\CntrEstoqueProduto.cs",
-              "RelativeDocumentMoniker": "Controladores\\CntrEstoqueProduto.cs",
-              "ToolTip": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Controladores\\CntrEstoqueProduto.cs",
-              "RelativeToolTip": "Controladores\\CntrEstoqueProduto.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAATAAAA",
+              "DocumentIndex": 4,
+              "Title": "Repository.cs",
+              "DocumentMoniker": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Repositorios\\Repository.cs",
+              "RelativeDocumentMoniker": "Repositorios\\Repository.cs",
+              "ToolTip": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Repositorios\\Repository.cs",
+              "RelativeToolTip": "Repositorios\\Repository.cs",
+              "ViewState": "AQIAAB8AAAAAAAAAAAAgwC8AAAAxAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-31T17:38:44.212Z"
+              "WhenOpened": "2025-04-22T18:43:42.845Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "CntrMarca.cs",
-              "DocumentMoniker": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Controladores\\CntrMarca.cs",
-              "RelativeDocumentMoniker": "Controladores\\CntrMarca.cs",
-              "ToolTip": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Controladores\\CntrMarca.cs",
-              "RelativeToolTip": "Controladores\\CntrMarca.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAQAAAA",
+              "DocumentIndex": 3,
+              "Title": "SrvcUsuario.cs",
+              "DocumentMoniker": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Servi\u00E7os\\SrvcUsuario.cs",
+              "RelativeDocumentMoniker": "Servi\u00E7os\\SrvcUsuario.cs",
+              "ToolTip": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Servi\u00E7os\\SrvcUsuario.cs",
+              "RelativeToolTip": "Servi\u00E7os\\SrvcUsuario.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABYAAAA7AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-31T17:38:38.427Z"
+              "WhenOpened": "2025-04-22T18:41:28.882Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SrvcEstoque.cs",
+              "DocumentMoniker": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Servi\u00E7os\\SrvcEstoque.cs",
+              "RelativeDocumentMoniker": "Servi\u00E7os\\SrvcEstoque.cs",
+              "ToolTip": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Servi\u00E7os\\SrvcEstoque.cs",
+              "RelativeToolTip": "Servi\u00E7os\\SrvcEstoque.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwA0AAAAbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-22T18:38:25.544Z",
+              "EditorCaption": ""
             }
           ]
         }
