@@ -31,7 +31,7 @@ namespace RoofStockBackend.Services
             }
         }
 
-        public async Task<Empresa> CarregarEmpresaPorIdAsync(long id)
+        public async Task<Empresa> CarregarEmpresaPorIdAsync(int id)
         {
             try
             {
@@ -75,7 +75,7 @@ namespace RoofStockBackend.Services
             }
         }
 
-        public async Task<bool> ExcluirEmpresaAsync(long id)
+        public async Task<bool> ExcluirEmpresaAsync(int id)
         {
             try
             {
@@ -90,7 +90,7 @@ namespace RoofStockBackend.Services
             }
         }
 
-        public async Task<bool> DesativarEmpresaAsync(long id)
+        public async Task<bool> DesativarEmpresaAsync(int id)
         {
             try
             {
@@ -109,7 +109,7 @@ namespace RoofStockBackend.Services
             }
         }
 
-        public async Task<bool> AtivarEmpresaAsync(long id)
+        public async Task<bool> AtivarEmpresaAsync(int id)
         {
             try
             {

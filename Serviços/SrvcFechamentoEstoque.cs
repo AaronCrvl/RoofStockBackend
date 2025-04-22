@@ -31,7 +31,7 @@ namespace RoofStockBackend.Services
             }
         }
 
-        public async Task<FechamentoEstoque> CarregarFechamentoEstoquePorIdAsync(long id)
+        public async Task<FechamentoEstoque> CarregarFechamentoEstoquePorIdAsync(int id)
         {
             try
             {
@@ -45,7 +45,7 @@ namespace RoofStockBackend.Services
             }
         }
 
-        public async Task<FechamentoEstoque> CarregarFechamentoPorEstoqueAsync(long idEstoque)
+        public async Task<FechamentoEstoque> CarregarFechamentoPorEstoqueAsync(int idEstoque)
         {
             try
             {
@@ -75,7 +75,7 @@ namespace RoofStockBackend.Services
             }
         }
 
-        public async Task<bool> ExcluirFechamentoEstoqueAsync(long id)
+        public async Task<bool> ExcluirFechamentoEstoqueAsync(int id)
         {
             try
             {
@@ -90,7 +90,7 @@ namespace RoofStockBackend.Services
             }
         }
 
-        public async Task<bool> DesativarFechamentoEstoqueAsync(long id)
+        public async Task<bool> DesativarFechamentoEstoqueAsync(int id)
         {
             try
             {

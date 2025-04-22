@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RoofStockBackend.Contextos;
+using RoofStockBackend.Database.Dados.Objetos;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,6 +16,18 @@ namespace RoofStockBackend.Repositorios
         {
             _context = context;
             _dbSet = context.Set<T>();
+
+            // DEBUG
+            //Console.WriteLine($"Registros encontrados.");
+
+            //foreach (Usuario usuario in _context.Usuario.AsEnumerable())            
+            //    Console.WriteLine($"Usuario {usuario.TX_LOGIN} encontrado");
+
+            //foreach (Estoque estoque in _context.Estoque.AsEnumerable())
+            //    Console.WriteLine($"Estoque {estoque.NM_ESTOQUE} encontrado");
+
+            //foreach (Empresa empresa in _context.Empresa.AsEnumerable())
+            //    Console.WriteLine($"Empresa {empresa.TX_RAZAO_SOCIAL} encontrada");
         }
 
         // Criação
@@ -32,7 +45,7 @@ namespace RoofStockBackend.Repositorios
         }
 
         // Leitura
-        public async Task<T> GetByIdAsync(long id)
+        public async Task<T> GetByIdAsync(int id)
         {
             return await _dbSet.FindAsync(id);
         }

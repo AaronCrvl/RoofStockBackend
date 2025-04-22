@@ -30,7 +30,7 @@ namespace RoofStockBackend.Controllers
         }
 
         [HttpGet("Obter/{estoqueId}/{produtoId}")]
-        public async Task<IActionResult> ObterEstoqueProduto(long estoqueId, long produtoId)
+        public async Task<IActionResult> ObterEstoqueProduto(int estoqueId, int produtoId)
         {
             var estoqueProduto = await _estoqueProdutoService.CarregarEstoqueProdutoPorIdAsync(estoqueId, produtoId);
             if (estoqueProduto != null)
@@ -39,7 +39,7 @@ namespace RoofStockBackend.Controllers
         }
 
         [HttpGet("Listar/{estoqueId}")]
-        public async Task<IActionResult> ListarEstoqueProdutos(long estoqueId)
+        public async Task<IActionResult> ListarEstoqueProdutos(int estoqueId)
         {
             var produtos = await _estoqueProdutoService.ListarEstoqueProdutosPorEstoqueAsync(estoqueId);
             if (produtos.Any())
@@ -57,7 +57,7 @@ namespace RoofStockBackend.Controllers
         }
 
         [HttpDelete("Excluir/{estoqueId}/{produtoId}")]
-        public async Task<IActionResult> ExcluirEstoqueProduto(long estoqueId, long produtoId)
+        public async Task<IActionResult> ExcluirEstoqueProduto(int estoqueId, int produtoId)
         {
             var resultado = await _estoqueProdutoService.ExcluirEstoqueProdutoAsync(estoqueId, produtoId);
             if (resultado)
@@ -66,7 +66,7 @@ namespace RoofStockBackend.Controllers
         }
 
         [HttpPut("Desativar/{estoqueId}/{produtoId}")]
-        public async Task<IActionResult> DesativarEstoqueProduto(long estoqueId, long produtoId)
+        public async Task<IActionResult> DesativarEstoqueProduto(int estoqueId, int produtoId)
         {
             var resultado = await _estoqueProdutoService.DesativarEstoqueProdutoAsync(estoqueId, produtoId);
             if (resultado)

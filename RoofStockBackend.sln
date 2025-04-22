@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoofStockBackend", "RoofStockBackend.csproj", "{B4915900-7946-4E65-A7E2-B34336439BB4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoofStockBackend", "RoofStockBackend.csproj", "{B4915900-7946-4E65-A7E2-B34336439BB4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoofTests", "..\RoofTests\RoofTests.csproj", "{700C6BB1-BB01-4541-A03B-8DC9B6AAAFFD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{B4915900-7946-4E65-A7E2-B34336439BB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B4915900-7946-4E65-A7E2-B34336439BB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B4915900-7946-4E65-A7E2-B34336439BB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{700C6BB1-BB01-4541-A03B-8DC9B6AAAFFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{700C6BB1-BB01-4541-A03B-8DC9B6AAAFFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{700C6BB1-BB01-4541-A03B-8DC9B6AAAFFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{700C6BB1-BB01-4541-A03B-8DC9B6AAAFFD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

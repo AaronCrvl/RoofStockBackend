@@ -11,11 +11,29 @@ namespace RoofStockBackend.Services
     {
         private readonly Repository<Estoque> _estoqueRepository;
 
+        #region Constructor
         public SrvcEstoque(AppDbContext context)
         {
             _estoqueRepository = new Repository<Estoque>(context);
         }
+        #endregion
 
+        #region Métodos Públicos
+        public async Task<IEnumerable<Estoque>> CarregarEstoquePorUsuario(int id)
+        {
+            try
+            {
+                if (id <= 0)
+                    return new List<Estoque> { };
+
+                var estoques = await _estoqueRepository.GetAllAsync();
+                return estoques.Where(x => x.ID_RESPONSAVEL == id);                
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
         public async Task<bool> CriarEstoqueAsync(Estoque estoque)
         {
             try
@@ -31,7 +49,7 @@ namespace RoofStockBackend.Services
             }
         }
 
-        public async Task<Estoque> CarregarEstoquePorIdAsync(long id)
+        public async Task<Estoque> CarregarEstoquePorIdAsync(int id)
         {
             try
             {
@@ -51,7 +69,7 @@ namespace RoofStockBackend.Services
             {
                 if (string.IsNullOrWhiteSpace(nomeEstoque)) throw new ArgumentException("Nome do estoque inválido.");
                 var estoques = await _estoqueRepository.GetAllAsync();
-                return estoques.FirstOrDefault(e => e.NM_ESTOQUE.Equals(nomeEstoque, StringComparison.OrdinalIgnoreCase));
+                return estoques.FirstOrDefault(e => e.TX_NOME.Equals(nomeEstoque, StringComparison.OrdinalIgnoreCase));
             }
             catch (Exception ex)
             {
@@ -75,7 +93,7 @@ namespace RoofStockBackend.Services
             }
         }
 
-        public async Task<bool> ExcluirEstoqueAsync(long id)
+        public async Task<bool> ExcluirEstoqueAsync(int id)
         {
             try
             {
@@ -90,7 +108,7 @@ namespace RoofStockBackend.Services
             }
         }
 
-        public async Task<bool> AtivarEstoqueAsync(long id)
+        public async Task<bool> AtivarEstoqueAsync(int id)
         {
             try
             {
@@ -109,7 +127,7 @@ namespace RoofStockBackend.Services
             }
         }
 
-        public async Task<bool> DesativarEstoqueAsync(long id)
+        public async Task<bool> DesativarEstoqueAsync(int id)
         {
             try
             {
@@ -127,5 +145,6 @@ namespace RoofStockBackend.Services
                 return false;
             }
         }
+        #endregion        
     }
 }

@@ -25,7 +25,7 @@ namespace RoofStockBackend.Controllers
         [Consumes(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> ObterEmpresaPorId(long id)
+        public async Task<IActionResult> ObterEmpresaPorId(int id)
         {
             try
             {
@@ -100,7 +100,7 @@ namespace RoofStockBackend.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> AlterarEmpresa(long id, [FromBody] Empresa empresaAlterada)
+        public async Task<IActionResult> AlterarEmpresa(int id, [FromBody] Empresa empresaAlterada)
         {
             try
             {
@@ -128,7 +128,7 @@ namespace RoofStockBackend.Controllers
         [Consumes(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> ExcluirEmpresa(long id)
+        public async Task<IActionResult> ExcluirEmpresa(int id)
         {
             try
             {
@@ -151,7 +151,7 @@ namespace RoofStockBackend.Controllers
         [Consumes(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> DesativarEmpresa(long id)
+        public async Task<IActionResult> DesativarEmpresa(int id)
         {
             try
             {
@@ -174,7 +174,7 @@ namespace RoofStockBackend.Controllers
         [Consumes(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> AtivarEmpresa(long id)
+        public async Task<IActionResult> AtivarEmpresa(int id)
         {
             try
             {

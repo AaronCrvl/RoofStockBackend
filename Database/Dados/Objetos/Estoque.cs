@@ -8,16 +8,16 @@ namespace RoofStockBackend.Database.Dados.Objetos
     public class Estoque
     {
         #region Propriedades Privadas
-        long pID_ESTOQUE { get; set; }
-        long pID_EMPRESA { get; set; }
-        long pID_RESPONSAVEL { get; set; }
-        string pNM_ESTOQUE { get; set; }
+        int pID_ESTOQUE { get; set; }
+        int pID_EMPRESA { get; set; }
+        int pID_RESPONSAVEL { get; set; }
+        string pTX_NOME { get; set; }
         bool pIN_ATIVO { get; set; }
         #endregion
 
         #region Propriedades
         [Key]
-        public long ID_ESTOQUE
+        public int ID_ESTOQUE
         {
             get
             {
@@ -31,7 +31,7 @@ namespace RoofStockBackend.Database.Dados.Objetos
 
         [Required]
         [ForeignKey("Empresa")]
-        public long ID_EMPRESA
+        public int ID_EMPRESA
         {
             get
             {
@@ -45,7 +45,7 @@ namespace RoofStockBackend.Database.Dados.Objetos
 
         [Required]
         [ForeignKey("Usuario")]
-        public long ID_RESPONSAVEL
+        public int ID_RESPONSAVEL
         {
             get
             {
@@ -58,15 +58,15 @@ namespace RoofStockBackend.Database.Dados.Objetos
         }
 
         [Required]
-        public string NM_ESTOQUE
+        public string TX_NOME
         {
             get
             {
-                return this.pNM_ESTOQUE;
+                return this.pTX_NOME;
             }
             set
             {
-                this.pNM_ESTOQUE = value;
+                this.pTX_NOME = value;
             }
         }
 

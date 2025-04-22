@@ -29,8 +29,9 @@ namespace RoofStockBackend.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [Authorize]
-        public async Task<IActionResult> ObterUsuario(long id)
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        public async Task<IActionResult> ObterUsuario(int id)
         {
             try
             {
@@ -46,12 +47,13 @@ namespace RoofStockBackend.Controllers
             }
         }
 
-        [HttpGet("ObterUsuario/{username}")]
+        [HttpGet("ObterUsuarioPorUsername/{username}")]
         [Consumes(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [Authorize]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [Authorize(AuthenticationSchemes = "Bearer")]
         public async Task<IActionResult> ObterUsuario(string username)
         {
             try
@@ -73,7 +75,8 @@ namespace RoofStockBackend.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [Authorize]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [Authorize(AuthenticationSchemes = "Bearer")]
         public async Task<IActionResult> CriarUsuario([FromBody] Usuario novoUsuario)
         {
             try
@@ -99,8 +102,9 @@ namespace RoofStockBackend.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [Authorize]
-        public async Task<IActionResult> EditarUsuario(long id, [FromBody] Usuario usuarioAtualizado)
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        public async Task<IActionResult> EditarUsuario(int id, [FromBody] Usuario usuarioAtualizado)
         {
             try
             {

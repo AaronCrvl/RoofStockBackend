@@ -1,10 +1,12 @@
+-- Esquema Inicial -------------------------------
+--------------------------------------------------
 CREATE TABLE Cargo (
-    ID_CARGO INT PRIMARY KEY,
+    ID_CARGO INT PRIMARY KEY IDENTITY,
     TX_NOME VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE Empresa (
-    ID_EMPRESA INT PRIMARY KEY,
+    ID_EMPRESA INT PRIMARY KEY IDENTITY,
     TX_RAZAO_SOCIAL VARCHAR(255) NOT NULL,
     TX_CNPJ VARCHAR(18) NOT NULL,
     TX_TOKEN VARCHAR(255),
@@ -14,7 +16,7 @@ CREATE TABLE Empresa (
 );
 
 CREATE TABLE Funcionario (
-    ID_FUNCIONARIO INT PRIMARY KEY,
+    ID_FUNCIONARIO INT PRIMARY KEY IDENTITY,
     ID_EMPRESA INT NOT NULL,
     ID_CARGO INT NOT NULL,
     TX_NOME VARCHAR(255) NOT NULL,
@@ -27,28 +29,27 @@ CREATE TABLE Funcionario (
 );
 
 CREATE TABLE Fornecedor (
-    ID_FORNECEDOR INT PRIMARY KEY,
+    ID_FORNECEDOR INT PRIMARY KEY IDENTITY,
     TX_NOME VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE Marca (
-    ID_MARCA INT PRIMARY KEY,
+    ID_MARCA INT PRIMARY KEY IDENTITY,
     TX_NOME VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE Usuario (
-    ID_USUARIO INT PRIMARY KEY,
+    ID_USUARIO INT PRIMARY KEY IDENTITY,
     ID_FUNCIONARIO INT NOT NULL,
     TX_LOGIN VARCHAR(255) NOT NULL,
     TX_SENHA VARCHAR(255) NOT NULL,
-    IN_ATIVO BIT NOT NULL DEFAULT (0),
-    TX_EMAIL VARCHAR(255),
+    IN_ATIVO BIT NOT NULL DEFAULT (0),    
     DT_CRIACAO DATETIME NOT NULL,
     FOREIGN KEY (ID_FUNCIONARIO) REFERENCES Funcionario(ID_FUNCIONARIO)
 );
 
 CREATE TABLE Estoque (
-    ID_ESTOQUE INT PRIMARY KEY,
+    ID_ESTOQUE INT PRIMARY KEY IDENTITY,
     ID_EMPRESA INT NOT NULL,
     ID_RESPONSAVEL INT NOT NULL,
     TX_NOME VARCHAR(255) NOT NULL,
@@ -58,7 +59,7 @@ CREATE TABLE Estoque (
 );
 
 CREATE TABLE Produto (
-    ID_PRODUTO INT PRIMARY KEY,
+    ID_PRODUTO INT PRIMARY KEY IDENTITY,
     ID_MARCA INT NOT NULL,
     TX_NOME VARCHAR(255) NOT NULL,
     TX_DESCRICAO VARCHAR(255),
@@ -76,7 +77,7 @@ CREATE TABLE EstoqueProduto (
 );
 
 CREATE TABLE FechamentoEstoque (
-    ID_FECHAMENTO INT PRIMARY KEY,
+    ID_FECHAMENTO INT PRIMARY KEY IDENTITY,
     ID_ESTOQUE INT NOT NULL,
     DT_FECHAMENTO DATETIME NOT NULL,
     IN_ERRO BIT NOT NULL DEFAULT (0),
@@ -84,7 +85,7 @@ CREATE TABLE FechamentoEstoque (
 );
 
 CREATE TABLE ItemFechamentoEstoque (
-    ID_FECHAMENTO INT PRIMARY KEY,
+    ID_FECHAMENTO INT PRIMARY KEY IDENTITY,
     ID_ESTOQUE INT NOT NULL,
     DT_FECHAMENTO DATETIME NOT NULL,
     IN_ERRO BIT NOT NULL DEFAULT (0),
@@ -92,7 +93,7 @@ CREATE TABLE ItemFechamentoEstoque (
 );
 
 CREATE TABLE MovimentacaoEstoque (
-    ID_MOVIMENTACAO INT PRIMARY KEY,
+    ID_MOVIMENTACAO INT PRIMARY KEY IDENTITY,
     ID_ESTOQUE INT NOT NULL,
     ID_USUARIO INT NOT NULL,
     DT_MOVIMENTACAO DATETIME NOT NULL,
@@ -103,7 +104,7 @@ CREATE TABLE MovimentacaoEstoque (
 );
 
 CREATE TABLE ItemMovimentacaoEstoque (
-    ID_ITEM_MOVIMENTACAO INT PRIMARY KEY,
+    ID_ITEM_MOVIMENTACAO INT PRIMARY KEY IDENTITY,
     ID_MOVIMENTACAO INT NOT NULL,
     ID_PRODUTO INT NOT NULL,
     QN_MOVIMENTACAO INT NOT NULL,
@@ -111,3 +112,35 @@ CREATE TABLE ItemMovimentacaoEstoque (
     FOREIGN KEY (ID_MOVIMENTACAO) REFERENCES MovimentacaoEstoque(ID_MOVIMENTACAO),
     FOREIGN KEY (ID_PRODUTO) REFERENCES Produto(ID_PRODUTO)
 );
+
+
+-- Drop Geral ------------------------------------
+--------------------------------------------------
+
+drop table [dbo].[ItemMovimentacaoEstoque]
+drop table [dbo].[MovimentacaoEstoque]
+drop table [dbo].[ItemFechamentoEstoque]
+drop table [dbo].[FechamentoEstoque]
+drop table [dbo].[EstoqueProduto]
+drop table [dbo].[Produto]
+drop table [dbo].[Estoque]
+drop table [dbo].[Usuario]
+drop table [dbo].[Marca]
+drop table [dbo].[Fornecedor]
+drop table [dbo].[Funcionario]
+drop table [dbo].[Empresa]
+drop table [dbo].[Cargo]
+
+-- Inserção Inicial -----------------------------
+-------------------------------------------------
+insert into [dbo].[Empresa] (TX_RAZAO_SOCIAL, TX_CNPJ, TX_TOKEN, IN_ATIVO, TX_EMAIL, DT_CRIACAO)
+values ('Empresa Teste Implantação', '97997410000190', '45ad5aaf1ede9e10fb64591db1e32fc5', 1, 'testeRoofStock@gmail.com', getdate())
+
+insert into [dbo].[Cargo] (TX_NOME)
+values ('Gerente Bar Cerveja')
+
+insert into [dbo].[Funcionario] (ID_EMPRESA, ID_CARGO, TX_NOME, TX_CPF, TX_EMAIL, TX_TELEFONE, DT_ENTRADA)
+values (1, 1, '01', '80166265055', '01NaCasaTeste@gmail.com', '3136352456', getdate())
+
+insert into [dbo].[Usuario] (ID_FUNCIONARIO, TX_LOGIN, TX_SENHA, IN_ATIVO, DT_CRIACAO)
+values (1, '01Teste', 'teste@123', 1, getdate())

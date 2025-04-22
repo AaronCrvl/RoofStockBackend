@@ -32,7 +32,7 @@ namespace RoofStockBackend.Services
             }
         }
 
-        public async Task<EstoqueProduto> CarregarEstoqueProdutoPorIdAsync(long estoqueId, long produtoId)
+        public async Task<EstoqueProduto> CarregarEstoqueProdutoPorIdAsync(int estoqueId, int produtoId)
         {
             try
             {
@@ -49,7 +49,7 @@ namespace RoofStockBackend.Services
             }
         }
 
-        public async Task<IEnumerable<EstoqueProduto>> ListarEstoqueProdutosPorEstoqueAsync(long estoqueId)
+        public async Task<IEnumerable<EstoqueProduto>> ListarEstoqueProdutosPorEstoqueAsync(int estoqueId)
         {
             try
             {
@@ -80,7 +80,7 @@ namespace RoofStockBackend.Services
             }
         }
 
-        public async Task<bool> ExcluirEstoqueProdutoAsync(long estoqueId, long produtoId)
+        public async Task<bool> ExcluirEstoqueProdutoAsync(int estoqueId, int produtoId)
         {
             try
             {
@@ -95,7 +95,7 @@ namespace RoofStockBackend.Services
             }
         }
 
-        public async Task<bool> DesativarEstoqueProdutoAsync(long estoqueId, long produtoId)
+        public async Task<bool> DesativarEstoqueProdutoAsync(int estoqueId, int produtoId)
         {
             try
             {

@@ -30,7 +30,7 @@ namespace RoofStockBackend.Services
             }
         }
 
-        public async Task<Usuario> CarregarUsuarioPorIdAsync(long id)
+        public async Task<Usuario> CarregarUsuarioPorIdAsync(int id)
         {
             try
             {
@@ -74,7 +74,7 @@ namespace RoofStockBackend.Services
             }
         }
 
-        public async Task<bool> DesativarUsuarioAsync(long id)
+        public async Task<bool> DesativarUsuarioAsync(int id)
         {
             try
             {
@@ -93,7 +93,7 @@ namespace RoofStockBackend.Services
             }
         }
 
-        public async Task<bool> ExcluirUsuarioAsync(long id)
+        public async Task<bool> ExcluirUsuarioAsync(int id)
         {
             try
             {

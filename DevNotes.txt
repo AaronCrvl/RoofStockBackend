@@ -1,2 +1,0 @@
-- Adjust Roof backend user controller
-- Adjust Roof language scripts

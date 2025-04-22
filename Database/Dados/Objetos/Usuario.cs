@@ -7,8 +7,8 @@ namespace RoofStockBackend.Database.Dados.Objetos
     public class Usuario
     {
         #region Propriedades Privadas
-        long pID_USUARIO { get; set; }
-        long pID_FUNCIONARIO { get; set; }
+        int pID_USUARIO { get; set; }
+        int pID_FUNCIONARIO { get; set; }
         string pTX_LOGIN { get; set; }
         string pTX_SENHA { get; set; }
         bool pIN_ATIVO { get; set; }
@@ -18,7 +18,7 @@ namespace RoofStockBackend.Database.Dados.Objetos
 
         #region Propriedades
         [Key]
-        public long ID_USUARIO
+        public int ID_USUARIO
         {
             get
             {
@@ -32,7 +32,7 @@ namespace RoofStockBackend.Database.Dados.Objetos
 
         [Required]
         [ForeignKey("Funcionario")]
-        public long ID_FUNCIONARIO
+        public int ID_FUNCIONARIO
         {
             get
             {

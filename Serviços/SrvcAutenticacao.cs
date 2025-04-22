@@ -21,9 +21,9 @@ namespace RoofStockBackend.Serviços
 
         public async Task<string> AutenticarDadosToken(LoginUsuarioDto loginDto)
         {
-            var usuario = await _usuarioRepository.GetAllAsync();
-            usuario.FirstOrDefault(u => (u.TX_SENHA == loginDto.senha && u.TX_LOGIN == loginDto.login));
-            if (usuario == null)
+            var usuarios = await _usuarioRepository.GetAllAsync();
+            var usuarioBusca = usuarios.FirstOrDefault(u => (u.TX_SENHA == loginDto.senha && u.TX_LOGIN == loginDto.login));
+            if (usuarioBusca == null)
                 return string.Empty;
 
             return GerarTokenJWT(loginDto);
@@ -33,16 +33,15 @@ namespace RoofStockBackend.Serviços
         {
             var claims = new[]
                         {
-                new Claim(JwtRegisteredClaimNames.Sub, loginDto.login),
-                new Claim(JwtRegisteredClaimNames.Jti, loginDto.senha)
+                new Claim(JwtRegisteredClaimNames.Name, loginDto.login),
             };
 
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("your_super_secret_keyyour_super_secret_keyyour_super_secret_key"));
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("your_super_secret_keyyour_superyour_"));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
             var token = new JwtSecurityToken(
-                //issuer: "yourdomain.com",
-                //audience: "yourdomain.com",
+                //issuer: "localhost",
+                //audience: "audience1",
                 claims: claims,
                 expires: DateTime.Now.AddMinutes(30),
                 signingCredentials: creds);

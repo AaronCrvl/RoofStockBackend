@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RoofStockBackend.Database.Dados.Objetos;
 using RoofStockBackend.Services;
@@ -26,7 +27,9 @@ namespace RoofStockBackend.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> ObterEstoquePorId(long id)
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        public async Task<IActionResult> ObterEstoquePorId(int id)
         {
             try
             {
@@ -45,11 +48,36 @@ namespace RoofStockBackend.Controllers
             }
         }
 
+        [HttpGet("ObterEstoquePorUsuario")]
+        [Consumes(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        public async Task<IActionResult> ObterEstoquePorUsuario(int id)
+        {
+            try
+            {
+                var estoque = await _estoqueService.CarregarEstoquePorUsuario(id);
+                if (estoque == null)                
+                    return NotFound(new { Message = "Estoque não encontrado." });
+                
+                return Ok(estoque);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(new { Message = $"Erro: {e.Message}" });
+            }
+        }
+
         [HttpGet("ObterEstoquePorNome/{nomeEstoque}")]
         [Consumes(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [Authorize(AuthenticationSchemes = "Bearer")]
         public async Task<IActionResult> ObterEstoquePorNome(string nomeEstoque)
         {
             try
@@ -73,6 +101,8 @@ namespace RoofStockBackend.Controllers
         [Consumes(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [Authorize(AuthenticationSchemes = "Bearer")]
         public async Task<IActionResult> CriarEstoque([FromBody] Estoque novoEstoque)
         {
             try
@@ -102,7 +132,9 @@ namespace RoofStockBackend.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> AlterarEstoque(long id, [FromBody] Estoque estoqueAlterado)
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        public async Task<IActionResult> AlterarEstoque(int id, [FromBody] Estoque estoqueAlterado)
         {
             try
             {
@@ -130,7 +162,9 @@ namespace RoofStockBackend.Controllers
         [Consumes(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> ExcluirEstoque(long id)
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        public async Task<IActionResult> ExcluirEstoque(int id)
         {
             try
             {
@@ -153,7 +187,9 @@ namespace RoofStockBackend.Controllers
         [Consumes(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> DesativarEstoque(long id)
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        public async Task<IActionResult> DesativarEstoque(int id)
         {
             try
             {
@@ -176,7 +212,9 @@ namespace RoofStockBackend.Controllers
         [Consumes(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> AtivarEstoque(long id)
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        public async Task<IActionResult> AtivarEstoque(int id)
         {
             try
             {

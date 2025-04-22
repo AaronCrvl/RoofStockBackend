@@ -19,7 +19,8 @@ namespace RoofStockBackend.Controladores
 
         [HttpPost("Autenticar")]        
         [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status401Unauthorized)]        
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Autenticar([FromBody] LoginUsuarioDto loginDto)
         {
             try

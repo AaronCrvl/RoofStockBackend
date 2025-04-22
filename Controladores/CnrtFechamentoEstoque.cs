@@ -30,7 +30,7 @@ namespace RoofStockBackend.Controllers
         }
 
         [HttpGet("Obter/{id}")]
-        public async Task<IActionResult> ObterFechamentoEstoque(long id)
+        public async Task<IActionResult> ObterFechamentoEstoque(int id)
         {
             var fechamentoEstoque = await _fechamentoEstoqueService.CarregarFechamentoEstoquePorIdAsync(id);
             if (fechamentoEstoque != null)
@@ -39,7 +39,7 @@ namespace RoofStockBackend.Controllers
         }
 
         [HttpGet("ObterPorEstoque/{idEstoque}")]
-        public async Task<IActionResult> ObterFechamentoPorEstoque(long idEstoque)
+        public async Task<IActionResult> ObterFechamentoPorEstoque(int idEstoque)
         {
             var fechamentoEstoque = await _fechamentoEstoqueService.CarregarFechamentoPorEstoqueAsync(idEstoque);
             if (fechamentoEstoque != null)
@@ -57,7 +57,7 @@ namespace RoofStockBackend.Controllers
         }
 
         [HttpDelete("Excluir/{id}")]
-        public async Task<IActionResult> ExcluirFechamentoEstoque(long id)
+        public async Task<IActionResult> ExcluirFechamentoEstoque(int id)
         {
             var resultado = await _fechamentoEstoqueService.ExcluirFechamentoEstoqueAsync(id);
             if (resultado)
@@ -66,7 +66,7 @@ namespace RoofStockBackend.Controllers
         }
 
         [HttpPut("Desativar/{id}")]
-        public async Task<IActionResult> DesativarFechamentoEstoque(long id)
+        public async Task<IActionResult> DesativarFechamentoEstoque(int id)
         {
             var resultado = await _fechamentoEstoqueService.DesativarFechamentoEstoqueAsync(id);
             if (resultado)
