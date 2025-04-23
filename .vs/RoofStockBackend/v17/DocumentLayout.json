@@ -46,8 +46,7 @@
               "RelativeToolTip": "Database\\Dados\\Objetos\\Estoque.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAADwAAAAYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-22T18:51:59.634Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-22T18:51:59.634Z"
             },
             {
               "$type": "Document",
@@ -57,7 +56,7 @@
               "RelativeDocumentMoniker": "Controladores\\CntrEstoque.cs",
               "ToolTip": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Controladores\\CntrEstoque.cs",
               "RelativeToolTip": "Controladores\\CntrEstoque.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAADAAAAAJAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-22T18:47:21.864Z",
               "EditorCaption": ""
@@ -72,8 +71,7 @@
               "RelativeToolTip": "Repositorios\\Repository.cs",
               "ViewState": "AQIAAB8AAAAAAAAAAAAgwC8AAAAxAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-22T18:43:42.845Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-22T18:43:42.845Z"
             },
             {
               "$type": "Document",
@@ -85,8 +83,7 @@
               "RelativeToolTip": "Servi\u00E7os\\SrvcUsuario.cs",
               "ViewState": "AQIAAAYAAAAAAAAAAAAAABYAAAA7AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-22T18:41:28.882Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-22T18:41:28.882Z"
             },
             {
               "$type": "Document",
@@ -98,8 +95,7 @@
               "RelativeToolTip": "Servi\u00E7os\\SrvcEstoque.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAqwA0AAAAbAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-22T18:38:25.544Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-22T18:38:25.544Z"
             }
           ]
         }
