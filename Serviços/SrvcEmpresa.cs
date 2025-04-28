@@ -1,5 +1,6 @@
 ﻿using RoofStockBackend.Contextos;
 using RoofStockBackend.Database.Dados.Objetos;
+using RoofStockBackend.Modelos.DTO.Empresa;
 using RoofStockBackend.Repositorios;
 using System;
 using System.Linq;
@@ -9,11 +10,63 @@ namespace RoofStockBackend.Services
 {
     public class SrvcEmpresa
     {
+        #region Propriedades Privadas
         private readonly Repository<Empresa> _empresaRepository;
+        private readonly Repository<EmpresaUsuario> _empresaUsuarioRepository;
 
+        #endregion        
+
+        #region Construtor
         public SrvcEmpresa(AppDbContext context)
         {
             _empresaRepository = new Repository<Empresa>(context);
+            _empresaUsuarioRepository = new Repository<EmpresaUsuario>(context);
+        }
+        #endregion        
+
+        #region Métodos Públicos
+
+        #region Métodos EmpresaUsuario
+        async Task<IEnumerable<EmpresaUsuario>> RetornarEmpresasVisiveisAtivasPorUsuario(int idUsuario)
+        {
+            if (idUsuario <= 0)
+                return new List<EmpresaUsuario> { };
+
+            var empresasBD = await _empresaUsuarioRepository.GetAllAsync();
+            return empresasBD.Where(emp => emp.ID_USUARIO == idUsuario && emp.IN_ATIVO);
+        }
+        #endregion
+
+        #region Métodos Empresa
+        public async Task<IEnumerable<EmpresaDto>> CarregarEmpresasPorUsuario(int idUsuario)
+        {
+            if (idUsuario <= 0)
+                return new List<EmpresaDto> { };
+
+            var empresas = await _empresaRepository.GetAllAsync();
+            var empresasAtivasUsuario = await RetornarEmpresasVisiveisAtivasPorUsuario(idUsuario);
+
+            if (empresas.Count() == 0 || empresasAtivasUsuario.Count() == 0)
+                return new List<EmpresaDto> { };
+
+            var empresasRetorno = empresas.Join(
+                empresasAtivasUsuario,
+                empresasBD => empresasBD.ID_EMPRESA,
+                empresasUsuario => empresasUsuario.ID_EMPRESA,
+                (empresasBD, empresasUsuario) => new { empresasBD, empresasUsuario });
+
+            var listaEmpresas = new List<EmpresaDto> { };
+            foreach (var emp in empresasRetorno)
+                listaEmpresas.Add(new EmpresaDto
+                {
+                    id = emp.empresasBD.ID_EMPRESA,
+                    ativo = emp.empresasBD.IN_ATIVO,
+                    cnpj = emp.empresasBD.TX_CNPJ,
+                    email = emp.empresasBD.TX_EMAIL,
+                    razaoSocial = emp.empresasBD.TX_RAZAO_SOCIAL,
+                });
+
+            return listaEmpresas;
         }
 
         public async Task<bool> CriarEmpresaAsync(Empresa empresa)
@@ -31,12 +84,21 @@ namespace RoofStockBackend.Services
             }
         }
 
-        public async Task<Empresa> CarregarEmpresaPorIdAsync(int id)
+        public async Task<EmpresaDto> CarregarEmpresaPorIdAsync(int id)
         {
             try
             {
                 if (id <= 0) throw new ArgumentException("ID inválido.");
-                return await _empresaRepository.GetByIdAsync(id);
+                var empresaBD = await _empresaRepository.GetByIdAsync(id);
+
+                return new EmpresaDto
+                {
+                    id = empresaBD.ID_EMPRESA,
+                    razaoSocial = empresaBD.TX_RAZAO_SOCIAL,
+                    cnpj = empresaBD.TX_RAZAO_SOCIAL,
+                    ativo = empresaBD.IN_ATIVO,
+                    email = empresaBD.TX_EMAIL
+                };
             }
             catch (Exception ex)
             {
@@ -45,13 +107,22 @@ namespace RoofStockBackend.Services
             }
         }
 
-        public async Task<Empresa> CarregarEmpresaPorNomeAsync(string nomeEmpresa)
+        public async Task<EmpresaDto> CarregarEmpresaPorNomeAsync(string nomeEmpresa)
         {
             try
             {
                 if (string.IsNullOrWhiteSpace(nomeEmpresa)) throw new ArgumentException("Nome inválido.");
                 var empresas = await _empresaRepository.GetAllAsync();
-                return empresas.FirstOrDefault(e => e.TX_RAZAO_SOCIAL == nomeEmpresa);
+                var empresaBD = empresas.FirstOrDefault(e => e.TX_RAZAO_SOCIAL == nomeEmpresa);
+
+                return new EmpresaDto
+                {
+                    id = empresaBD.ID_EMPRESA,
+                    razaoSocial = empresaBD.TX_RAZAO_SOCIAL,
+                    cnpj = empresaBD.TX_RAZAO_SOCIAL,
+                    ativo = empresaBD.IN_ATIVO,
+                    email = empresaBD.TX_EMAIL
+                };
             }
             catch (Exception ex)
             {
@@ -127,5 +198,8 @@ namespace RoofStockBackend.Services
                 return false;
             }
         }
+        #endregion
+
+        #endregion
     }
 }

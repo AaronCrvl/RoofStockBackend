@@ -19,5 +19,7 @@ namespace RoofStockBackend.Contextos
         public DbSet<Empresa> Empresa { get; set; }
         public DbSet<EstoqueProduto> EstoqueProduto { get; set; }
         public DbSet<MovimentacaoEstoque> MovimentacoesEstoque { get; set; }
+
+        public DbSet<EstoqueUsuario> EstoqueUsuario { get; set; }
     }
 }

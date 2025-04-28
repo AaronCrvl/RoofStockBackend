@@ -1,7 +1,7 @@
 ﻿using Microsoft.IdentityModel.Tokens;
 using RoofStockBackend.Contextos;
 using RoofStockBackend.Database.Dados.Objetos;
-using RoofStockBackend.Modelos;
+using RoofStockBackend.Modelos.DTO.Login;
 using RoofStockBackend.Repositorios;
 using System.IdentityModel.Tokens.Jwt;
 using System.Net.Mail;
@@ -19,7 +19,7 @@ namespace RoofStockBackend.Serviços
             _usuarioRepository = new Repository<Usuario>(context);
         }
 
-        public async Task<string> AutenticarDadosToken(LoginUsuarioDto loginDto)
+        public async Task<string> AutenticarDadosToken(LoginDto loginDto)
         {
             var usuarios = await _usuarioRepository.GetAllAsync();
             var usuarioBusca = usuarios.FirstOrDefault(u => (u.TX_SENHA == loginDto.senha && u.TX_LOGIN == loginDto.login));
@@ -29,7 +29,7 @@ namespace RoofStockBackend.Serviços
             return GerarTokenJWT(loginDto);
         }
 
-        private static string GerarTokenJWT(LoginUsuarioDto loginDto)
+        private static string GerarTokenJWT(LoginDto loginDto)
         {
             var claims = new[]
                         {

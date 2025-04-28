@@ -1,5 +1,6 @@
 ﻿using RoofStockBackend.Contextos;
 using RoofStockBackend.Database.Dados.Objetos;
+using RoofStockBackend.Modelos.DTO.Usuario;
 using RoofStockBackend.Repositorios;
 using System;
 using System.Threading.Tasks;
@@ -8,18 +9,35 @@ namespace RoofStockBackend.Services
 {
     public class SrvcUsuario
     {
+        #region Propriedades Privadas
         private Repository<Usuario> _usuarioRepository;
+        #endregion
 
+        #region Construtor
         public SrvcUsuario(AppDbContext context)
         {
             _usuarioRepository = new Repository<Usuario>(context);
         }
+        #endregion
 
-        public async Task<bool> CriarUsuarioAsync(Usuario usuario)
+        #region Métodos Públicos
+        public async Task<bool> CriarUsuarioAsync(UsuarioCriarDto usuarioCriar)
         {
             try
             {
-                if (usuario == null) throw new ArgumentNullException(nameof(usuario));
+                if (usuarioCriar == null) throw new ArgumentNullException(nameof(usuarioCriar));
+                var usuario = new Usuario
+                {
+                    ID_FUNCIONARIO = usuarioCriar.idFuncionario,
+                    TX_LOGIN = usuarioCriar.login,
+                    TX_SENHA = usuarioCriar.senha,
+                    TX_EMAIL = usuarioCriar.email,
+                    IN_ATIVO = usuarioCriar.ativo,
+                    IN_ADMIN = usuarioCriar.admin,
+                    DT_CRIACAO = DateTime.Now
+
+                };
+
                 await _usuarioRepository.AddAsync(usuario);
                 return true;
             }
@@ -30,12 +48,22 @@ namespace RoofStockBackend.Services
             }
         }
 
-        public async Task<Usuario> CarregarUsuarioPorIdAsync(int id)
+        public async Task<UsuarioDto> CarregarUsuarioPorIdAsync(int id)
         {
             try
             {
-                if (id <= 0) throw new ArgumentException("ID inválido.");
-                return await _usuarioRepository.GetByIdAsync(id);
+                if (id <= 0)
+                    throw new ArgumentException("ID inválido.");
+
+                var usuarioBD = await _usuarioRepository.GetByIdAsync(id);
+                return new UsuarioDto
+                {
+                    id = usuarioBD.ID_USUARIO,
+                    idFuncionario = usuarioBD.ID_FUNCIONARIO,
+                    admin = usuarioBD.IN_ADMIN,
+                    ativo = usuarioBD.IN_ATIVO,
+                    email = usuarioBD.TX_EMAIL
+                };
             }
             catch (Exception ex)
             {
@@ -44,13 +72,23 @@ namespace RoofStockBackend.Services
             }
         }
 
-        public async Task<Usuario> CarregarUsuarioPorLoginAsync(string login)
+        public async Task<UsuarioDto> CarregarUsuarioPorLoginAsync(string login)
         {
             try
             {
-                if (string.IsNullOrWhiteSpace(login)) throw new ArgumentException("Login inválido.");
+                if (string.IsNullOrWhiteSpace(login))
+                    throw new ArgumentException("Login inválido.");
+
                 var usuario = await _usuarioRepository.GetAllAsync();
-                return usuario.FirstOrDefault(u => u.TX_LOGIN == login);
+                var usuarioBD = usuario.FirstOrDefault(u => u.TX_LOGIN == login);
+                return new UsuarioDto
+                {
+                    id = usuarioBD.ID_USUARIO,
+                    idFuncionario = usuarioBD.ID_FUNCIONARIO,
+                    admin = usuarioBD.IN_ADMIN,
+                    ativo = usuarioBD.IN_ATIVO,
+                    email = usuarioBD.TX_EMAIL
+                };
             }
             catch (Exception ex)
             {
@@ -59,11 +97,21 @@ namespace RoofStockBackend.Services
             }
         }
 
-        public async Task<bool> AlterarUsuarioAsync(Usuario usuario)
+        public async Task<bool> AlterarUsuarioAsync(UsuarioAtualizarDto usuarioAtualizar)
         {
             try
             {
-                if (usuario == null) throw new ArgumentNullException(nameof(usuario));
+                if (usuarioAtualizar == null) throw new ArgumentNullException(nameof(usuarioAtualizar));
+
+                var usuario = new Usuario
+                {
+                    TX_LOGIN = usuarioAtualizar.login,
+                    TX_SENHA = usuarioAtualizar.senha,
+                    TX_EMAIL = usuarioAtualizar.email,
+                    IN_ATIVO = usuarioAtualizar.ativo,
+                    IN_ADMIN = usuarioAtualizar.admin
+                };
+
                 await _usuarioRepository.UpdateAsync(usuario);
                 return true;
             }
@@ -107,5 +155,7 @@ namespace RoofStockBackend.Services
                 return false;
             }
         }
+
+        #endregion        
     }
 }

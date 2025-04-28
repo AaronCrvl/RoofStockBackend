@@ -1,5 +1,6 @@
 ﻿using RoofStockBackend.Contextos;
 using RoofStockBackend.Database.Dados.Objetos;
+using RoofStockBackend.Modelos.DTO.Estoque;
 using RoofStockBackend.Repositorios;
 using System;
 using System.Linq;
@@ -10,24 +11,57 @@ namespace RoofStockBackend.Services
     public class SrvcEstoque
     {
         private readonly Repository<Estoque> _estoqueRepository;
+        private readonly Repository<EstoqueUsuario> _estoqueUsuarioRepository;
 
-        #region Constructor
+        #region Construtor
         public SrvcEstoque(AppDbContext context)
         {
             _estoqueRepository = new Repository<Estoque>(context);
+            _estoqueUsuarioRepository = new Repository<EstoqueUsuario>(context);
         }
         #endregion
 
         #region Métodos Públicos
-        public async Task<IEnumerable<Estoque>> CarregarEstoquePorUsuario(int id)
+
+        #region Métodos EstoqueUsuario
+        async Task<IEnumerable<EstoqueUsuario>> RetornarEstoquesVisiveisAtivosPorUsuario(int idUsuario)
+        {
+            var estoquesAtivosUsuario = await _estoqueUsuarioRepository.GetAllAsync();
+            return estoquesAtivosUsuario.Where(estoque => estoque.ID_USUARIO == idUsuario && estoque.IN_ATIVO);
+        }
+        #endregion
+
+        #region Métodos Estoque
+        public async Task<IEnumerable<EstoqueDto>> CarregarEstoquePorUsuario(int idUsuario)
         {
             try
             {
-                if (id <= 0)
-                    return new List<Estoque> { };
+                if (idUsuario <= 0)
+                    return new List<EstoqueDto> { };
 
                 var estoques = await _estoqueRepository.GetAllAsync();
-                return estoques.Where(x => x.ID_RESPONSAVEL == id);                
+                var estoquesAtivosUsuario = await RetornarEstoquesVisiveisAtivosPorUsuario(idUsuario);
+
+                if (estoques.Count() == 0 || estoquesAtivosUsuario.Count() == 0)
+                    return new List<EstoqueDto> { };
+
+                var estoquesRetorno = estoques.Join(
+                    estoquesAtivosUsuario,
+                    estoquesBD => estoquesBD.ID_ESTOQUE,
+                    estoquesAtivosU => estoquesAtivosU.ID_ESTOQUE,
+                    (estoquesBD, estoquesAtivosU) => new { estoquesBD, estoquesAtivosU });
+
+                var listaEstoques = new List<EstoqueDto>();
+                foreach (var estq in estoquesRetorno)
+                    listaEstoques.Add(new EstoqueDto
+                    {
+                        idEstoque = estq.estoquesBD.ID_ESTOQUE,
+                        ativo = estq.estoquesBD.IN_ATIVO,
+                        nomeResponsavel = "",
+                        nomeEstoque = estq.estoquesBD.TX_NOME
+                    });
+
+                return listaEstoques;
             }
             catch (Exception e)
             {
@@ -145,6 +179,8 @@ namespace RoofStockBackend.Services
                 return false;
             }
         }
-        #endregion        
+        #endregion
+
+        #endregion
     }
 }

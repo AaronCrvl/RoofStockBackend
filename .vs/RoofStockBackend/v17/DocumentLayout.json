@@ -3,24 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|c:\\users\\aaron\\source\\repos\\roofstockbackend\\controladores\\cntrestoque.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|solutionrelative:controladores\\cntrestoque.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|c:\\users\\aaron\\source\\repos\\roofstockbackend\\servi\u00E7os\\srvcestoque.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|solutionrelative:servi\u00E7os\\srvcestoque.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|c:\\users\\aaron\\source\\repos\\roofstockbackend\\database\\dados\\objetos\\estoque.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|solutionrelative:database\\dados\\objetos\\estoque.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|c:\\users\\aaron\\source\\repos\\roofstockbackend\\servi\u00E7os\\srvcusuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|solutionrelative:servi\u00E7os\\srvcusuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|c:\\users\\aaron\\source\\repos\\roofstockbackend\\repositorios\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|solutionrelative:repositorios\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|c:\\users\\aaron\\source\\repos\\roofstockbackend\\controladores\\cntrusuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|solutionrelative:controladores\\cntrusuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|c:\\users\\aaron\\source\\repos\\roofstockbackend\\modelos\\dto\\usuario\\usuariodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|solutionrelative:modelos\\dto\\usuario\\usuariodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -29,73 +21,55 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 1629,
-          "SelectedChildIndex": 2,
+          "DockedWidth": 1709,
+          "SelectedChildIndex": 1,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Estoque.cs",
-              "DocumentMoniker": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Database\\Dados\\Objetos\\Estoque.cs",
-              "RelativeDocumentMoniker": "Database\\Dados\\Objetos\\Estoque.cs",
-              "ToolTip": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Database\\Dados\\Objetos\\Estoque.cs",
-              "RelativeToolTip": "Database\\Dados\\Objetos\\Estoque.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAADwAAAAYAAAA",
+              "Title": "UsuarioDto.cs",
+              "DocumentMoniker": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Modelos\\DTO\\Usuario\\UsuarioDto.cs",
+              "RelativeDocumentMoniker": "Modelos\\DTO\\Usuario\\UsuarioDto.cs",
+              "ToolTip": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Modelos\\DTO\\Usuario\\UsuarioDto.cs",
+              "RelativeToolTip": "Modelos\\DTO\\Usuario\\UsuarioDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-22T18:51:59.634Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "CntrEstoque.cs",
-              "DocumentMoniker": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Controladores\\CntrEstoque.cs",
-              "RelativeDocumentMoniker": "Controladores\\CntrEstoque.cs",
-              "ToolTip": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Controladores\\CntrEstoque.cs",
-              "RelativeToolTip": "Controladores\\CntrEstoque.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-22T18:47:21.864Z",
+              "WhenOpened": "2025-04-28T14:25:41.741Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Repository.cs",
-              "DocumentMoniker": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Repositorios\\Repository.cs",
-              "RelativeDocumentMoniker": "Repositorios\\Repository.cs",
-              "ToolTip": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Repositorios\\Repository.cs",
-              "RelativeToolTip": "Repositorios\\Repository.cs",
-              "ViewState": "AQIAAB8AAAAAAAAAAAAgwC8AAAAxAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-22T18:43:42.845Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "SrvcUsuario.cs",
               "DocumentMoniker": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Servi\u00E7os\\SrvcUsuario.cs",
               "RelativeDocumentMoniker": "Servi\u00E7os\\SrvcUsuario.cs",
               "ToolTip": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Servi\u00E7os\\SrvcUsuario.cs",
               "RelativeToolTip": "Servi\u00E7os\\SrvcUsuario.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAABYAAAA7AAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAwBMAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-22T18:41:28.882Z"
+              "WhenOpened": "2025-04-28T14:19:28.734Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0174dea2-fdbe-4ef1-8f99-c0beae78880f}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "SrvcEstoque.cs",
-              "DocumentMoniker": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Servi\u00E7os\\SrvcEstoque.cs",
-              "RelativeDocumentMoniker": "Servi\u00E7os\\SrvcEstoque.cs",
-              "ToolTip": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Servi\u00E7os\\SrvcEstoque.cs",
-              "RelativeToolTip": "Servi\u00E7os\\SrvcEstoque.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAqwA0AAAAbAAAA",
+              "Title": "CntrUsuario.cs",
+              "DocumentMoniker": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Controladores\\CntrUsuario.cs",
+              "RelativeDocumentMoniker": "Controladores\\CntrUsuario.cs",
+              "ToolTip": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Controladores\\CntrUsuario.cs",
+              "RelativeToolTip": "Controladores\\CntrUsuario.cs",
+              "ViewState": "AQIAADMAAAAAAAAAAADgv1QAAABFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-22T18:38:25.544Z"
+              "WhenOpened": "2025-04-28T14:18:01.044Z",
+              "EditorCaption": ""
             }
           ]
         }

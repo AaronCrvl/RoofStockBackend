@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using RoofStockBackend.Modelos;
+using RoofStockBackend.Modelos.DTO.Login;
 using RoofStockBackend.Services;
 using RoofStockBackend.Serviços;
 using System.Net.Mime;
@@ -21,7 +21,7 @@ namespace RoofStockBackend.Controladores
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> Autenticar([FromBody] LoginUsuarioDto loginDto)
+        public async Task<IActionResult> Autenticar([FromBody] LoginDto loginDto)
         {
             try
             {

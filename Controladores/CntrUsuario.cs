@@ -3,6 +3,7 @@ using RoofStockBackend.Database.Dados.Objetos;
 using RoofStockBackend.Services;
 using System.Net.Mime;
 using Microsoft.AspNetCore.Authorization;
+using RoofStockBackend.Modelos.DTO.Usuario;
 
 namespace RoofStockBackend.Controllers
 {
@@ -77,14 +78,10 @@ namespace RoofStockBackend.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [Authorize(AuthenticationSchemes = "Bearer")]
-        public async Task<IActionResult> CriarUsuario([FromBody] Usuario novoUsuario)
+        public async Task<IActionResult> CriarUsuario([FromBody] UsuarioCriarDto novoUsuario)
         {
             try
-            {
-                var novoId = 1;
-                novoUsuario.ID_USUARIO = novoId;
-                novoUsuario.DT_CRIACAO = DateTime.Now;
-
+            {                
                 var sucesso = await _usuarioService.CriarUsuarioAsync(novoUsuario);
                 if (sucesso)
                     return Ok(novoUsuario);
@@ -104,20 +101,14 @@ namespace RoofStockBackend.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [Authorize(AuthenticationSchemes = "Bearer")]
-        public async Task<IActionResult> EditarUsuario(int id, [FromBody] Usuario usuarioAtualizado)
+        public async Task<IActionResult> EditarUsuario(int id, [FromBody] UsuarioAtualizarDto usuarioaAtualizar)
         {
             try
             {
                 var usuario = await _usuarioService.CarregarUsuarioPorIdAsync(id);
                 if (usuario != null)
                 {
-                    usuario.TX_LOGIN = usuarioAtualizado.TX_LOGIN;
-                    usuario.TX_SENHA = usuarioAtualizado.TX_SENHA;
-                    usuario.TX_EMAIL = usuarioAtualizado.TX_EMAIL;
-                    usuario.IN_ATIVO = usuarioAtualizado.IN_ATIVO;
-
-                    var sucesso = await _usuarioService.AlterarUsuarioAsync(usuario);
-
+                    var sucesso = await _usuarioService.AlterarUsuarioAsync(usuarioaAtualizar);
                     if (sucesso)
                         return Ok(usuario);
                     else

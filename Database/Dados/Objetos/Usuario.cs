@@ -12,6 +12,7 @@ namespace RoofStockBackend.Database.Dados.Objetos
         string pTX_LOGIN { get; set; }
         string pTX_SENHA { get; set; }
         bool pIN_ATIVO { get; set; }
+        bool pIN_ADMIN { get; set; }
         string pTX_EMAIL { get; set; }
         DateTime pDT_CRIACAO { get; set; }
         #endregion
@@ -76,6 +77,17 @@ namespace RoofStockBackend.Database.Dados.Objetos
                 this.pIN_ATIVO = value;
             }
         }
+        public bool IN_ADMIN
+        {
+            get
+            {
+                return this.pIN_ADMIN;
+            }
+            set
+            {
+                this.pIN_ADMIN = value;
+            }
+        }
         public string TX_EMAIL
         {
             get
@@ -109,6 +121,7 @@ namespace RoofStockBackend.Database.Dados.Objetos
             this.TX_SENHA = string.Empty;
             this.TX_EMAIL = string.Empty;
             this.IN_ATIVO = false;
+            this.IN_ADMIN = false;
             this.DT_CRIACAO = new DateTime();
         }        
         #endregion

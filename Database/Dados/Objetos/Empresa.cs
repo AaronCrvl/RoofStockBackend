@@ -8,7 +8,7 @@ namespace RoofStockBackend.Database.Dados.Objetos
     public class Empresa
     {
         #region Propriedades Privadas
-        long pID_EMPRESA { get; set; }
+        int pID_EMPRESA { get; set; }
         string pTX_RAZAO_SOCIAL { get; set; }
         string pTX_TOKEN { get; set; }
         string pTX_CNPJ { get; set; }
@@ -19,7 +19,7 @@ namespace RoofStockBackend.Database.Dados.Objetos
 
         #region Propriedades
         [Key]
-        public long ID_EMPRESA
+        public int ID_EMPRESA
         {
             get
             {

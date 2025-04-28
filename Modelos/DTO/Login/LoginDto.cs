@@ -1,13 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.Eventing.Reader;
 
-namespace RoofStockBackend.Modelos
+namespace RoofStockBackend.Modelos.DTO.Login
 {
-    public class LoginUsuarioDto
+    public class LoginDto
     {
         [Required]
         public string login { get; set; }
-        
+
         [Required]
         [MinLength(5)]
         public string senha { get; set; }
