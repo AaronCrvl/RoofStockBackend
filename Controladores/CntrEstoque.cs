@@ -13,14 +13,20 @@ namespace RoofStockBackend.Controllers
     [Route("Estoque")]
     public class EstoqueController : ControllerBase
     {
+        #region Propriedades Privadas
         private readonly SrvcEstoque _estoqueService;
+        #endregion        
 
+        #region Construtor
         public EstoqueController(SrvcEstoque estoqueService)
         {
             _estoqueService = estoqueService;
         }
+        #endregion        
 
         #region Métodos HTTP
+
+        #region Métodos de Estoque
 
         [HttpGet("ObterEstoque/{id}")]
         [Consumes(MediaTypeNames.Application.Json)]
@@ -55,14 +61,14 @@ namespace RoofStockBackend.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [Authorize(AuthenticationSchemes = "Bearer")]
-        public async Task<IActionResult> ObterEstoquePorUsuario(int id)
+        public async Task<IActionResult> ObterEstoquePorUsuario(int idUsuario, int idEmpresa)
         {
             try
             {
-                var estoque = await _estoqueService.CarregarEstoquePorUsuario(id);
-                if (estoque == null)                
+                var estoque = await _estoqueService.CarregarEstoquePorUsuario(idUsuario, idEmpresa);
+                if (estoque == null)
                     return NotFound(new { Message = "Estoque não encontrado." });
-                
+
                 return Ok(estoque);
             }
             catch (Exception e)
@@ -232,6 +238,14 @@ namespace RoofStockBackend.Controllers
                 return BadRequest(new { Message = $"Erro: {e.Message}" });
             }
         }
+
+        #endregion
+
+        #region Métodos de Produto
+
+
+
+        #endregion
 
         #endregion
     }

@@ -12,14 +12,38 @@ namespace RoofStockBackend.Controllers
     [Route("Empresa")]
     public class CntrlEmpresa : ControllerBase
     {
+        #region Propriedades Privadas
         private readonly SrvcEmpresa _empresaService;
+        #endregion        
 
+        #region Construtor
         public CntrlEmpresa(SrvcEmpresa empresaService)
         {
             _empresaService = empresaService;
         }
+        #endregion        
 
         #region Métodos HTTP
+
+        [HttpGet("ObterEmpresasPorUsuario")]
+        [Consumes(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> ObterEmpresasPorUsuario(int id)
+        {
+            try
+            {
+                var empresas = await _empresaService.CarregarEmpresasPorUsuario(id);
+                if (empresas == null)
+                    return NotFound(new { Message = "Empresa não encontrada." });
+
+                return Ok(empresas);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(new { Message = $"Erro: {e.Message}" });
+            }
+        }
 
         [HttpGet("ObterEmpresa/{id}")]
         [Consumes(MediaTypeNames.Application.Json)]

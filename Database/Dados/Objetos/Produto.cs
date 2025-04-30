@@ -13,6 +13,7 @@ namespace RoofStockBackend.Database.Dados.Objetos
         string pTX_NOME { get; set; }
         string pTX_DESCRICAO { get; set; }
         float pVALOR { get; set; }
+        bool pIN_PROMOCAO { get; set; }
         #endregion
 
         #region Propriedades
@@ -80,6 +81,18 @@ namespace RoofStockBackend.Database.Dados.Objetos
                 this.pVALOR = value;
             }
         }
+
+        public bool IN_PROMOCAO
+        {
+            get
+            {
+                return this.pIN_PROMOCAO;
+            }
+            set
+            {
+                this.pIN_PROMOCAO = value;
+            }
+        }
         #endregion
 
         #region Construtores
@@ -90,6 +103,7 @@ namespace RoofStockBackend.Database.Dados.Objetos
             this.TX_NOME = string.Empty;
             this.TX_DESCRICAO = string.Empty;
             this.VALOR = 0.0f;
+            this.IN_PROMOCAO = false;
         }      
         #endregion
     }

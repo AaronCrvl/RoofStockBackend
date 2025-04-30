@@ -32,7 +32,7 @@ namespace RoofStockBackend.Services
         #endregion
 
         #region Métodos Estoque
-        public async Task<IEnumerable<EstoqueDto>> CarregarEstoquePorUsuario(int idUsuario)
+        public async Task<IEnumerable<EstoqueDto>> CarregarEstoquePorUsuario(int idUsuario, int idEmpresa)
         {
             try
             {
