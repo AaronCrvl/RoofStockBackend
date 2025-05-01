@@ -119,7 +119,7 @@ namespace RoofStockBackend.Controllers
             }
         }
 
-        [HttpPut("AlterarEmpresa/{id}")]
+        [HttpPatch("AlterarEmpresa/{id}")]
         [Consumes(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -171,7 +171,7 @@ namespace RoofStockBackend.Controllers
             }
         }
 
-        [HttpPut("DesativarEmpresa/{id}")]
+        [HttpPatch("DesativarEmpresa/{id}")]
         [Consumes(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -194,7 +194,7 @@ namespace RoofStockBackend.Controllers
             }
         }
 
-        [HttpPut("AtivarEmpresa/{id}")]
+        [HttpPatch("AtivarEmpresa/{id}")]
         [Consumes(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

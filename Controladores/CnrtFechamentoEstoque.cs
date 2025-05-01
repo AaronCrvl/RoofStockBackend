@@ -47,7 +47,7 @@ namespace RoofStockBackend.Controllers
             return NotFound("Fechamento de estoque não encontrado para o estoque informado.");
         }
 
-        [HttpPut("Alterar")]
+        [HttpPatch("Alterar")]
         public async Task<IActionResult> AlterarFechamentoEstoque([FromBody] FechamentoEstoque fechamentoEstoque)
         {
             var resultado = await _fechamentoEstoqueService.AlterarFechamentoEstoqueAsync(fechamentoEstoque);
@@ -65,7 +65,7 @@ namespace RoofStockBackend.Controllers
             return NotFound("Fechamento de estoque não encontrado.");
         }
 
-        [HttpPut("Desativar/{id}")]
+        [HttpPatch("Desativar/{id}")]
         public async Task<IActionResult> DesativarFechamentoEstoque(int id)
         {
             var resultado = await _fechamentoEstoqueService.DesativarFechamentoEstoqueAsync(id);

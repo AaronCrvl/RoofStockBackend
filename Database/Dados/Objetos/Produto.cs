@@ -8,17 +8,17 @@ namespace RoofStockBackend.Database.Dados.Objetos
     public class Produto
     {
         #region Propriedades Privadas
-        long pID_PRODUTO { get; set; }
-        long pID_MARCA { get; set; }
+        int pID_PRODUTO { get; set; }
+        int pID_MARCA { get; set; }
         string pTX_NOME { get; set; }
         string pTX_DESCRICAO { get; set; }
-        float pVALOR { get; set; }
+        double pVALOR { get; set; }
         bool pIN_PROMOCAO { get; set; }
         #endregion
 
         #region Propriedades
         [Key]
-        public long ID_PRODUTO
+        public int ID_PRODUTO
         {
             get
             {
@@ -32,7 +32,7 @@ namespace RoofStockBackend.Database.Dados.Objetos
 
         [Required]
         [ForeignKey("Marca")]
-        public long ID_MARCA
+        public int ID_MARCA
         {
             get
             {
@@ -70,7 +70,7 @@ namespace RoofStockBackend.Database.Dados.Objetos
         }
 
         [Required]
-        public float VALOR
+        public double VALOR
         {
             get
             {

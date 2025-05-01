@@ -89,7 +89,7 @@ namespace RoofStockBackend.Controllers
             }
         }
 
-        [HttpPut("AlterarMarca/{id}")]
+        [HttpPatch("AlterarMarca/{id}")]
         [Consumes(MediaTypeNames.Application.Json)]
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]

@@ -47,7 +47,7 @@ namespace RoofStockBackend.Controllers
             return NotFound("Nenhum produto encontrado para o estoque informado.");
         }
 
-        [HttpPut("Alterar")]
+        [HttpPatch("Alterar")]
         public async Task<IActionResult> AlterarEstoqueProduto([FromBody] EstoqueProduto estoqueProduto)
         {
             var resultado = await _estoqueProdutoService.AlterarEstoqueProdutoAsync(estoqueProduto);
@@ -65,7 +65,7 @@ namespace RoofStockBackend.Controllers
             return NotFound("Produto não encontrado para excluir.");
         }
 
-        [HttpPut("Desativar/{estoqueId}/{produtoId}")]
+        [HttpPatch("Desativar/{estoqueId}/{produtoId}")]
         public async Task<IActionResult> DesativarEstoqueProduto(int estoqueId, int produtoId)
         {
             var resultado = await _estoqueProdutoService.DesativarEstoqueProdutoAsync(estoqueId, produtoId);

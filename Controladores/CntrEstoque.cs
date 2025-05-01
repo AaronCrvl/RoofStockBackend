@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RoofStockBackend.Database.Dados.Objetos;
+using RoofStockBackend.Modelos.DTO.Estoque.Produto;
 using RoofStockBackend.Services;
 using System;
 using System.Net.Mime;
@@ -133,7 +134,7 @@ namespace RoofStockBackend.Controllers
             }
         }
 
-        [HttpPut("AlterarEstoque/{id}")]
+        [HttpPatch("AlterarEstoque/{id}")]
         [Consumes(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -189,7 +190,7 @@ namespace RoofStockBackend.Controllers
             }
         }
 
-        [HttpPut("DesativarEstoque/{id}")]
+        [HttpPatch("DesativarEstoque/{id}")]
         [Consumes(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -214,7 +215,7 @@ namespace RoofStockBackend.Controllers
             }
         }
 
-        [HttpPut("AtivarEstoque/{id}")]
+        [HttpPatch("AtivarEstoque/{id}")]
         [Consumes(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -243,7 +244,93 @@ namespace RoofStockBackend.Controllers
 
         #region Métodos de Produto
 
+        [HttpGet("ObterProdutosEstoque")]
+        [Consumes(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        public async Task<IActionResult> ObterProdutosEstoque(int idEstoque)
+        {
+            try
+            {
+                var produtosDto = await _estoqueService.CarregarProdutosEstoque(idEstoque);
+                if (produtosDto.Count() <= 0)                
+                    return NotFound(new { Message = "Sem produtos no estoque indicado." });                
 
+                return Ok(produtosDto);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(new { Message = $"Erro: {e.Message}" });
+            }
+        }
+
+        [HttpPost("CadastrarProduto")]
+        [Consumes(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        public async Task<IActionResult> CadastrarProduto([FromBody] ProdutoCadastrarDto produtoDto)
+        {
+            try
+            {
+                var sucesso = await _estoqueService.CadastrarProdutoAsync(produtoDto);
+                if (!sucesso)
+                    return BadRequest(new { Message = "Não foi possível cadastrar o produto." });
+
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return BadRequest(new { Message = $"Erro: {e.Message}" });
+            }
+        }
+
+        [HttpPatch("AtualizarProduto")]
+        [Consumes(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        public async Task<IActionResult> AtualizarProduto([FromBody] ProdutoAtualizarDto produtoDto)
+        {
+            try
+            {
+                var prod = await _estoqueService.AlterarProdutoAsync(produtoDto);
+                if (prod.idProduto <0 )
+                    return BadRequest(new { Message = $"Não foi possível atualizar o produto {produtoDto.nomeProduto}." });
+
+                return Ok(prod);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(new { Message = $"Erro: {e.Message}" });
+            }
+        }
+
+        [HttpDelete("ExcluirProduto")]
+        [Consumes(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        public async Task<IActionResult> ExcluirProduto(int idProduto)
+        {
+            try
+            {
+                var sucesso = await _estoqueService.ExcluirProdutoAsync(idProduto);
+                if (!sucesso)
+                    return BadRequest(new { Message = "Não foi possível cadastrar o produto." });
+
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return BadRequest(new { Message = $"Erro: {e.Message}" });
+            }
+        }
 
         #endregion
 

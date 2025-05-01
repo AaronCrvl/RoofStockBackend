@@ -9,13 +9,13 @@ namespace RoofStockBackend.Database.Dados.Objetos
     public class EstoqueProduto
     {        
         #region Propriedades Privadas
-        long pID_ESTOQUE { get; set; }
-        long pID_PRODUTO { get; set; }
+        int pID_ESTOQUE { get; set; }
+        int pID_PRODUTO { get; set; }
         int pQN_ESTOQUE { get; set; }
         #endregion
 
         #region Propriedades
-        public long ID_ESTOQUE
+        public int ID_ESTOQUE
         {
             get
             {
@@ -28,7 +28,7 @@ namespace RoofStockBackend.Database.Dados.Objetos
         }
 
         [Required]
-        public long ID_PRODUTO
+        public int ID_PRODUTO
         {
             get
             {

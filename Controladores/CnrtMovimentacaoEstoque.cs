@@ -66,7 +66,7 @@ namespace RoofStockBackend.Controllers
             }
         }
 
-        [HttpPut("Alterar")]
+        [HttpPatch("Alterar")]
         public async Task<IActionResult> AlterarMovimentacao([FromBody] MovimentacaoEstoque movimentacao)
         {
             try

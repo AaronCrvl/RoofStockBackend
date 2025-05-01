@@ -17,6 +17,7 @@
   <ItemGroup>
     <Folder Include="Database\Dados\Objetos\Interfaces\" />
     <Folder Include="Database\SQL\Scripts\" />
+    <Folder Include="Modelos\DTO\Produto\" />
   </ItemGroup>
 
 </Project>
