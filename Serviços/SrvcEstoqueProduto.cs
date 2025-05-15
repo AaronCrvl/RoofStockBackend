@@ -1,118 +1,169 @@
 ﻿using RoofStockBackend.Contextos;
 using RoofStockBackend.Database.Dados.Objetos;
 using RoofStockBackend.Repositorios;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using FluentValidation;
+using RoofStockBackend.Modelos.DTO.Produto;
 
 namespace RoofStockBackend.Services
 {
     public class SrvcEstoqueProduto
     {
+        #region Propriedades Privadas
         private readonly Repository<EstoqueProduto> _estoqueProdutoRepository;
+        private readonly Repository<Produto> _produtoRepository;
+        private readonly Repository<MovimentacaoEstoque> _movimentacaoEstoqueRepository;
+        private readonly Repository<Marca> _marcaRepository;
+        private readonly IValidator<Produto> _produtoValidator;
+        #endregion
 
-        public SrvcEstoqueProduto(AppDbContext context)
+        #region Construtor
+        public SrvcEstoqueProduto(AppDbContext context, IValidator<Produto> produtoValidator)
         {
             _estoqueProdutoRepository = new Repository<EstoqueProduto>(context);
-        }
+            _produtoRepository = new Repository<Produto>(context);
+            _movimentacaoEstoqueRepository = new Repository<MovimentacaoEstoque>(context);
+            _marcaRepository = new Repository<Marca>(context);
 
-        public async Task<bool> AdicionarEstoqueProdutoAsync(EstoqueProduto estoqueProduto)
+            _produtoValidator = produtoValidator;
+        }
+        #endregion
+
+        #region Métodos Públicos
+        public async Task<IEnumerable<ProdutoDto>> CarregarProdutosEstoqueAsync(int idEstoque)
         {
             try
             {
-                if (estoqueProduto == null) throw new ArgumentNullException(nameof(estoqueProduto));
-                await _estoqueProdutoRepository.AddAsync(estoqueProduto);
+                if (idEstoque <= 0)
+                    return new List<ProdutoDto>
+                    { };
+
+                var produtosAdicionadosAoEstoque = await _estoqueProdutoRepository.GetAllAsync();
+                var produtoCadastrados = await _produtoRepository.GetAllAsync();
+                var marcasCadastradas = await _marcaRepository.GetAllAsync();
+
+                // Join Produto x Marca
+                var produtosEmEstoque = produtoCadastrados.Join(marcasCadastradas,
+                prodCad => prodCad.ID_MARCA,
+                    marcaCad => marcaCad.ID_MARCA,
+                    (prodCad, marcaCad) => new { prodCad, marcaCad });
+
+                // Join EstoqueProduto x Produto
+                var produtosInfo = produtosAdicionadosAoEstoque.Join(
+                    produtosEmEstoque,
+                    prodAdd => prodAdd.ID_PRODUTO,
+                    prodCad => prodCad.prodCad.ID_PRODUTO,
+                    (prodAdd, prodCad) => new { prodAdd, prodCad })
+                    .Where(p => p.prodAdd.ID_ESTOQUE == idEstoque);
+
+                return produtosInfo.Select(prod => new ProdutoDto
+                {
+                    idProduto = prod.prodCad.prodCad.ID_PRODUTO,
+                    idEstoque = prod.prodAdd.ID_ESTOQUE,
+                    nomeMarca = prod.prodCad.marcaCad.TX_NOME,
+                    nomeProduto = prod.prodCad.prodCad.TX_NOME,
+                    promocao = prod.prodCad.prodCad.IN_PROMOCAO,
+                    valor = prod.prodCad.prodCad.VALOR,
+                });
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public async Task<bool> CadastrarProdutoAsync(ProdutoCadastrarDto produtoASerCadastrado)
+        {
+            try
+            {
+                var produtoBD = new Produto
+                {
+                    ID_MARCA = produtoASerCadastrado.idMarca,
+                    TX_NOME = produtoASerCadastrado.nomeProduto,
+                    IN_PROMOCAO = produtoASerCadastrado.promocao,
+                    VALOR = produtoASerCadastrado.valor
+                };
+
+                await ValidarProduto(produtoBD);
+                await _produtoRepository.AddAsync(produtoBD);
+
+                await _estoqueProdutoRepository.AddAsync(new EstoqueProduto
+                {
+                    ID_PRODUTO = produtoASerCadastrado.idProduto,
+                    ID_ESTOQUE = produtoASerCadastrado.idEstoque,
+                    QN_ESTOQUE = produtoASerCadastrado.quantidade
+                });
+
+                await _movimentacaoEstoqueRepository.AddAsync(new MovimentacaoEstoque
+                {
+                    DT_MOVIMENTACAO = DateTime.Now,
+                    ID_ESTOQUE = produtoASerCadastrado.idEstoque,
+                    ID_USUARIO = 0,
+                    IN_ENTRADA = true,
+                    IN_PROCESSADO = false
+                });
+
                 return true;
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Erro ao adicionar produto ao estoque: {ex.Message}");
-                return false;
+                throw ex;
             }
         }
 
-        public async Task<EstoqueProduto> CarregarEstoqueProdutoPorIdAsync(int estoqueId, int produtoId)
+        public async Task<ProdutoDto> AlterarProdutoAsync(int productId, ProdutoAtualizarDto produtoASerAtualizado)
         {
             try
             {
-                if (estoqueId <= 0 || produtoId <= 0)
-                    throw new ArgumentException("IDs inválidos.");
+                var produtoBD = new Produto
+                {
+                    ID_MARCA = produtoASerAtualizado.idMarca,
+                    TX_NOME = produtoASerAtualizado.nomeProduto,
+                    IN_PROMOCAO = produtoASerAtualizado.promocao,
+                    VALOR = produtoASerAtualizado.valor
+                };
 
-                //return await _estoqueProdutoRepository.GetByIdAsync(estoqueId, produtoId);
-                return await _estoqueProdutoRepository.GetByIdAsync(estoqueId); // TODOOOOOOOOOOOOO
+                await ValidarProduto(produtoBD);
+                await _produtoRepository.UpdateAsync(produtoBD);
+
+                var marca = await _marcaRepository.GetByIdAsync(produtoASerAtualizado.idMarca);
+                return new ProdutoDto
+                {
+                    idProduto = produtoASerAtualizado.idProduto,
+                    idEstoque = produtoASerAtualizado.idEstoque,
+                    nomeMarca = marca.TX_NOME,
+                    nomeProduto = produtoASerAtualizado.nomeProduto,
+                    promocao = produtoASerAtualizado.promocao,
+                    valor = produtoASerAtualizado.valor
+                };
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Erro ao carregar produto do estoque: {ex.Message}");
-                return null;
+                throw ex;
             }
         }
 
-        public async Task<IEnumerable<EstoqueProduto>> ListarEstoqueProdutosPorEstoqueAsync(int estoqueId)
+        public async Task<bool> ExcluirProdutoAsync(int idProduto)
         {
             try
             {
-                if (estoqueId <= 0) throw new ArgumentException("ID do estoque inválido.");
-
-                var estoqueProdutos = await _estoqueProdutoRepository.GetAllAsync();
-                return estoqueProdutos.Where(ep => ep.ID_ESTOQUE == estoqueId);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Erro ao listar produtos do estoque: {ex.Message}");
-                return Enumerable.Empty<EstoqueProduto>();
-            }
-        }
-
-        public async Task<bool> AlterarEstoqueProdutoAsync(EstoqueProduto estoqueProduto)
-        {
-            try
-            {
-                if (estoqueProduto == null) throw new ArgumentNullException(nameof(estoqueProduto));
-                await _estoqueProdutoRepository.UpdateAsync(estoqueProduto);
+                if (idProduto <= 0) return false;
+                await _produtoRepository.DeleteAsync(idProduto);
                 return true;
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Erro ao alterar produto no estoque: {ex.Message}");
-                return false;
+                throw ex;
             }
         }
-
-        public async Task<bool> ExcluirEstoqueProdutoAsync(int estoqueId, int produtoId)
+        private async Task ValidarProduto(Produto produtoBD)
         {
-            try
+            var validationResult = await _produtoValidator.ValidateAsync(produtoBD);
+            if (!validationResult.IsValid)
             {
-                if (estoqueId <= 0 || produtoId <= 0) throw new ArgumentException("IDs inválidos.");
-                await _estoqueProdutoRepository.DeleteAsync(estoqueId, produtoId);
-                return true;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Erro ao excluir produto do estoque: {ex.Message}");
-                return false;
+                var errors = string.Join("; ", validationResult.Errors.Select(e => e.ErrorMessage));
+                throw new Exception($"Erro de validação: {errors}");
             }
         }
-
-        public async Task<bool> DesativarEstoqueProdutoAsync(int estoqueId, int produtoId)
-        {
-            try
-            {
-                if (estoqueId <= 0 || produtoId <= 0) throw new ArgumentException("IDs inválidos.");
-                //var estoqueProduto = await _estoqueProdutoRepository.GetByIdAsync(estoqueId, produtoId);
-                var estoqueProduto = await _estoqueProdutoRepository.GetByIdAsync(estoqueId);
-                if (estoqueProduto == null) return false;
-
-                estoqueProduto.QN_ESTOQUE = 0; // Definindo estoque para zero, por exemplo, como desativado
-                await _estoqueProdutoRepository.UpdateAsync(estoqueProduto);
-                return true;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Erro ao desativar produto do estoque: {ex.Message}");
-                return false;
-            }
-        }
+        #endregion
     }
 }

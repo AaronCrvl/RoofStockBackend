@@ -1,77 +1,100 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using RoofStockBackend.Database.Dados.Objetos;
 using RoofStockBackend.Services;
-using System.Threading.Tasks;
+using System.Net.Mime;
+using Microsoft.AspNetCore.Authorization;
+using RoofStockBackend.Modelos.DTO.Produto;
 
 namespace RoofStockBackend.Controllers
 {
     [ApiController]
     [Tags("Estoque Produto")]
-    [Route("EstoqueProduto")]
+    [Route("Product")]
+    [Authorize(AuthenticationSchemes = "Bearer")]
+    [Consumes(MediaTypeNames.Application.Json)]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     public class CntrlEstoqueProduto : ControllerBase
     {
-        private readonly SrvcEstoqueProduto _estoqueProdutoService;
+        #region Propriedades Privadas
+        private readonly SrvcEstoqueProduto _estoqueProdutoService;        
+        #endregion        
 
+        #region Construtor
         public CntrlEstoqueProduto(SrvcEstoqueProduto estoqueProdutoService)
         {
-            _estoqueProdutoService = estoqueProdutoService;
+            _estoqueProdutoService = estoqueProdutoService;            
         }
+        #endregion
 
-        [HttpPost("Adicionar")]
-        public async Task<IActionResult> AdicionarEstoqueProduto([FromBody] EstoqueProduto estoqueProduto)
+        #region Métodos de HTTP                
+        [HttpGet("GetByStock")]
+        public async Task<IActionResult> ObterProdutosEstoque(int stockId)
         {
-            if (estoqueProduto == null)
-                return BadRequest("Produto ou estoque inválido.");
+            try
+            {
+                var produtosDto = await _estoqueProdutoService.CarregarProdutosEstoqueAsync(stockId);
+                if (produtosDto.Count() <= 0)
+                    return NotFound(new { Message = "Sem produtos no estoque indicado." });
 
-            var resultado = await _estoqueProdutoService.AdicionarEstoqueProdutoAsync(estoqueProduto);
-            if (resultado)
-                return Ok("Produto adicionado ao estoque.");
-            return BadRequest("Erro ao adicionar produto ao estoque.");
+                return Ok(produtosDto);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(new { Message = $"Erro: {e.Message}" });
+            }
         }
 
-        [HttpGet("Obter/{estoqueId}/{produtoId}")]
-        public async Task<IActionResult> ObterEstoqueProduto(int estoqueId, int produtoId)
+        [HttpPost("Create")]
+        public async Task<IActionResult> CadastrarProduto([FromBody] ProdutoCadastrarDto produtoDto)
         {
-            var estoqueProduto = await _estoqueProdutoService.CarregarEstoqueProdutoPorIdAsync(estoqueId, produtoId);
-            if (estoqueProduto != null)
-                return Ok(estoqueProduto);
-            return NotFound("Produto não encontrado no estoque.");
+            try
+            {
+                var sucesso = await _estoqueProdutoService.CadastrarProdutoAsync(produtoDto);
+                if (!sucesso)
+                    return BadRequest(new { Message = "Não foi possível cadastrar o produto." });
+
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return BadRequest(new { Message = $"Erro: {e.Message}" });
+            }
         }
 
-        [HttpGet("Listar/{estoqueId}")]
-        public async Task<IActionResult> ListarEstoqueProdutos(int estoqueId)
+        [HttpPatch("Alter")]
+        public async Task<IActionResult> AtualizarProduto(int id, [FromBody] ProdutoAtualizarDto produtoDto)
         {
-            var produtos = await _estoqueProdutoService.ListarEstoqueProdutosPorEstoqueAsync(estoqueId);
-            if (produtos.Any())
-                return Ok(produtos);
-            return NotFound("Nenhum produto encontrado para o estoque informado.");
+            try
+            {
+                var prod = await _estoqueProdutoService.AlterarProdutoAsync(id, produtoDto);
+                if (prod.idProduto < 0)
+                    return BadRequest(new { Message = $"Não foi possível atualizar o produto {produtoDto.nomeProduto}." });
+
+                return Ok(prod);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(new { Message = $"Erro: {e.Message}" });
+            }
         }
 
-        [HttpPatch("Alterar")]
-        public async Task<IActionResult> AlterarEstoqueProduto([FromBody] EstoqueProduto estoqueProduto)
+        [HttpDelete("Delete")]
+        public async Task<IActionResult> ExcluirProduto(int id)
         {
-            var resultado = await _estoqueProdutoService.AlterarEstoqueProdutoAsync(estoqueProduto);
-            if (resultado)
-                return Ok("Produto alterado com sucesso.");
-            return BadRequest("Erro ao alterar produto.");
-        }
+            try
+            {
+                var sucesso = await _estoqueProdutoService.ExcluirProdutoAsync(id);
+                if (!sucesso)
+                    return BadRequest(new { Message = "Não foi possível cadastrar o produto." });
 
-        [HttpDelete("Excluir/{estoqueId}/{produtoId}")]
-        public async Task<IActionResult> ExcluirEstoqueProduto(int estoqueId, int produtoId)
-        {
-            var resultado = await _estoqueProdutoService.ExcluirEstoqueProdutoAsync(estoqueId, produtoId);
-            if (resultado)
-                return Ok("Produto excluído do estoque.");
-            return NotFound("Produto não encontrado para excluir.");
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return BadRequest(new { Message = $"Erro: {e.Message}" });
+            }
         }
-
-        [HttpPatch("Desativar/{estoqueId}/{produtoId}")]
-        public async Task<IActionResult> DesativarEstoqueProduto(int estoqueId, int produtoId)
-        {
-            var resultado = await _estoqueProdutoService.DesativarEstoqueProdutoAsync(estoqueId, produtoId);
-            if (resultado)
-                return Ok("Produto desativado no estoque.");
-            return NotFound("Produto não encontrado para desativar.");
-        }
+        #endregion
     }
 }

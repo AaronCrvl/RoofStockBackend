@@ -77,3 +77,16 @@ namespace RoofStockBackend.Database.Dados.Objetos
     }
 }
 // !_!
+
+/*
+ {
+        idProduto: 0,
+        nomeProduto: "Teste 01",
+        quantidadeFinal: 0,
+        divergencia: false,
+        quantidadeDivergencia: 0,
+        quebrasContabilizadas: 0,
+        cortesias: 0,
+      },
+    ],
+ */

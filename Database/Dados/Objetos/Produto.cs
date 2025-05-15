@@ -2,6 +2,7 @@
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using RoofStockBackend.Database.Dados.Enums;
 
 namespace RoofStockBackend.Database.Dados.Objetos
 {
@@ -14,6 +15,8 @@ namespace RoofStockBackend.Database.Dados.Objetos
         string pTX_DESCRICAO { get; set; }
         double pVALOR { get; set; }
         bool pIN_PROMOCAO { get; set; }
+
+        int pTIPO_PRODUTO { get; set; }
         #endregion
 
         #region Propriedades
@@ -93,6 +96,18 @@ namespace RoofStockBackend.Database.Dados.Objetos
                 this.pIN_PROMOCAO = value;
             }
         }
+
+        public int TIPO_PRODUTO
+        {
+            get
+            {
+                return pTIPO_PRODUTO;
+            }
+            set
+            {
+                pTIPO_PRODUTO = value;
+            }
+        }
         #endregion
 
         #region Construtores
@@ -104,6 +119,7 @@ namespace RoofStockBackend.Database.Dados.Objetos
             this.TX_DESCRICAO = string.Empty;
             this.VALOR = 0.0f;
             this.IN_PROMOCAO = false;
+            this.TIPO_PRODUTO = (int)eTipoProduto.NaoAlcolico;
         }      
         #endregion
     }

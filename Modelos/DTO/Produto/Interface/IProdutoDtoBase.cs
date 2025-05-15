@@ -1,4 +1,4 @@
-﻿namespace RoofStockBackend.Modelos.DTO.Estoque.Produto.Interface
+﻿namespace RoofStockBackend.Modelos.DTO.Produto.Interface
 {
     public interface IProdutoDtoBase
     {
