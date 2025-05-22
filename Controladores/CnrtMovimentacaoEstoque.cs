@@ -1,25 +1,40 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using RoofStockBackend.Database.Dados.Objetos;
+using RoofStockBackend.Modelos.DTO.Movimentação;
+using RoofStockBackend.Modelos.DTO.Movimentação_Estoque;
 using RoofStockBackend.Services;
 using System;
+using System.Net.Mime;
 using System.Threading.Tasks;
 
 namespace RoofStockBackend.Controllers
 {
     [ApiController]
     [Tags("Movimentação Estoque")]
-    [Route("MovimentacaoEstoque")]
+    [Route("StockTransaction")]
+    [Authorize(AuthenticationSchemes = "Bearer")]
+    [Consumes(MediaTypeNames.Application.Json)]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     public class MovimentacaoEstoqueController : ControllerBase
     {
+        #region Propriedades Privadas
         private readonly SrvcMovimentacaoEstoque _movimentacaoService;
+        #endregion
 
+        #region Construtor
         public MovimentacaoEstoqueController(SrvcMovimentacaoEstoque movimentacaoService)
         {
             _movimentacaoService = movimentacaoService;
         }
+        #endregion
 
-        [HttpPost("Criar")]
-        public async Task<IActionResult> CriarMovimentacao([FromBody] MovimentacaoEstoque movimentacao)
+        #region Métodos HTTP
+        [HttpPost("Create")]
+        public async Task<IActionResult> CriarMovimentacao([FromBody] MovimentacaoEstoqueCriarDto movimentacao)
         {
             try
             {
@@ -32,30 +47,14 @@ namespace RoofStockBackend.Controllers
             {
                 return BadRequest($"Erro: {ex.Message}");
             }
-        }
+        }        
 
-        [HttpGet("ObterPorId/{id}")]
-        public async Task<IActionResult> ObterMovimentacaoPorId(long id)
+        [HttpGet("GetByStock")]
+        public async Task<IActionResult> ListarMovimentacoesPorEstoque(long id)
         {
             try
             {
-                var movimentacao = await _movimentacaoService.CarregarMovimentacaoPorIdAsync(id);
-                if (movimentacao != null)
-                    return Ok(movimentacao);
-                return NotFound("Movimentação não encontrada.");
-            }
-            catch (Exception ex)
-            {
-                return BadRequest($"Erro: {ex.Message}");
-            }
-        }
-
-        [HttpGet("ListarPorEstoque/{estoqueId}")]
-        public async Task<IActionResult> ListarMovimentacoesPorEstoque(long estoqueId)
-        {
-            try
-            {
-                var movimentacoes = await _movimentacaoService.ListarMovimentacoesPorEstoqueAsync(estoqueId);
+                var movimentacoes = await _movimentacaoService.ListarMovimentacoesPorEstoqueAsync(id);
                 if (movimentacoes != null)
                     return Ok(movimentacoes);
                 return NotFound("Nenhuma movimentação encontrada para o estoque.");
@@ -66,8 +65,8 @@ namespace RoofStockBackend.Controllers
             }
         }
 
-        [HttpPatch("Alterar")]
-        public async Task<IActionResult> AlterarMovimentacao([FromBody] MovimentacaoEstoque movimentacao)
+        [HttpPatch("Alter")]
+        public async Task<IActionResult> AlterarMovimentacao([FromBody] MovimentacaoEstoqueAtualizarDto movimentacao)
         {
             try
             {
@@ -82,7 +81,7 @@ namespace RoofStockBackend.Controllers
             }
         }
 
-        [HttpDelete("Excluir/{id}")]
+        [HttpDelete("Delete")]
         public async Task<IActionResult> ExcluirMovimentacao(long id)
         {
             try
@@ -97,5 +96,6 @@ namespace RoofStockBackend.Controllers
                 return BadRequest($"Erro: {ex.Message}");
             }
         }
+        #endregion        
     }
 }

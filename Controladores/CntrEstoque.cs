@@ -7,6 +7,7 @@ using System.Net.Mime;
 namespace RoofStockBackend.Controllers
 {
     [ApiController]
+    [Tags("Estoque")]
     [Route("Stock")]
     [Authorize(AuthenticationSchemes = "Bearer")]
     [Consumes(MediaTypeNames.Application.Json)]

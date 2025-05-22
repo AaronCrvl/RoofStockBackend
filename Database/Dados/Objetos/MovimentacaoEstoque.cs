@@ -2,6 +2,9 @@
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using RoofStockBackend.Modelos.DTO.Movimentação;
+using RoofStockBackend.Modelos.DTO.Movimentação_Estoque.Interface;
+using RoofStockBackend.Database.Dados.Enums;
 
 namespace RoofStockBackend.Database.Dados.Objetos
 {
@@ -12,7 +15,7 @@ namespace RoofStockBackend.Database.Dados.Objetos
         long pID_ESTOQUE { get; set; }
         long pID_USUARIO { get; set; }
         DateTime pDT_MOVIMENTACAO { get; set; }
-        bool pIN_ENTRADA { get; set; }
+        long pTIPO_MOVIMENTACAO { get; set; }
         bool pIN_PROCESSADO { get; set; }
         #endregion
 
@@ -72,15 +75,15 @@ namespace RoofStockBackend.Database.Dados.Objetos
         }
 
         [Required]
-        public bool IN_ENTRADA
+        public long TIPO_MOVIMENTACAO
         {
             get
             {
-                return this.pIN_ENTRADA;
+                return this.pTIPO_MOVIMENTACAO;
             }
             set
             {
-                this.pIN_ENTRADA = value;
+                this.pTIPO_MOVIMENTACAO = value;
             }
         }
 
@@ -104,10 +107,22 @@ namespace RoofStockBackend.Database.Dados.Objetos
             this.ID_ESTOQUE = -1;
             this.ID_USUARIO = -1;
             this.DT_MOVIMENTACAO = DateTime.Now;
-            this.IN_ENTRADA = false;
+            this.TIPO_MOVIMENTACAO = (long)eTipoMovimentacao.Entrada;
             this.IN_PROCESSADO = false;
-        }      
+        }
         #endregion
+
+        public static MovimentacaoEstoque ConvertDtoToBDObject(IMovimentacaoEstoqueDtoBase movimentacao)
+        {
+            return new MovimentacaoEstoque
+            {
+                ID_USUARIO = movimentacao.idUsuario == null ? -1 : (long)movimentacao.idUsuario,
+                DT_MOVIMENTACAO = movimentacao.dataMovimentacao,
+                ID_ESTOQUE = movimentacao.idEstoque,
+                IN_PROCESSADO = movimentacao.processado,
+                TIPO_MOVIMENTACAO = movimentacao.tipoMovimentacao == null ? -1 : (long)movimentacao.tipoMovimentacao
+            };
+        }
     }
 }
 // !_!

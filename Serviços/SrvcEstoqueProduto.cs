@@ -3,12 +3,16 @@ using RoofStockBackend.Database.Dados.Objetos;
 using RoofStockBackend.Repositorios;
 using FluentValidation;
 using RoofStockBackend.Modelos.DTO.Produto;
+using Microsoft.EntityFrameworkCore;
+using RoofStockBackend.Database.Dados.Enums;
+using System.Text.RegularExpressions;
 
 namespace RoofStockBackend.Services
 {
     public class SrvcEstoqueProduto
     {
         #region Propriedades Privadas
+        private readonly AppDbContext _context;
         private readonly Repository<EstoqueProduto> _estoqueProdutoRepository;
         private readonly Repository<Produto> _produtoRepository;
         private readonly Repository<MovimentacaoEstoque> _movimentacaoEstoqueRepository;
@@ -19,11 +23,11 @@ namespace RoofStockBackend.Services
         #region Construtor
         public SrvcEstoqueProduto(AppDbContext context, IValidator<Produto> produtoValidator)
         {
+            _context = context;
             _estoqueProdutoRepository = new Repository<EstoqueProduto>(context);
             _produtoRepository = new Repository<Produto>(context);
             _movimentacaoEstoqueRepository = new Repository<MovimentacaoEstoque>(context);
             _marcaRepository = new Repository<Marca>(context);
-
             _produtoValidator = produtoValidator;
         }
         #endregion
@@ -66,13 +70,15 @@ namespace RoofStockBackend.Services
                 });
             }
             catch (Exception ex)
-            {
-                throw ex;
+            {                
+                Console.WriteLine($"Erro ao carregar produtos: {ex.Message}");
+                throw;
             }
         }
 
         public async Task<bool> CadastrarProdutoAsync(ProdutoCadastrarDto produtoASerCadastrado)
         {
+            using var t = await _context.Database.BeginTransactionAsync();
             try
             {
                 var produtoBD = new Produto
@@ -98,20 +104,24 @@ namespace RoofStockBackend.Services
                     DT_MOVIMENTACAO = DateTime.Now,
                     ID_ESTOQUE = produtoASerCadastrado.idEstoque,
                     ID_USUARIO = 0,
-                    IN_ENTRADA = true,
+                    TIPO_MOVIMENTACAO = (long)eTipoMovimentacao.Entrada,
                     IN_PROCESSADO = false
                 });
 
+                await t.CommitAsync();
                 return true;
             }
             catch (Exception ex)
             {
-                throw ex;
+                await t.RollbackAsync();
+                Console.WriteLine($"Erro ao cadastrar produto: {ex.Message}");
+                throw;
             }
         }
 
         public async Task<ProdutoDto> AlterarProdutoAsync(int productId, ProdutoAtualizarDto produtoASerAtualizado)
         {
+            using var t = await _context.Database.BeginTransactionAsync();
             try
             {
                 var produtoBD = new Produto
@@ -126,6 +136,7 @@ namespace RoofStockBackend.Services
                 await _produtoRepository.UpdateAsync(produtoBD);
 
                 var marca = await _marcaRepository.GetByIdAsync(produtoASerAtualizado.idMarca);
+                await t.CommitAsync();
                 return new ProdutoDto
                 {
                     idProduto = produtoASerAtualizado.idProduto,
@@ -138,23 +149,32 @@ namespace RoofStockBackend.Services
             }
             catch (Exception ex)
             {
-                throw ex;
+                await t.RollbackAsync();
+                Console.WriteLine($"Erro ao alterar produto: {ex.Message}");
+                throw;
             }
         }
 
         public async Task<bool> ExcluirProdutoAsync(int idProduto)
         {
+            using var t = await _context.Database.BeginTransactionAsync();
             try
             {
                 if (idProduto <= 0) return false;
                 await _produtoRepository.DeleteAsync(idProduto);
+                await t.CommitAsync();
                 return true;
             }
             catch (Exception ex)
             {
-                throw ex;
+                await t.RollbackAsync();
+                Console.WriteLine($"Erro ao deletar produto: {ex.Message}");
+                throw;
             }
-        }
+        }        
+        #endregion
+
+        #region Métodos Privados
         private async Task ValidarProduto(Produto produtoBD)
         {
             var validationResult = await _produtoValidator.ValidateAsync(produtoBD);

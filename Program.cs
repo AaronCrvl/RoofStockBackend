@@ -1,10 +1,14 @@
+using FluentValidation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using RoofStockBackend.Contextos;
+using RoofStockBackend.Database.Dados.Objetos;
+using RoofStockBackend.Modelos.DTO.Movimentação_Estoque;
 using RoofStockBackend.Services;
 using RoofStockBackend.Serviços;
+using RoofStockBackend.Validadores;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -27,6 +31,11 @@ builder.Services.AddScoped<SrvcMarca>();
 builder.Services.AddScoped<SrvcEmpresa>();
 builder.Services.AddScoped<SrvcFechamentoEstoque>();
 builder.Services.AddScoped<SrvcMovimentacaoEstoque>();
+
+builder.Services.AddScoped<IValidator<Produto>, VldrProduto>();
+builder.Services.AddScoped<IValidator<Estoque>, VldrEstoque>();
+builder.Services.AddScoped<IValidator<MovimentacaoEstoque>, VldrMovimentacaoEstoque>();
+builder.Services.AddScoped<IValidator<ItemMovimentacaoEstoque>, VldrItemMovimentacaoEstoque>();
 
 builder.Services.AddEndpointsApiExplorer();
 //builder.Services.AddSwaggerGen(c =>
