@@ -1,21 +1,25 @@
 ﻿using RoofStockBackend.Contextos;
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RoofStockBackend.Database.Dados.Objetos
 {
     public class ItemFechamentoEstoque
     {
         #region Propriedades Privadas
-        long pID_FECHAMENTO { get; set; }
-        long pID_ESTOQUE { get; set; }
-        DateTime pDT_FECHAMENTO { get; set; }
-        bool pIN_ERRO { get; set; }
+        int pID_FECHAMENTO { get; set; }        
+        int pID_PRODUTO { get; set; }
+        int pQN_FINAL { get; set; }
+        int pQN_QUEBRAS { get; set; }
+        int pQN_CORTESIAS { get; set; }
+        bool pIN_DIVERGENCIA { get; set; }
+        int pQN_DIVERGENCIA { get; set; }
         #endregion
 
         #region Propriedades
-        [Key]
-        public long ID_FECHAMENTO
+        [ForeignKey("FechamentoEstoque")]
+        public int ID_FECHAMENTO
         {
             get
             {
@@ -26,41 +30,71 @@ namespace RoofStockBackend.Database.Dados.Objetos
                 this.pID_FECHAMENTO = value;
             }
         }
-
-        [Required]
-        public long ID_ESTOQUE
+        [Required]        
+        public int ID_PRODUTO
         {
             get
             {
-                return this.pID_ESTOQUE;
+                return this.pID_PRODUTO;
             }
             set
             {
-                this.pID_ESTOQUE = value;
+                this.pID_PRODUTO = value;
             }
         }
-
-        public DateTime DT_FECHAMENTO
+        public int QN_FINAL
         {
             get
             {
-                return this.pDT_FECHAMENTO;
+                return this.pQN_FINAL;
             }
             set
             {
-                this.pDT_FECHAMENTO = value;
+                this.pQN_FINAL = value;
             }
         }
-
-        public bool IN_ERRO
+        public int QN_QUEBRAS
         {
             get
             {
-                return this.pIN_ERRO;
+                return this.pQN_QUEBRAS;
             }
             set
             {
-                this.pIN_ERRO = value;
+                this.pQN_QUEBRAS = value;
+            }
+        }
+        public int QN_CORTESIAS
+        {
+            get
+            {
+                return this.pQN_CORTESIAS;
+            }
+            set
+            {
+                this.pQN_CORTESIAS = value;
+            }
+        }
+        public int QN_DIVERGENCIA
+        {
+            get
+            {
+                return this.pQN_DIVERGENCIA;
+            }
+            set
+            {
+                this.pQN_DIVERGENCIA = value;
+            }
+        }
+        public bool IN_DIVERGENCIA
+        {
+            get
+            {
+                return this.pIN_DIVERGENCIA;
+            }
+            set
+            {
+                this.pIN_DIVERGENCIA = value;
             }
         }
         #endregion
@@ -68,25 +102,15 @@ namespace RoofStockBackend.Database.Dados.Objetos
         #region Construtores
         public ItemFechamentoEstoque()
         {
-            this.ID_FECHAMENTO = -1;
-            this.ID_ESTOQUE = -1;
-            this.DT_FECHAMENTO = DateTime.MinValue;
-            this.IN_ERRO = false;
-        }      
+            this.ID_FECHAMENTO = -1;            
+            this.ID_PRODUTO = -1;            
+            this.IN_DIVERGENCIA = false;
+            this.QN_CORTESIAS = -1;
+            this.QN_DIVERGENCIA = -1;
+            this.QN_FINAL = -1;
+            this.QN_QUEBRAS = -1;
+
+        }
         #endregion
     }
 }
-// !_!
-
-/*
- {
-        idProduto: 0,
-        nomeProduto: "Teste 01",
-        quantidadeFinal: 0,
-        divergencia: false,
-        quantidadeDivergencia: 0,
-        quebrasContabilizadas: 0,
-        cortesias: 0,
-      },
-    ],
- */

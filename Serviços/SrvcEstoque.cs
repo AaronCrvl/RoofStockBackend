@@ -242,7 +242,7 @@ namespace RoofStockBackend.Services
             if (!validationResult.IsValid)
             {
                 var errors = string.Join("; ", validationResult.Errors.Select(e => e.ErrorMessage));
-                throw new Exception($"Erro de validação: {errors}");
+                throw new InvalidDataException($"Erro de validação: {errors}");
             }
         }
         #endregion

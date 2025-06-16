@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RoofStockBackend")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b64ef69b2c62a05c0fc10a377515f83418deb140")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e61044075c95b4b0ec2864b09533d4c5bbcfe3b4")]
 [assembly: System.Reflection.AssemblyProductAttribute("RoofStockBackend")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RoofStockBackend")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,4 +1,6 @@
 ﻿using RoofStockBackend.Contextos;
+using RoofStockBackend.Modelos.DTO.Fechamento_Estoque;
+using RoofStockBackend.Modelos.DTO.Movimentação_Estoque.Interface;
 using System;
 using System.ComponentModel.DataAnnotations;
 
@@ -7,15 +9,17 @@ namespace RoofStockBackend.Database.Dados.Objetos
     public class FechamentoEstoque
     {
         #region Propriedades Privadas
-        long pID_FECHAMENTO { get; set; }
-        long pID_ESTOQUE { get; set; }
+        int pID_FECHAMENTO { get; set; }
+        int pID_ESTOQUE { get; set; }
         DateTime pDT_FECHAMENTO { get; set; }
+        DateTime pDT_INICIO_PERIODO { get; set; }
+        DateTime pDT_FINAL_PERIODO { get; set; }
         bool pIN_ERRO { get; set; }
         #endregion
 
         #region Propriedades
         [Key]
-        public long ID_FECHAMENTO
+        public int ID_FECHAMENTO
         {
             get
             {
@@ -28,7 +32,7 @@ namespace RoofStockBackend.Database.Dados.Objetos
         }
 
         [Required]
-        public long ID_ESTOQUE
+        public int ID_ESTOQUE
         {
             get
             {
@@ -49,6 +53,30 @@ namespace RoofStockBackend.Database.Dados.Objetos
             set
             {
                 this.pDT_FECHAMENTO = value;
+            }
+        }
+
+        public DateTime DT_INICIO_PERIODO
+        {
+            get
+            {
+                return this.pDT_INICIO_PERIODO;
+            }
+            set
+            {
+                this.pDT_INICIO_PERIODO = value;
+            }
+        }
+
+        public DateTime DT_FINAL_PERIODO
+        {
+            get
+            {
+                return this.pDT_FINAL_PERIODO;
+            }
+            set
+            {
+                this.pDT_FINAL_PERIODO = value;
             }
         }
 
@@ -73,8 +101,20 @@ namespace RoofStockBackend.Database.Dados.Objetos
             this.DT_FECHAMENTO = DateTime.MinValue;
             this.IN_ERRO = false;
         }
-        
+
         #endregion
+        public static FechamentoEstoque ConvertDtoToObj(IFechamentoEstoqueDtoBase fechamentoEstoqueDto)
+        {
+            return new FechamentoEstoque
+            {
+                ID_FECHAMENTO = (int)(fechamentoEstoqueDto.idFechamentoEstoque == null ? -1 : fechamentoEstoqueDto.idFechamentoEstoque),
+                ID_ESTOQUE = (int)(fechamentoEstoqueDto.idEstoque == null ? -1 : fechamentoEstoqueDto.idEstoque),
+                DT_FECHAMENTO = fechamentoEstoqueDto.dataFechamento,
+                IN_ERRO = fechamentoEstoqueDto.erro,
+                DT_INICIO_PERIODO = fechamentoEstoqueDto.dataInicioPeriodo,
+                DT_FINAL_PERIODO = fechamentoEstoqueDto.dataFinalPeriodo,
+            };
+        }
     }
 }
 // !_!

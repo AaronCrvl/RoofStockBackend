@@ -1,11 +1,9 @@
-﻿using RoofStockBackend.Contextos;
-using RoofStockBackend.Database.Dados.Objetos;
-using RoofStockBackend.Repositorios;
-using FluentValidation;
-using RoofStockBackend.Modelos.DTO.Produto;
-using Microsoft.EntityFrameworkCore;
+﻿using FluentValidation;
+using RoofStockBackend.Contextos;
 using RoofStockBackend.Database.Dados.Enums;
-using System.Text.RegularExpressions;
+using RoofStockBackend.Database.Dados.Objetos;
+using RoofStockBackend.Modelos.DTO.Produto;
+using RoofStockBackend.Repositorios;
 
 namespace RoofStockBackend.Services
 {
@@ -171,7 +169,25 @@ namespace RoofStockBackend.Services
                 Console.WriteLine($"Erro ao deletar produto: {ex.Message}");
                 throw;
             }
-        }        
+        }
+
+        public async Task<string> ObterNomeProduto(int idProduto)
+        {
+            try
+            {
+                var nome = string.Empty;
+                nome = (await _produtoRepository.GetByIdAsync(idProduto)).TX_NOME;
+                if (string.IsNullOrEmpty(nome))
+                    throw new Exception("Produto não encontrado.");
+
+                return nome;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Erro ao carregar nome do produto: {ex.Message}");
+                throw;
+            }
+        }
         #endregion
 
         #region Métodos Privados
@@ -184,6 +200,6 @@ namespace RoofStockBackend.Services
                 throw new Exception($"Erro de validação: {errors}");
             }
         }
-        #endregion
+        #endregion                        
     }
 }

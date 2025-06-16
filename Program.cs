@@ -36,6 +36,8 @@ builder.Services.AddScoped<IValidator<Produto>, VldrProduto>();
 builder.Services.AddScoped<IValidator<Estoque>, VldrEstoque>();
 builder.Services.AddScoped<IValidator<MovimentacaoEstoque>, VldrMovimentacaoEstoque>();
 builder.Services.AddScoped<IValidator<ItemMovimentacaoEstoque>, VldrItemMovimentacaoEstoque>();
+builder.Services.AddScoped<IValidator<FechamentoEstoque>, VldrFechamentoEstoque>();
+builder.Services.AddScoped<IValidator<ItemFechamentoEstoque>, VldrItemFechamentoEstoque>();
 
 builder.Services.AddEndpointsApiExplorer();
 //builder.Services.AddSwaggerGen(c =>

@@ -1,6 +1,6 @@
 ﻿namespace RoofStockBackend.Modelos.DTO.Movimentação_Estoque
 {
-    public class ItemMovimentacaoEstoqueDto
+    public class ItemMovimentacaoEstoqueDto         
     {
         public int idMovimentacao { get; set; }
         public int idItemMovimentacao { get; set; }

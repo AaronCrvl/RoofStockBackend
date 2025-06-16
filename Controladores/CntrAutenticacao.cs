@@ -9,10 +9,10 @@ namespace RoofStockBackend.Controladores
     [ApiController]
     [Tags("Autenticacao")]
     [Route("Autenticacao")]
-    public class CnrtAutenticacao : ControllerBase
+    public class CntrAutenticacao : ControllerBase
     {
         SrvcAutenticacao _srvc;
-        public CnrtAutenticacao(SrvcAutenticacao autenticaService)
+        public CntrAutenticacao(SrvcAutenticacao autenticaService)
         {
             _srvc = autenticaService;
         }

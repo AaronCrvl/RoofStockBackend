@@ -1,13 +1,22 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using RoofStockBackend.Database.Dados.Objetos;
+using RoofStockBackend.Modelos.DTO.Fechamento_Estoque;
 using RoofStockBackend.Services;
+using System.Net.Mime;
 using System.Threading.Tasks;
 
 namespace RoofStockBackend.Controllers
-{    
+{
     [ApiController]
     [Tags("Fechamento Estoque")]
-    [Route("FechamentoEstoque")]
+    [Route("StockClosure")]
+    [Authorize(AuthenticationSchemes = "Bearer")]
+    [Consumes(MediaTypeNames.Application.Json)]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     public class CntrlFechamentoEstoque : ControllerBase
     {
         private readonly SrvcFechamentoEstoque _fechamentoEstoqueService;
@@ -17,8 +26,8 @@ namespace RoofStockBackend.Controllers
             _fechamentoEstoqueService = fechamentoEstoqueService;
         }
 
-        [HttpPost("Criar")]
-        public async Task<IActionResult> CriarFechamentoEstoque([FromBody] FechamentoEstoque fechamentoEstoque)
+        [HttpPost("Create")]
+        public async Task<IActionResult> CriarFechamentoEstoque([FromBody] FechamentoEstoqueCriarDto fechamentoEstoque)
         {
             if (fechamentoEstoque == null)
                 return BadRequest("Fechamento de estoque inválido.");
@@ -29,7 +38,7 @@ namespace RoofStockBackend.Controllers
             return BadRequest("Erro ao criar fechamento de estoque.");
         }
 
-        [HttpGet("Obter/{id}")]
+        [HttpGet("GetById")]
         public async Task<IActionResult> ObterFechamentoEstoque(int id)
         {
             var fechamentoEstoque = await _fechamentoEstoqueService.CarregarFechamentoEstoquePorIdAsync(id);
@@ -38,39 +47,30 @@ namespace RoofStockBackend.Controllers
             return NotFound("Fechamento de estoque não encontrado.");
         }
 
-        [HttpGet("ObterPorEstoque/{idEstoque}")]
-        public async Task<IActionResult> ObterFechamentoPorEstoque(int idEstoque)
+        [HttpGet("GetByStock")]
+        public async Task<IActionResult> ObterFechamentoPorEstoque(int stockId)
         {
-            var fechamentoEstoque = await _fechamentoEstoqueService.CarregarFechamentoPorEstoqueAsync(idEstoque);
+            var fechamentoEstoque = await _fechamentoEstoqueService.CarregarFechamentoPorEstoqueAsync(stockId);
             if (fechamentoEstoque != null)
                 return Ok(fechamentoEstoque);
             return NotFound("Fechamento de estoque não encontrado para o estoque informado.");
         }
 
-        [HttpPatch("Alterar")]
-        public async Task<IActionResult> AlterarFechamentoEstoque([FromBody] FechamentoEstoque fechamentoEstoque)
-        {
+        [HttpPatch("Alter")]
+        public async Task<IActionResult> AlterarFechamentoEstoque([FromBody] FechamentoEstoqueAtualizarDto fechamentoEstoque)
+        {           
             var resultado = await _fechamentoEstoqueService.AlterarFechamentoEstoqueAsync(fechamentoEstoque);
             if (resultado)
                 return Ok("Fechamento de estoque alterado com sucesso.");
             return BadRequest("Erro ao alterar fechamento de estoque.");
         }
 
-        [HttpDelete("Excluir/{id}")]
+        [HttpDelete("Delete")]
         public async Task<IActionResult> ExcluirFechamentoEstoque(int id)
         {
             var resultado = await _fechamentoEstoqueService.ExcluirFechamentoEstoqueAsync(id);
             if (resultado)
                 return Ok("Fechamento de estoque excluído com sucesso.");
-            return NotFound("Fechamento de estoque não encontrado.");
-        }
-
-        [HttpPatch("Desativar/{id}")]
-        public async Task<IActionResult> DesativarFechamentoEstoque(int id)
-        {
-            var resultado = await _fechamentoEstoqueService.DesativarFechamentoEstoqueAsync(id);
-            if (resultado)
-                return Ok("Fechamento de estoque desativado com sucesso.");
             return NotFound("Fechamento de estoque não encontrado.");
         }
     }

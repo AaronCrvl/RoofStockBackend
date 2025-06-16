@@ -93,3 +93,6 @@ C:\Users\aaron\source\repos\RoofStockBackend\obj\Debug\net8.0\RoofStockBackend.g
 C:\Users\aaron\source\repos\RoofStockBackend\obj\Debug\net8.0\ref\RoofStockBackend.dll
 C:\Users\aaron\source\repos\RoofStockBackend\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\aaron\source\repos\RoofStockBackend\bin\Debug\net8.0\FluentValidation.dll
+C:\Users\aaron\source\repos\RoofStockBackend\bin\Debug\net8.0\Serilog.dll
+C:\Users\aaron\source\repos\RoofStockBackend\bin\Debug\net8.0\Serilog.Sinks.Console.dll
+C:\Users\aaron\source\repos\RoofStockBackend\bin\Debug\net8.0\Serilog.Sinks.File.dll

@@ -1,0 +1,3 @@
+﻿-- Alterações FechamentoEstoque 
+ALTER TABLE FechamentoEstoque ADD DT_INICIO_PERIODO DATETIME NOT NULL;
+ALTER TABLE FechamentoEstoque ADD DT_FINAL_PERIODO DATETIME NOT NULL;
