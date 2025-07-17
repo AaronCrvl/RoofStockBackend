@@ -7,8 +7,8 @@ using System.Net.Mime;
 namespace RoofStockBackend.Controladores
 {
     [ApiController]
-    [Tags("Autenticacao")]
-    [Route("Autenticacao")]
+    [Tags("Auth")]
+    [Route("Auth")]
     public class CntrAutenticacao : ControllerBase
     {
         SrvcAutenticacao _srvc;
@@ -17,11 +17,11 @@ namespace RoofStockBackend.Controladores
             _srvc = autenticaService;
         }
 
-        [HttpPost("Autenticar")]        
+        [HttpPost("Authenticate")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> Autenticar([FromBody] LoginDto loginDto)
+        public async Task<IActionResult> Authenticate([FromBody] LoginDto loginDto)
         {
             try
             {
@@ -30,12 +30,12 @@ namespace RoofStockBackend.Controladores
                 if (string.IsNullOrEmpty(token))
                     return Unauthorized();
 
-                return Ok(new { token });
+                return Ok(new { token, admin = false });
             }
             catch (Exception e)
             {
                 return BadRequest($"Mensagem: {e.Message} StackTrace: {e.StackTrace}");
             }
-        }
+        }       
     }
 }

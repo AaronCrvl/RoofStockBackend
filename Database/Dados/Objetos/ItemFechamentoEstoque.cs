@@ -18,6 +18,8 @@ namespace RoofStockBackend.Database.Dados.Objetos
         #endregion
 
         #region Propriedades
+        [Key]
+        public int ID { get; set; }
         [ForeignKey("FechamentoEstoque")]
         public int ID_FECHAMENTO
         {

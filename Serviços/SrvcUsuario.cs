@@ -11,12 +11,16 @@ namespace RoofStockBackend.Services
     {
         #region Propriedades Privadas
         private Repository<Usuario> _usuarioRepository;
+        private Repository<Funcionario> _funcionarioRepository;
+        private Repository<Empresa> _empresaRepository;
         #endregion
 
         #region Construtor
         public SrvcUsuario(AppDbContext context)
         {
             _usuarioRepository = new Repository<Usuario>(context);
+            _funcionarioRepository = new Repository<Funcionario>(context);
+            _empresaRepository = new Repository<Empresa>(context);
         }
         #endregion
 
@@ -26,9 +30,26 @@ namespace RoofStockBackend.Services
             try
             {
                 if (usuarioCriar == null) throw new ArgumentNullException(nameof(usuarioCriar));
+
+                var empresa = (await _empresaRepository.GetAllAsync()).Where(emp => emp.TX_CNPJ == usuarioCriar.cnpjEmpresa).FirstOrDefault();
+                if (empresa == null) throw new Exception("Empresa não encontrado.");
+
+                var funcionario = new Funcionario
+                {
+                    DT_ENTRADA = DateTime.Now,
+                    ID_CARGO = usuarioCriar.cargo,
+                    ID_EMPRESA = empresa.ID_EMPRESA,
+                    TX_CPF = usuarioCriar.cpf,
+                    TX_EMAIL = usuarioCriar.email,
+                    TX_NOME = usuarioCriar.nomePessoa,
+                    TX_TELEFONE = usuarioCriar.telefone,
+
+                };
+                await _funcionarioRepository.AddAsync(funcionario);
+
                 var usuario = new Usuario
                 {
-                    ID_FUNCIONARIO = usuarioCriar.idFuncionario,
+                    ID_FUNCIONARIO = (await _funcionarioRepository.GetAllAsync()).Where(func => func.TX_CPF == usuarioCriar.cpf).FirstOrDefault().ID_FUNCIONARIO,
                     TX_LOGIN = usuarioCriar.login,
                     TX_SENHA = usuarioCriar.senha,
                     TX_EMAIL = usuarioCriar.email,
@@ -37,14 +58,14 @@ namespace RoofStockBackend.Services
                     DT_CRIACAO = DateTime.Now
 
                 };
-
                 await _usuarioRepository.AddAsync(usuario);
+
                 return true;
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Erro ao criar usuário: {ex.Message} InnerException: {ex.InnerException}");
-                return false;
+                throw;
             }
         }
 

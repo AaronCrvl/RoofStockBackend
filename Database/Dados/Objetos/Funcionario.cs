@@ -7,9 +7,9 @@ namespace RoofStockBackend.Database.Dados.Objetos
     public class Funcionario
     {
         #region Propriedades Privadas        
-        long pID_FUNCIONARIO { get; set; }
-        long pID_EMPRESA { get; set; }
-        long pID_CARGO { get; set; }
+        int pID_FUNCIONARIO { get; set; }
+        int pID_EMPRESA { get; set; }
+        int pID_CARGO { get; set; }
         string pTX_NOME { get; set; }
         string pTX_CPF { get; set; }
         string pTX_EMAIL { get; set; }
@@ -19,7 +19,7 @@ namespace RoofStockBackend.Database.Dados.Objetos
 
         #region Propriedades
         [Key]
-        public long ID_FUNCIONARIO
+        public int ID_FUNCIONARIO
         {
             get
             {
@@ -32,7 +32,7 @@ namespace RoofStockBackend.Database.Dados.Objetos
         }
         [Required]
         [ForeignKey("Empresa")]
-        public long ID_EMPRESA
+        public int ID_EMPRESA
         {
             get
             {
@@ -45,7 +45,7 @@ namespace RoofStockBackend.Database.Dados.Objetos
         }
         [Required]
         [ForeignKey("Cargo")]
-        public long ID_CARGO
+        public int ID_CARGO
         {
             get
             {

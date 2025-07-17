@@ -12,13 +12,20 @@ namespace RoofStockBackend.Serviços
 {
     public class SrvcAutenticacao
     {
+        #region Propriedades Privadas
+        private readonly AppDbContext _context;
         private Repository<Usuario> _usuarioRepository;
+        #endregion
 
+        #region Construtores
         public SrvcAutenticacao(AppDbContext context)
         {
+            _context = context;
             _usuarioRepository = new Repository<Usuario>(context);
         }
+        #endregion
 
+        #region Métodos Públicos
         public async Task<string> AutenticarDadosToken(LoginDto loginDto)
         {
             var usuarios = await _usuarioRepository.GetAllAsync();
@@ -28,7 +35,9 @@ namespace RoofStockBackend.Serviços
 
             return GerarTokenJWT(loginDto);
         }
+        #endregion
 
+        #region Métodos Privados
         private static string GerarTokenJWT(LoginDto loginDto)
         {
             var claims = new[]
@@ -48,5 +57,6 @@ namespace RoofStockBackend.Serviços
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
+        #endregion        
     }
 }

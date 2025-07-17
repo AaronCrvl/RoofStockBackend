@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore;
 
 namespace RoofStockBackend.Database.Dados.Objetos
 {
@@ -17,7 +18,10 @@ namespace RoofStockBackend.Database.Dados.Objetos
         bool pIN_ATIVO { get; set; }
         #endregion
 
-        #region Propriedades
+        #region Propriedades        
+        [Key]
+        public int ID { get; set; }
+
         [Required]
         [ForeignKey("Usuario")]
         public int ID_USUARIO

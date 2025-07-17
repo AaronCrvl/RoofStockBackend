@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|c:\\users\\aaron\\source\\repos\\roofstockbackend\\servi\u00E7os\\srvcfechamentoestoque.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|solutionrelative:servi\u00E7os\\srvcfechamentoestoque.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|c:\\users\\aaron\\source\\repos\\roofstockbackend\\controladores\\cntrusuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|solutionrelative:controladores\\cntrusuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|c:\\users\\aaron\\source\\repos\\roofstockbackend\\validadores\\vldrfechamentoestoque.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|solutionrelative:validadores\\vldrfechamentoestoque.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|c:\\users\\aaron\\source\\repos\\roofstockbackend\\servi\u00E7os\\srvcusuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|solutionrelative:servi\u00E7os\\srvcusuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|c:\\users\\aaron\\source\\repos\\roofstockbackend\\validadores\\vldritemfechamentoestoque.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|solutionrelative:validadores\\vldritemfechamentoestoque.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|c:\\users\\aaron\\source\\repos\\roofstockbackend\\modelos\\dto\\usuario\\usuariocriardto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4915900-7946-4E65-A7E2-B34336439BB4}|RoofStockBackend.csproj|solutionrelative:modelos\\dto\\usuario\\usuariocriardto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 1360,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,41 +34,41 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "SrvcFechamentoEstoque.cs",
-              "DocumentMoniker": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Servi\u00E7os\\SrvcFechamentoEstoque.cs",
-              "RelativeDocumentMoniker": "Servi\u00E7os\\SrvcFechamentoEstoque.cs",
-              "ToolTip": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Servi\u00E7os\\SrvcFechamentoEstoque.cs",
-              "RelativeToolTip": "Servi\u00E7os\\SrvcFechamentoEstoque.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAKcAAAAmAAAA",
+              "DocumentIndex": 2,
+              "Title": "UsuarioCriarDto.cs",
+              "DocumentMoniker": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Modelos\\DTO\\Usuario\\UsuarioCriarDto.cs",
+              "RelativeDocumentMoniker": "Modelos\\DTO\\Usuario\\UsuarioCriarDto.cs",
+              "ToolTip": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Modelos\\DTO\\Usuario\\UsuarioCriarDto.cs",
+              "RelativeToolTip": "Modelos\\DTO\\Usuario\\UsuarioCriarDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAA0AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-16T14:24:20.36Z",
+              "WhenOpened": "2025-07-17T18:33:52.818Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "VldrFechamentoEstoque.cs",
-              "DocumentMoniker": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Validadores\\VldrFechamentoEstoque.cs",
-              "RelativeDocumentMoniker": "Validadores\\VldrFechamentoEstoque.cs",
-              "ToolTip": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Validadores\\VldrFechamentoEstoque.cs",
-              "RelativeToolTip": "Validadores\\VldrFechamentoEstoque.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAbAAAA",
+              "Title": "SrvcUsuario.cs",
+              "DocumentMoniker": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Servi\u00E7os\\SrvcUsuario.cs",
+              "RelativeDocumentMoniker": "Servi\u00E7os\\SrvcUsuario.cs",
+              "ToolTip": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Servi\u00E7os\\SrvcUsuario.cs",
+              "RelativeToolTip": "Servi\u00E7os\\SrvcUsuario.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACoAAAAyAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-16T14:19:25.794Z",
+              "WhenOpened": "2025-07-17T18:31:20.154Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "VldrItemFechamentoEstoque.cs",
-              "DocumentMoniker": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Validadores\\VldrItemFechamentoEstoque.cs",
-              "RelativeDocumentMoniker": "Validadores\\VldrItemFechamentoEstoque.cs",
-              "ToolTip": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Validadores\\VldrItemFechamentoEstoque.cs",
-              "RelativeToolTip": "Validadores\\VldrItemFechamentoEstoque.cs",
-              "ViewState": "AQIAAAEAAAAAAAAAAAAAAAsAAAAuAAAA",
+              "DocumentIndex": 0,
+              "Title": "CntrUsuario.cs",
+              "DocumentMoniker": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Controladores\\CntrUsuario.cs",
+              "RelativeDocumentMoniker": "Controladores\\CntrUsuario.cs",
+              "ToolTip": "C:\\Users\\aaron\\source\\repos\\RoofStockBackend\\Controladores\\CntrUsuario.cs",
+              "RelativeToolTip": "Controladores\\CntrUsuario.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEYAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-16T14:19:08.567Z",
+              "WhenOpened": "2025-07-17T13:57:40.646Z",
               "EditorCaption": ""
             }
           ]

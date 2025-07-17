@@ -9,7 +9,12 @@ namespace RoofStockBackend.Controllers
 {
     [ApiController]
     [Tags("Usuario")]
-    [Route("Usuario")]
+    [Route("User")]
+    [Consumes(MediaTypeNames.Application.Json)]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     public class CntrUsuario : ControllerBase
     {
         #region Propriedades Privadas
@@ -25,12 +30,7 @@ namespace RoofStockBackend.Controllers
 
         #region Métodos HTTP
 
-        [HttpGet("ObterUsuario/{id}")]
-        [Consumes(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [HttpGet("ObterUsuario/{id}")]    
         [Authorize(AuthenticationSchemes = "Bearer")]
         public async Task<IActionResult> ObterUsuario(int id)
         {
@@ -49,11 +49,6 @@ namespace RoofStockBackend.Controllers
         }
 
         [HttpGet("ObterUsuarioPorUsername/{username}")]
-        [Consumes(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [Authorize(AuthenticationSchemes = "Bearer")]
         public async Task<IActionResult> ObterUsuario(string username)
         {
@@ -71,17 +66,16 @@ namespace RoofStockBackend.Controllers
             }
         }
 
-        [HttpPost("CriarUsuario")]
-        [Consumes(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        [Authorize(AuthenticationSchemes = "Bearer")]
-        public async Task<IActionResult> CriarUsuario([FromBody] UsuarioCriarDto novoUsuario)
+        [HttpPost("Create")]       
+        public async Task<IActionResult> Create([FromBody] UsuarioCriarDto novoUsuario)
         {
             try
-            {                
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
                 var sucesso = await _usuarioService.CriarUsuarioAsync(novoUsuario);
                 if (sucesso)
                     return Ok(novoUsuario);
@@ -94,12 +88,7 @@ namespace RoofStockBackend.Controllers
             }
         }
 
-        [HttpPost("EditarUsuario/{id}")]
-        [Consumes(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [HttpPost("EditarUsuario/{id}")]       
         [Authorize(AuthenticationSchemes = "Bearer")]
         public async Task<IActionResult> EditarUsuario(int id, [FromBody] UsuarioAtualizarDto usuarioaAtualizar)
         {
