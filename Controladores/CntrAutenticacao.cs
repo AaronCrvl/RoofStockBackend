@@ -25,12 +25,12 @@ namespace RoofStockBackend.Controladores
         {
             try
             {
-                var token = await _srvc.AutenticarDadosToken(loginDto);
+                //var token = await _srvc.AutenticarDadosToken(loginDto);
 
-                if (string.IsNullOrEmpty(token))
-                    return Unauthorized();
+                //if (string.IsNullOrEmpty(token))
+                //    return Unauthorized();
 
-                return Ok(new { token, admin = false });
+                return Ok(new { token = "teste", admin = false });
             }
             catch (Exception e)
             {

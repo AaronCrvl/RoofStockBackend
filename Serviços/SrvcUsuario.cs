@@ -1,7 +1,9 @@
-﻿using RoofStockBackend.Contextos;
+﻿using Microsoft.EntityFrameworkCore;
+using RoofStockBackend.Contextos;
 using RoofStockBackend.Database.Dados.Objetos;
 using RoofStockBackend.Modelos.DTO.Usuario;
 using RoofStockBackend.Repositorios;
+using RoofStockBackend.Sessão;
 using System;
 using System.Threading.Tasks;
 
@@ -10,6 +12,7 @@ namespace RoofStockBackend.Services
     public class SrvcUsuario
     {
         #region Propriedades Privadas
+        private readonly AppDbContext _context;
         private Repository<Usuario> _usuarioRepository;
         private Repository<Funcionario> _funcionarioRepository;
         private Repository<Empresa> _empresaRepository;
@@ -18,6 +21,7 @@ namespace RoofStockBackend.Services
         #region Construtor
         public SrvcUsuario(AppDbContext context)
         {
+            _context = context;
             _usuarioRepository = new Repository<Usuario>(context);
             _funcionarioRepository = new Repository<Funcionario>(context);
             _empresaRepository = new Repository<Empresa>(context);
@@ -118,26 +122,37 @@ namespace RoofStockBackend.Services
             }
         }
 
-        public async Task<bool> AlterarUsuarioAsync(UsuarioAtualizarDto usuarioAtualizar)
+        public async Task<bool> AlterarUsuarioAsync(int idUsuario, UsuarioAtualizarDto usuarioAtualizar)
         {
+            using var t = await _context.Database.BeginTransactionAsync();
             try
             {
                 if (usuarioAtualizar == null) throw new ArgumentNullException(nameof(usuarioAtualizar));
-
-                var usuario = new Usuario
+                var usuario = await _usuarioRepository.GetByIdAsync(idUsuario);
+                usuario = new Usuario
                 {
                     TX_LOGIN = usuarioAtualizar.login,
                     TX_SENHA = usuarioAtualizar.senha,
                     TX_EMAIL = usuarioAtualizar.email,
-                    IN_ATIVO = usuarioAtualizar.ativo,
-                    IN_ADMIN = usuarioAtualizar.admin
                 };
-
                 await _usuarioRepository.UpdateAsync(usuario);
+
+                var funcionario = await _funcionarioRepository.GetByIdAsync(usuario.ID_FUNCIONARIO);
+                funcionario = new Funcionario
+                {
+                    TX_NOME = usuarioAtualizar.nomePessoa,
+                    TX_EMAIL = usuarioAtualizar.email,
+                    TX_TELEFONE = usuarioAtualizar.telefone
+                };
+                await _funcionarioRepository.UpdateAsync(funcionario);
+
+                await _context.SaveChangesAsync();
+                await t.CommitAsync();
                 return true;
             }
             catch (Exception ex)
             {
+                await t.RollbackAsync();
                 Console.WriteLine($"Erro ao alterar usuário: {ex.Message}");
                 return false;
             }
@@ -176,7 +191,6 @@ namespace RoofStockBackend.Services
                 return false;
             }
         }
-
         #endregion        
     }
 }

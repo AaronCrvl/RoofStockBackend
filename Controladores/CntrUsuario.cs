@@ -4,6 +4,7 @@ using RoofStockBackend.Services;
 using System.Net.Mime;
 using Microsoft.AspNetCore.Authorization;
 using RoofStockBackend.Modelos.DTO.Usuario;
+using RoofStockBackend.Sessão;
 
 namespace RoofStockBackend.Controllers
 {
@@ -30,7 +31,7 @@ namespace RoofStockBackend.Controllers
 
         #region Métodos HTTP
 
-        [HttpGet("ObterUsuario/{id}")]    
+        [HttpGet("GetById")]    
         [Authorize(AuthenticationSchemes = "Bearer")]
         public async Task<IActionResult> ObterUsuario(int id)
         {
@@ -88,7 +89,7 @@ namespace RoofStockBackend.Controllers
             }
         }
 
-        [HttpPost("EditarUsuario/{id}")]       
+        [HttpPatch("Update")]       
         [Authorize(AuthenticationSchemes = "Bearer")]
         public async Task<IActionResult> EditarUsuario(int id, [FromBody] UsuarioAtualizarDto usuarioaAtualizar)
         {
@@ -97,7 +98,7 @@ namespace RoofStockBackend.Controllers
                 var usuario = await _usuarioService.CarregarUsuarioPorIdAsync(id);
                 if (usuario != null)
                 {
-                    var sucesso = await _usuarioService.AlterarUsuarioAsync(usuarioaAtualizar);
+                    var sucesso = await _usuarioService.AlterarUsuarioAsync(int.Parse(SessaoUtils.GetUserId(HttpContext)), usuarioaAtualizar);
                     if (sucesso)
                         return Ok(usuario);
                     else

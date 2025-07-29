@@ -48,9 +48,9 @@ namespace RoofStockBackend.Controllers
         }
 
         [HttpGet("GetByStock")]
-        public async Task<IActionResult> ObterFechamentoPorEstoque(int stockId)
+        public async Task<IActionResult> ObterFechamentoPorEstoque(int idEstoque)
         {
-            var fechamentoEstoque = await _fechamentoEstoqueService.CarregarFechamentoPorEstoqueAsync(stockId);
+            var fechamentoEstoque = await _fechamentoEstoqueService.CarregarFechamentoPorEstoqueAsync(idEstoque);
             if (fechamentoEstoque != null)
                 return Ok(fechamentoEstoque);
             return NotFound("Fechamento de estoque não encontrado para o estoque informado.");
