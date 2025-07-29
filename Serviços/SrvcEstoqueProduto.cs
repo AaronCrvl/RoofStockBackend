@@ -65,10 +65,12 @@ namespace RoofStockBackend.Services
                     nomeProduto = prod.prodCad.prodCad.TX_NOME,
                     promocao = prod.prodCad.prodCad.IN_PROMOCAO,
                     valor = prod.prodCad.prodCad.VALOR,
+                    nomeResponsavel = prod.prodCad.prodCad.NM_REPONSAVEL,
+                    dataValidade = prod.prodCad.prodCad.DT_VALIDADE,
                 });
             }
             catch (Exception ex)
-            {                
+            {
                 Console.WriteLine($"Erro ao carregar produtos: {ex.Message}");
                 throw;
             }
@@ -153,20 +155,26 @@ namespace RoofStockBackend.Services
             }
         }
 
-        public async Task<bool> ExcluirProdutoAsync(int idProduto)
+        public async Task<bool> ExcluirProdutoAsync(int idEstoque, int idProduto)
         {
             using var t = await _context.Database.BeginTransactionAsync();
             try
             {
                 if (idProduto <= 0) return false;
-                await _produtoRepository.DeleteAsync(idProduto);
+
+                var prod = (await _produtoRepository.GetAllAsync()).Where(prod => prod.ID_PRODUTO == idProduto).FirstOrDefault();
+                if (prod == null)               
+                    await _produtoRepository.DeleteAsync(idProduto, idEstoque); // TODO: Testar comportamente no database Azure  
+                else
+                    await _produtoRepository.DeleteAsync(prod); 
+
                 await t.CommitAsync();
                 return true;
             }
             catch (Exception ex)
             {
                 await t.RollbackAsync();
-                Console.WriteLine($"Erro ao deletar produto: {ex.Message}");
+                Console.WriteLine($"Erro ao deletar produto do estoque: {ex.Message}");
                 throw;
             }
         }

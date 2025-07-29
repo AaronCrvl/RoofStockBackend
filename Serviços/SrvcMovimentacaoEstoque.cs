@@ -6,6 +6,7 @@ using RoofStockBackend.Modelos.DTO.Movimentação_Estoque;
 using RoofStockBackend.Repositorios;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -209,6 +210,30 @@ namespace RoofStockBackend.Services
             {
                 await t.RollbackAsync();
                 Console.WriteLine($"Erro ao excluir movimentação: {ex.Message}");
+                throw;
+            }
+        }
+
+        public async Task<bool> ExcluirItemMovimentacaoAsync(long idMov, long idItem)
+        {
+            using var t = await _context.Database.BeginTransactionAsync();
+            try
+            {
+                var movimentacao = await _context.MovimentacoesEstoque.FindAsync(idMov);
+                if (movimentacao == null) return false;
+
+                var item = await _context.ItemMovimentacaoEstoque.FindAsync(idItem);
+                if (item == null) return false;
+
+                _context.ItemMovimentacaoEstoque.Remove(item);
+                await _context.SaveChangesAsync();
+                await t.CommitAsync();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                await t.RollbackAsync();
+                Console.WriteLine($"Erro ao excluir item da movimentação: {ex.Message}");
                 throw;
             }
         }

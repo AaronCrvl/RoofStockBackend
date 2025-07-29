@@ -96,6 +96,22 @@ namespace RoofStockBackend.Controllers
                 return BadRequest($"Erro: {ex.Message}");
             }
         }
+
+        [HttpDelete("DeleteItem")]
+        public async Task<IActionResult> ExcluirItemMovimentacao(long idMov, long idProd)
+        {
+            try
+            {
+                var result = await _movimentacaoService.ExcluirItemMovimentacaoAsync(idMov, idProd);
+                if (result)
+                    return Ok("Item da Movimentação excluída com sucesso.");
+                return NotFound("Item da movimentação não encontrado.");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Erro: {ex.Message}");
+            }
+        }
         #endregion        
     }
 }

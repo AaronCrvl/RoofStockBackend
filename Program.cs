@@ -84,6 +84,25 @@ builder.Services.AddAuthentication("Bearer").AddJwtBearer("Bearer", opt =>
     };
 });
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowLocalhost5173", policy =>
+    {
+        policy.WithOrigins("http://localhost:5173")
+              .AllowAnyHeader()
+              .AllowAnyMethod() 
+              .AllowCredentials();
+    });
+});
+
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(60); 
+    options.Cookie.HttpOnly = true; // Make session cookie inaccessible to client-side script
+    options.Cookie.IsEssential = true; // Make session cookie essential for the application
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -100,8 +119,10 @@ if (!app.Environment.IsDevelopment())
         options.RoutePrefix = string.Empty;
     });
 }
+app.UseCors("AllowLocalhost5173");
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.UseAuthentication();
+app.UseSession();
 app.MapControllers();
 app.Run();

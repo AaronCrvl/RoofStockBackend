@@ -4,6 +4,7 @@ using RoofStockBackend.Modelos.DTO.Estoque;
 using RoofStockBackend.Services;
 using System.Net.Mime;
 using Serilog;
+using RoofStockBackend.Sessão;
 
 namespace RoofStockBackend.Controllers
 {
@@ -56,6 +57,8 @@ namespace RoofStockBackend.Controllers
         {
             try
             {
+                SessaoUtils.SetUserId(userId.ToString(), HttpContext);                
+
                 var estoque = await _estoqueService.CarregarEstoquePorUsuario(userId);
                 if (estoque == null)
                     return NotFound(new { Message = "Estoque não encontrado." });
@@ -126,6 +129,39 @@ namespace RoofStockBackend.Controllers
             }
         }
 
+        [HttpDelete("DeleteItem")]
+        public async Task<IActionResult> ExcluirItemEstoque(int idProd)
+        {
+            try
+            {
+                bool sucesso = await _estoqueService.ExcluirItemEstoqueAsync(int.Parse(SessaoUtils.GetStockId(HttpContext)), idProd);
+                if (!sucesso)
+                    return NotFound(new { Message = "Estoque não encontrado." });
+
+                return Ok(new { Message = "Estoque excluído com sucesso." });
+            }
+            catch (Exception e)
+            {
+                _logger.Error(e.Message, "Error in EstoqueController.ExcluirItemEstoque ", $"Stock Item Delete: {SessaoUtils.GetStockId(HttpContext)} - {idProd}");
+                return BadRequest(new { Message = $"Erro: {e.Message}" });
+            }
+        }
+
+        [HttpPatch("SetSessionStock")]
+        public async Task<IActionResult> AtualizarEstoqueSessao(int idEstoque)
+        {
+            try
+            {
+                SessaoUtils.SetStockId(idEstoque.ToString(), HttpContext);
+                return Ok(new { Message = "Estoque atualizado na sessão com sucesso." });
+            }
+            catch (Exception e)
+            {
+                _logger.Error(e.Message, "Error in EstoqueController.AtualizarEstoqueSessao ", $"Não foi possível setar o valor para o estoque {idEstoque}");
+                return BadRequest(new { Message = $"Erro: {e.Message}" });
+            }
+        }
+
         [HttpPatch("Unactivate")]
         public async Task<IActionResult> DesativarEstoque(int id)
         {
@@ -165,7 +201,6 @@ namespace RoofStockBackend.Controllers
                 return BadRequest(new { Message = $"Erro: {e.Message}" });
             }
         }
-
         #endregion
     }
 }

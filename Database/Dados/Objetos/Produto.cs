@@ -17,6 +17,10 @@ namespace RoofStockBackend.Database.Dados.Objetos
         bool pIN_PROMOCAO { get; set; }
 
         int pTIPO_PRODUTO { get; set; }
+
+        DateTime pDT_VALIDADE { get; set; }
+
+        string pNM_RESPONSAVEL { get; set; }
         #endregion
 
         #region Propriedades
@@ -108,6 +112,29 @@ namespace RoofStockBackend.Database.Dados.Objetos
                 pTIPO_PRODUTO = value;
             }
         }
+
+        public DateTime DT_VALIDADE
+        {
+            get
+            {
+                return pDT_VALIDADE;
+            }
+            set
+            {
+                pDT_VALIDADE = value;
+            }
+        }
+        public string NM_REPONSAVEL
+        {
+            get
+            {
+                return pNM_RESPONSAVEL;
+            }
+            set
+            {
+                pNM_RESPONSAVEL = value;
+            }
+        }
         #endregion
 
         #region Construtores
@@ -120,6 +147,8 @@ namespace RoofStockBackend.Database.Dados.Objetos
             this.VALOR = 0.0f;
             this.IN_PROMOCAO = false;
             this.TIPO_PRODUTO = (int)eTipoProduto.NaoAlcolico;
+            this.DT_VALIDADE = new DateTime();
+            this.NM_REPONSAVEL = string.Empty;
         }      
         #endregion
     }

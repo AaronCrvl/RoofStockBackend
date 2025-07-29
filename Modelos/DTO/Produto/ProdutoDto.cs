@@ -8,5 +8,7 @@
         public string nomeMarca { get; set; }
         public double valor { get; set; }
         public bool promocao { get; set; }
+        public DateTime dataValidade { get; set; }
+        public string nomeResponsavel { get; set; }        
     }
 }

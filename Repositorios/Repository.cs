@@ -75,12 +75,17 @@ namespace RoofStockBackend.Repositorios
 
         public async Task DeleteAsync(long id, long id2)
         {
-            var entity = await _dbSet.FindAsync(id);
+            var entity = await _dbSet.FindAsync(id, id2);
             if (entity != null)
             {
                 _dbSet.Remove(entity);
                 await _context.SaveChangesAsync();
             }
+        }
+        public async Task DeleteAsync(T entity)
+        {
+            _dbSet.Remove(entity);
+            await _context.SaveChangesAsync();
         }
     }
 }

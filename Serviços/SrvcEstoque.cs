@@ -5,6 +5,8 @@ using RoofStockBackend.Database.Dados.Objetos;
 using RoofStockBackend.Modelos.DTO.Estoque;
 using RoofStockBackend.Modelos.DTO.Produto;
 using RoofStockBackend.Repositorios;
+using RoofStockBackend.Sessão;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 namespace RoofStockBackend.Services
 {
@@ -190,6 +192,28 @@ namespace RoofStockBackend.Services
             }
         }
 
+        public async Task<bool> ExcluirItemEstoqueAsync(int idEstoque, int idProd)
+        {
+            using var t = await _context.Database.BeginTransactionAsync();
+            try
+            {
+                if (idProd <= 0) throw new ArgumentException("ID inválido.");
+
+                var prod = (await _estoqueProdutoRepository.GetAllAsync()).Where(prodEstq => prodEstq.ID_ESTOQUE == idEstoque && prodEstq.ID_PRODUTO == idProd).FirstOrDefault();
+                if (prod != null)
+                    await _estoqueProdutoRepository.DeleteAsync(prod);    
+                
+                await t.CommitAsync();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                await t.RollbackAsync();
+                Console.WriteLine($"Erro ao excluir estoque: {ex.Message}");
+                throw;
+            }
+        }
+
         public async Task<bool> AtivarEstoqueAsync(int id)
         {
             using var t = await _context.Database.BeginTransactionAsync();
@@ -232,7 +256,7 @@ namespace RoofStockBackend.Services
                 Console.WriteLine($"Erro ao desativar estoque: {ex.Message}");
                 throw;
             }
-        }
+        }     
         #endregion
 
         #region Métodos Privados

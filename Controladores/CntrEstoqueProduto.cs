@@ -3,6 +3,7 @@ using RoofStockBackend.Services;
 using System.Net.Mime;
 using Microsoft.AspNetCore.Authorization;
 using RoofStockBackend.Modelos.DTO.Produto;
+using RoofStockBackend.Database.Dados.Objetos;
 
 namespace RoofStockBackend.Controllers
 {
@@ -79,12 +80,12 @@ namespace RoofStockBackend.Controllers
             }
         }
 
-        [HttpDelete("Delete")]
-        public async Task<IActionResult> ExcluirProduto(int id)
+        [HttpDelete("DeleteItem")]
+        public async Task<IActionResult> ExcluirProduto(int idEstoque, int idProduto)
         {
             try
             {
-                var sucesso = await _estoqueProdutoService.ExcluirProdutoAsync(id);
+                var sucesso = await _estoqueProdutoService.ExcluirProdutoAsync(idEstoque, idProduto);
                 if (!sucesso)
                     return BadRequest(new { Message = "Não foi possível cadastrar o produto." });
 
@@ -95,6 +96,7 @@ namespace RoofStockBackend.Controllers
                 return BadRequest(new { Message = $"Erro: {e.Message}" });
             }
         }
+
         #endregion
     }
 }
